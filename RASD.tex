@@ -1,124 +1,128 @@
-\documentclass[10pt,a4paper]{report}
+\documentclass{report}
 
 \usepackage{hyperref}
 \usepackage{enumitem}
-
-\usepackage{ifthen}
-
-\usepackage[final]{pdfpages}
-
 \usepackage{amsfonts}
-\usepackage[latin1]{inputenc}
-\usepackage{graphicx}
 \usepackage[framemethod = tikz]{mdframed}
-\usepackage{fancyhdr}
-
-
-\usepackage{amsmath, amssymb}
-\usepackage[mathscr]{eucal}
-\usepackage{amsthm,thmtools}
-\usepackage{amscd}
-
-
-\usepackage{listings} %per inserire codice
-\usepackage{courier}
-\lstset{basicstyle=\footnotesize\ttfamily,breaklines=true}
-
-
-\delimitershortfall-1sp
-\newcommand\abs[1]{\left|#1\right|}
-
 
 \usepackage{geometry}
-\geometry{a4paper,top=3cm,bottom=3cm,left=2.5cm,right=2.5cm,%
-	heightrounded,bindingoffset=0mm}
-
-\usepackage{fancyhdr}
-\pagestyle{fancy}
+\geometry{
+	a4paper,
+	top=3cm,
+	bottom=3cm,
+	left=2.5cm,
+	right=2.5cm,
+	heightrounded,
+	bindingoffset=0mm
+}
 
 \hypersetup{
 	colorlinks=true,
 	linkcolor=blue,
 	filecolor=magenta,      
 	urlcolor=cyan,
+	linktocpage=true
 }
-
-\lhead{\includegraphics[width=35mm]{imm/PolimiLogoSmall.png}}                %intestazione sinistra
-\chead{}                %intestazione centrale
-\author{Davide Rossetto 894029, Alessandro Tatti 883861} %intestazione destra
-\lfoot{}
-\cfoot{\thepage}
-\rfoot{}
-\renewcommand{\headrulewidth}{0.5pt} %linea separazione intestazione
-\renewcommand{\footrulewidth}{0.5pt} %linea separazione pie? di pagina
 
 \title{ \includegraphics[width=95mm]{imm/PolimiLogo.png} 
 	\\Requirements analysis and specification document (RASD)}
 \author{Davide Rossetto 894029, Alessandro Tatti 883861}
-\date{Delivery date: 2017 May 07}
+\date{Delivery date: 2017 May 07\\
+	\bigskip v1.1}
 
 \begin{document}
 	
-	\maketitle
-	\newpage
-	\tableofcontents
-	\newpage
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+	
 	
 	\chapter{Introduction}
-	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	
 	
 	\section{Purpose}
-	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	The Requirements Analysis and Specification Document for the Travlendar+ system management is intended to describe the system itself, its functional and non-functional requirements, its components, its constraints, the relationship with the real world, and users by providing several use cases and scenarios.
+
+	A part of the documentation uses Alloy, a language to describe structures and a tool to explore and provide a formal specification of some features of the system.
+
+	\bigskip
+	This document is predisposed primarily to developers and programmers who must meet the requirements, testers who need to determine if the requirements are met, project managers, who control the development process, and users who validate the goals of the system.
+	
 	
 	\section{Scope}
-	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	The product is a digital management system to support the creation of a calendar ? based application that automatically computes and accounts for travel time between appointments to make sure that users are not late for appointments and support users in their travels.
+
+	\bigskip
+	The system consists of two back -- end server applications:
+	\begin{itemize}
+	\item An application that handles requests for entering appointments or trips, managing schedules and routes;
+	\item An application that communicates with the systems of transportation companies; ***
+	\end{itemize}
+
+	\bigskip
+	And two front -- end applications:
+	\begin{itemize}
+	\item The web-based application to provide the end user with a friendly interface to take advantage of services of Travlendar +;
+	\item A mobile application that allows the user to easily access the service wherever he needs.***
+	\end{itemize}
+
+	\bigskip
+	The system is intended for users who must be allowed to register and access the system via username and password, to make the appointment and management process easier and quicker.
+
+	Users can create meetings, and when meetings are created at locations that are unreachable in the allotted time, a warning is created; the application must also take into account possible issues related to the request (e.g. public service strikes on the scheduled day for the meeting).
+
+	\bigskip
+	The system should allow users to define various kind of user preferences: user can activate or deactivate each travel means, should be able to provide constraints on different travel means and select combinations of transportation means that minimize carbor footprint. In addition, the user must specify a flexible lunch: the system must handle this, allowing the user to have half an hour to have lunch within the set time interval.
+	
+	
+	\section{Goal}
+	The goals of Travlendar+ are the followings:
+
+	\begin{enumerate}
+	\item Let the user register to the service and login via provided credentials;
+	\item Let the user manage his/her own profile;
+	\item Let the user insert his/her meeting in the schedule application;
+	\item Let the system work efficiently by generating an alarm when a meeting is not possible within the specified time range;
+	\item Let the system indicate which best travel means is to be used for a given meeting ;
+	\item Let the user indicate his/her preferences on the travel means;
+	\item Automatically the system searches for the shortest path to reach the meeting site;
+	\item Automatically the system searches the cheapest means of transport to reach the meeting site;
+	\item Let the user specify a flexible lunch, i.e. a period of time to eat.
+	\item Automatically the system must find at least half an hour to have lunch (within the "flexible lunch" time)
+	\end{enumerate}
+
 	
 	\section{Definitions, Acronyms, Abbreviations}
-	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	\begin{description}
+	\item[Back -- end application:] Computer program that remains in the background, or resides on a server located in a back room. A user, generally, interfaces only with a front ? end application and rarely needs to access back ? end applications.
+	\item[Front -- end application:] any application the users interact with directly. It provides the so called presentation layer.
+	\item[Guest:] any person who is not registered or logged in to the Travlendar+ service.
+	\item[RASD:] Requirements Analysis and Specification Document.
+	\item[User:] Any person subscribed and logged in to the service who hence can insert a meeting using Travlendar+.
+	\end{description}
+	
 	
 	\section{Revision history}
-	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	\begin{description}
+	\item[v1.0] Construct basic document's structure.
+	\item[v1.1] Add \textit{Purpose}, \textit{Scope}, \textit{Goal}, \textit{Definitions, Acronyms, Abbreviations},  \textit{Reference documents}, \textit{Document structure}.
+	\end{description}
+	
 	
 	\section{Reference documents}
-	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	This document  is based on the specifications concerning the RASD assignment for the Software Engineering II project, part of the course held by professors  Elisabetta Di Nitto and Matteo Giovanni Mottola at the Politecnico di Milano, A.Y. 2017/2018.
+	
 	
 	\section{Document structure}
-	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	This document consists of three sections:
+
+	\begin{description}
+	\item[Section 1: Introduction] A general introduction and overview of the system to - be purpose, scope and goals, along with some important information about this document.
+	\item[Section 2: Overall description] It describes the general factors that affects the product and its requirements. The section provides a background for those requirements which are defined in detail in Section 3 and makes them easier to figure out.
+	\item[Section 3: Specific Requirements] All the software requirements are specified to a level of detail which is sufficient to let the designers satisfy them. Both functional and non-functional requirements are mentioned.
+	\end{description}
+	
 	
 	\chapter{Overall Description}
 	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -128,6 +132,7 @@
 	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 	
+	
 	\section{Product Perspective}
 	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -135,6 +140,7 @@
 	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
 	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	
 	
 	\section{Product Functions}
 	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -144,6 +150,7 @@
 	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 	
+	
 	\section{User Characteristics}
 	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -151,6 +158,7 @@
 	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
 	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	
 	
 	\section{Assumptions, dependences and constrains}
 	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -160,6 +168,7 @@
 	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 	
+	
 	\chapter{Specific Requirements}
 	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -167,6 +176,7 @@
 	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
 	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	
 	
 	\section{External Interface Reqirements}
 	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -176,6 +186,7 @@
 	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 	
+	
 	\subsection{User Interfaces}
 	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -183,6 +194,7 @@
 	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
 	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	
 	
 	\subsection{Hardware Interfaces}
 	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -192,6 +204,7 @@
 	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 	
+	
 	\subsection{Software Interfaces}
 	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -199,6 +212,7 @@
 	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
 	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	
 	
 	\subsection{Communications Interfaces}
 	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -208,6 +222,7 @@
 	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 	
+	
 	\section{Functional requirements}
 	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -215,6 +230,7 @@
 	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
 	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	
 	
 	\section{Performance requiremens}
 	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -224,6 +240,7 @@
 	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 	
+	
 	\section{Design constrains}
 	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -231,6 +248,7 @@
 	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
 	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	
 	
 	\subsection{Standards compliance}
 	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -240,6 +258,7 @@
 	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 	
+	
 	\subsection{Hardware limitations}
 	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -247,6 +266,7 @@
 	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
 	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	
 	
 	\subsection{Any other constrain}
 	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -256,6 +276,7 @@
 	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 	
+	
 	\section{Software System Attributes}
 	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -263,6 +284,7 @@
 	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
 	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	
 	
 	\subsection{Reliability}
 	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -272,6 +294,7 @@
 	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 	
+	
 	\subsection{Availability}
 	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -279,6 +302,7 @@
 	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
 	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	
 	
 	\subsection{Security}
 	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -288,6 +312,7 @@
 	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 	
+	
 	\subsection{Mantainability}
 	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -295,6 +320,7 @@
 	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
 	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	
 	
 	\subsection{Portability}
 	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -304,6 +330,7 @@
 	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 	
+	
 	\chapter{Formal Analysis Using Alloy}
 	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -312,6 +339,7 @@
 	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 	
+	
 	\chapter{Effort Spent}
 	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -319,6 +347,7 @@
 	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
 	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	
 	
 	\chapter{References}
 	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
