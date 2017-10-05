@@ -1,4 +1,4 @@
-\documentclass{report}
+\documentclass{article}
 
 \usepackage[hidelinks]{hyperref}
 \usepackage{enumitem}
@@ -24,11 +24,27 @@
 	linktocpage=false
 }
 
-\title{ \includegraphics[width=95mm]{img/PolimiLogo.png}\\
-	\bigskip \bigskip Requirements analysis and specification document (RASD)}
-\author{Davide Rossetto 894029, Alessandro Tatti 883861}
-\date{Delivery date: 2017 May 07\\
-	\bigskip v1.1}
+\usepackage{titlesec}
+
+\newcommand\chaptername{Section}
+\titleformat{\section}[display]{\normalfont\huge\bfseries}{\chaptername\ \thesection}{20pt}{\Huge}
+\titlespacing*{\section}{0pt}{50pt}{40pt}
+\newcommand\sectionbreak{\clearpage}
+
+\title{ 
+	\includegraphics[width=95mm]{img/PolimiLogo.png}\\
+	\bigskip
+	Requirements analysis and specification document (RASD)
+}
+
+\author{
+	Davide Rossetto 894029, Alessandro Tatti 883861
+}
+
+\date{
+	Delivery date: 2017 May 07\\
+	\bigskip v1.3
+}
 
 \begin{document}
 	
@@ -38,11 +54,11 @@
 \newpage
 	
 	
-	\chapter{Introduction}
+	\section{Introduction}
 	
 	
-	\section{Purpose}
-	The Requirements Analysis and Specification Document for the Travlendar+ system management is intended to describe the system itself, its functional and non-functional requirements, its components, its constraints, the relationship with the real world, and users by providing several use cases and scenarios.	
+	\subsection{Purpose}
+	The Requirements Analysis and Specification Document for the Travlendar+ system management is intended to describe the system itself, its functional and non-functional requirements, its components, its constraints, the relationship with the real world, and users by providing several use cases and scenarios.
 	
 	A part of the documentation uses Alloy, a language to describe structures and a tool to explore and provide a formal specification of some features of the system.
 	
@@ -50,8 +66,8 @@
 	This document is predisposed primarily to developers and programmers who must meet the requirements, testers who need to determine if the requirements are met, project managers, who control the development process, and users who validate the goals of the system.
 	
 	
-	\section{Scope}
-	The product is a digital management system to support the creation of a calendar ? based application that automatically computes and accounts for travel time between appointments to make sure that users are not late for appointments and support users in their travels.
+	\subsection{Scope}
+	The product is a digital management system to support the creation of a calendar-based application that automatically computes and accounts for travel time between appointments to make sure that users are not late for appointments and support users in their travels.
 
 	\bigskip
 	The system consists of two back -- end server applications:
@@ -76,7 +92,7 @@
 	The system should allow users to define various kind of user preferences: user can activate or deactivate each travel means, should be able to provide constraints on different travel means and select combinations of transportation means that minimize carbon footprint. In addition, the user must specify a flexible lunch: the system must handle this, allowing the user to have half an hour to have lunch within the set time interval.
 	
 	
-	\section{Goal}
+	\subsection{Goal}
 	The goals of Travlendar+ are the followings:
 
 	\begin{enumerate}
@@ -94,12 +110,12 @@
 	\end{enumerate}
 
 	
-	\section{Definitions, Acronyms, Abbreviations}
+	\subsection{Definitions, Acronyms, Abbreviations}
 	\begin{description}
 	\item[Actor:] Specifies a role played by a user or any other system that interacts with the system;
 	\item[API: ]Application Programming Interfaces.
-	\item[Back ? end application:] Computer program that remains in the background, or resides on a server located in a back room. A user, generally, interfaces only with a front ? end application.
-	\item[Front ? end application:] Any application the users interact with directly. It provides the so called presentation layer.
+	\item[Back -- end application:] Computer program that remains in the background, or resides on a server located in a back room. A user, generally, interfaces only with a front ? end application.
+	\item[Front -- end application:] Any application the users interact with directly. It provides the so called presentation layer.
 	\item[GPS:] Global Positioning System
 	\item[Guest:] Any person who is not registered or logged in to the Travlendar+ service.
 	\item[JEE:] Java Enterprise Edition
@@ -109,39 +125,42 @@
 	\item[System:]
 	\item[User:] Any person subscribed and logged in to the service who hence can insert a meeting using Travlendar+.
 	\item[User Interface:] It is the way through which a user interacts with an application or a website.
-	\item[Web application:] Client - server application accessible by an user through a browser.
+	\item[Web application:] Client -- server application accessible by an user through a browser.
 	\end{description}
 	
 	
-	\section{Revision history}
+	\subsection{Revision history}
 	\begin{description}
 	\item[v1.0] Construct basic document's structure.
 	\item[v1.1] Add \textit{Purpose}, \textit{Scope}, \textit{Goal}, \textit{Definitions, Acronyms, Abbreviations}, \textit{Reference documents}, \textit{Document structure}.
 	\item[v1.2] Add \textit{Product Perspective}, \textit{Product Functions}, \textit{User Characteristics}, \textit{Assumptions and Dependencies}, \textit{Constraints}, \textit{World and Machine model interpretation}. Modify \textit{Definition, Acronyms, Abbreviations} and document structure. Create a simple Appendix, that will be completed at the end.
+	\item[v1.3] Add \textit{External Interface Requirements}. Modify \textit{Goal}, \textit{Definitions, Acronyms, Abbreviations}, \textit{Product Functions}, \textit{Use Case Model}, \textit{Assumption and Dependences}, \textit{World and Machine model}.
 	\end{description}
 	
 	
-	\section{Reference documents}
+	\subsection{Reference documents}
 	This document is based on the specifications concerning the RASD assignment for the Software Engineering II project, part of the course held by professors Elisabetta Di Nitto and Matteo Giovanni Mottola at the Politecnico di Milano, A.Y. 2017/2018.
 	
 	
-	\section{Document structure}
+	\subsection{Document structure}
 	This document consists of three sections:
 
 	\begin{description}
-	\item[Section 1: Introduction] A general introduction and overview of the system to - be purpose, scope and goals, along with some important information about this document.
+	\item[Section 1: Introduction] A general introduction and overview of the system-to-be purpose, scope and goals, along with some important information about this document.
 	\item[Section 2: Overall description] It describes the general factors that affects the product and its requirements. The section provides a background for those requirements which are defined in detail in Section 3 and makes them easier to figure out.
 	\item[Section 3: Specific Requirements] All the software requirements are specified to a level of detail which is sufficient to let the designers satisfy them. Both functional and non-functional requirements are mentioned.
 	\end{description}
 	
+	\bigskip
+	There are two additional parts, Appendix and Bibliography that provide another information about the sections of this document.
 	
-	\chapter{Overall Description}	
+	\section{Overall Description}	
 	
 	
-	\section{Product Perspective}
+	\subsection{Product Perspective}
 	
 	
-	\subsection{User Interfaces}
+	\subsubsection{User interfaces}
 	The user have two main ways to access the system:
 	\begin{itemize}
 	\item through a web application accessible from any modern browser
@@ -150,14 +169,14 @@
 	Although they are two different platforms, the user interface must be unified and intuitive, allowing anyone to use it without any training needed.
 
 
-	\subsection{Hardware interfaces}
+	\subsubsection{Hardware interfaces}
 	The web application can be executed on any modern computer that meets the minimum system requirements (link al paragrafo).
 	
 	\bigskip
 	The mobile application can run on any modern mobile device (i.e. smartphone, tablet) with mobile data connectivity,  GPS and meets the minimum system requirements (link al paragrafo).
 
 
-	\subsection{Software interfaces}
+	\subsubsection{Software interfaces}
 	The web application must support most of the modern browsers e.g., IE, Firefox, Chrome, Safari.
 	
 	\bigskip
@@ -168,7 +187,7 @@
 	The backend also have to interface with the APIs of a public transportation and  traffic informations provider.***
 	
 	
-	\section{Product functions}
+	\subsection{Product Functions}
 	The system allows the users to create meetings, helps them to reach the location.
 	
 	The users can:
@@ -192,13 +211,13 @@
 	\end{figure}
 	
 	
-	\section{User Characteristics}
+	\subsection{User Characteristics}
 	The target user is someone who needs an automated system to manage appointments that also handle the scheduling of travels.
 	
-	The meeting should not overlap with any pre - existing one and should allow the user to move from his/her current position to the meeting position, according with preferred travel means and traffic conditions.
+	The meeting should not overlap with any pre-existing one and should allow the user to move from his/her current position to the meeting position, according with preferred travel means and traffic conditions.
 	
 	
-	\section{Assumptions and Dependences}
+	\subsection{Assumptions and Dependences}
 	The following assumptions are given for granted:
 	\begin{itemize}
 	\item  Transport means are complied with the user?s request.
@@ -210,36 +229,36 @@
 	\end{itemize}
 	
 	
-	\section{Constraints}
+	\subsection{Constraints}
 	
 	
-	\subsection{Regulatory policies}
+	\subsubsection{Regulatory policies}
 	The application must be allowed by the user to collect his/her position, through GPS.
 	
 	
-	\subsection{Hardware limitations}
+	\subsubsection{Hardware limitations}
 	\begin{itemize}
 	\item Web application:
 		\begin{itemize}
-		\item Internet connection
-		\item 800x600 screen resolution
+		\item Internet connection;
+		\item 800x600 screen resolution;
+		\item JavaScript enabled.
 		\end{itemize}
 	\item Mobile application:
 		\begin{itemize}
-		\item Internet connection
-		\item 50 MB of available storage space
-		\item 1GB of RAM
-		\item GPS module
+		\item Internet connection;
+		\item 50 MB of available storage space;
+		\item 1GB of RAM;
+		\item GPS module.
 		\end{itemize}
 	\end{itemize}
 	
 	
-	\subsection{Reliability requirements}
+	\subsubsection{Reliability requirements}
 	The system reliability, that is the probability to operate without a failure for a specific period of time, must be at least 99\%.
 	
 	
-	\clearpage
-	\section{World and Machine model interpretation}
+	\subsection{World and Machine model interpretation}
 	In this part of RASD, a description of the system-to-be is provided following the World and Machine model introduced by Jackson and Zave.
 	
 	\bigskip
@@ -262,192 +281,135 @@
 	\end{figure}
 
 	
-	\chapter{Specific Requirements}
-	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	\section{Specific Requirements}
 	
 	
-	\section{External Interface Reqirements}
-	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	\subsection{External Interface Reqirements}
 	
 	
-	\subsection{User Interfaces}
-	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	\subsubsection{User Interfaces}
+	The user interface must be intuitive and unified, granting to the user a pleasant experience. In order to make it possible both web and mobile application must satisfy the following requirements:
+	\begin{itemize}
+	\item If the session is not already active the user must be redirected to a Login page. If he/she is not already registered he/she can create a new account within the same page. Moreover, the user must be able to Sign In/Sign Up not only with username and password but also with his/her social accounts (e.g. Google, Facebook, Twitter);
+	\item Once logged, the user must be redirected to his/her personal page;
+	\item A toolbar must allow the user to navigate through the pages described below;
+	\item The user?s personal page must display an overview of user?s future events (display them in a list or in a calendar view) and must also offer the possibility to insert new ones;
+	\item Clicking on an event the user must be redirected to the event?s detail page;
+	\item The event?s detail page must display detailed information such as location of the event, time and suggested mean (including the path)  needed to reach it;
+	\item The event?s detail page must allow the user to modify or delete the event;
+	\item If an user tries to inserted or modified an event which location is unreachable in the remaining time an alert should be displayed;
+	\item The Account settings page must allow the user to modify its/her personal informations or delete the account;
+	\item The user must be allowed to select between different languages (en, it, de, fr, es, ru, zh, ja, ar);
+	\item The UI must comply the Flat Design principles;
+	\item Both web and mobile applications must use the same graphic objects for the same interface elements.
+	\end{itemize}
+	
+	\bigskip
+	\bigskip
+	Specific constraints must be satisfied by specific application:
+	\begin{itemize}
+	\item Web application:
+		\begin{itemize}
+		\item The user interface must be responsive i.e. adapt to screen size;
+		\item All pages must comply W3C standards.
+		\end{itemize}
+	\item Mobile application:
+		\begin{itemize}
+		\item Must run on iOS 9.3 or greater and Android 5.0 or greater.
+		\end{itemize}
+	\end{itemize}
+
 	
 	
-	\subsection{Hardware Interfaces}
-	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	\subsubsection{Hardware Interfaces}
+	As already mentioned in section 2.1.2, the web application can be executed on any computer that meets the basic requirements described in the "Hardware Limitation" section.
+	
+	\bigskip
+	The mobile application must exchange data with the GPS module located on any type of smartphone or tablet. You must also have an internet connection to communicate with the main system server.
+
+	
+	\subsubsection{Software Interfaces}
+	The backend application requires the following software products:
+	\begin{itemize}
+	\item Java EE 7 - http://www.oracle.com/technetwork/java/javaee/overview/index.html
+	\item MySQL 5.7 - http://dev.mysql.com/
+	\end{itemize}
+	
+	\bigskip
+	As mentioned in Section 2.1.3, the backend must interfaced with the APIs of a public transportation and  traffic informations provider, to have the information useful to plan the path.
+	
+	\bigskip
+	The mobile applications requires the following software products:
+	\begin{itemize}
+	\item (iOS) Swift 4 - https://developer.apple.com/swift/
+	\item (Android) Java SE 7 - http://www.oracle.com/technetwork/java/javase/overview/index.html
+	\end{itemize}
+
+	
+	\subsubsection{Communications Interfaces}
+	Every communication between application server and client must comply the HTTPS protocol.
+	
+	\bigskip
+	If the back-end application and the DBMS runs on different servers the communication between them must be SSL/TLS encrypted.
 	
 	
-	\subsection{Software Interfaces}
-	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	\subsection{Functional requirements}
 	
 	
-	\subsection{Communications Interfaces}
-	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	
+	\subsection{Performance requiremens}
 	
 	
-	\section{Functional requirements}
-	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	
+	\subsection{Design constrains}
 	
 	
-	\section{Performance requiremens}
-	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	
+	\subsubsection{Standards compliance}
 	
 	
-	\section{Design constrains}
-	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	
+	\subsubsection{Hardware limitations}
 	
 	
-	\subsection{Standards compliance}
-	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	
+	\subsubsection{Any other constrain}
 	
 	
-	\subsection{Hardware limitations}
-	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	
+	\subsection{Software System Attributes}
 	
 	
-	\subsection{Any other constrain}
-	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	
+	\subsubsection{Reliability}
 	
 	
-	\section{Software System Attributes}
-	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	
+	\subsubsection{Availability}
 	
 	
-	\subsection{Reliability}
-	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	
+	\subsubsection{Security}
 	
 	
-	\subsection{Availability}
-	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	
+	\subsubsection{Mantainability}
 	
 	
-	\subsection{Security}
-	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	
+	\subsubsection{Portability}
 	
 	
-	\subsection{Mantainability}
-	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	
+	\section{Formal Analysis Using Alloy}
 	
 	
-	\subsection{Portability}
-	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	
+	\section{Effort Spent}
 	
 	
-	\chapter{Formal Analysis Using Alloy}
-	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 	
+	\section{References}
 	
-	\chapter{Effort Spent}
-	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-	
-	
-	\chapter{References}
-	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 	
 \end{document}
