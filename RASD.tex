@@ -44,7 +44,7 @@
 
 \date{
 	Delivery date: 2017 May 07\\
-	\bigskip v1.4
+	\bigskip v0.6
 }
 
 \begin{document}
@@ -132,11 +132,12 @@
 	
 	\subsection{Revision history}
 	\begin{description}
-		\item[v1.0] Construct basic document's structure.
-		\item[v1.1] Add \textit{Purpose}, \textit{Scope}, \textit{Goal}, \textit{Definitions, Acronyms, Abbreviations}, \textit{Reference documents}, \textit{Document structure}.
-		\item[v1.2] Add \textit{Product Perspective}, \textit{Product Functions}, \textit{User Characteristics}, \textit{Assumptions and Dependencies}, \textit{Constraints}, \textit{World and Machine model interpretation}. Modify \textit{Definition, Acronyms, Abbreviations} and document structure. Create a simple Appendix, that will be completed at the end.
-		\item[v1.3] Add \textit{External Interface Requirements}. Modify \textit{Goal}, \textit{Definitions, Acronyms, Abbreviations}, \textit{Product Functions}, \textit{Use Case Model}, \textit{Assumption and Dependences}, \textit{World and Machine model}.
-		\item[v1.4] Add \textit{Functional Requirements}.
+		\item[v0.1] Construct basic document's structure.
+		\item[v0.2] Add \textit{Purpose}, \textit{Scope}, \textit{Goal}, \textit{Definitions, Acronyms, Abbreviations}, \textit{Reference documents}, \textit{Document structure}.
+		\item[v0.3] Add \textit{Product Perspective}, \textit{Product Functions}, \textit{User Characteristics}, \textit{Assumptions and Dependencies}, \textit{Constraints}, \textit{World and Machine model interpretation}. Modify \textit{Definition, Acronyms, Abbreviations} and document structure. Create a simple Appendix, that will be completed at the end.
+		\item[v0.4] Add \textit{External Interface Requirements}. Modify \textit{Goal}, \textit{Definitions, Acronyms, Abbreviations}, \textit{Product Functions}, \textit{Use Case Model}, \textit{Assumption and Dependences}, \textit{World and Machine model}.
+		\item[v0.5] Add \textit{Functional Requirements}.
+		\item[v0.6] Add \textit{Performance Requirements} and \textit{Software System Attributes}.
 	\end{description}
 	
 	
@@ -1081,47 +1082,55 @@ First, the guest must complete the registration form with personal data (i.e., f
 
 	
 	\subsection{Performance requiremens}
+	In order to guarantee the best user experience, the following performance requirements must be satisfied by the system:
+	\begin{itemize}
+		\item The system must be operative 24 hours a day, 7 days a week with an uptime of at least 99\%;
+		\item There must not be an upper bound to the number of users registered to the system;
+		\item There must not be an upper bound to the number of meetings that each user can insert; 
+		\item The system must handle at least 1000 logged users at the same time;
+		\item 95\% of the requests must be handled in at least 1 second; \footnotemark[1]
+		\item 99\%  of the requests must be handled in at least 3 seconds. \footnotemark[1]
+	\end{itemize}
 	
-	
-	
-	\subsection{Design constrains}
-	
-	
-	
-	\subsubsection{Standards compliance}
-	
-	
-	
-	\subsubsection{Hardware limitations}
-	
-	
-	
-	\subsubsection{Any other constrain}
-	
+	\bigskip
+	\noindent
+	\footnotemark[1]{ \textit{not taking in count the time spent to communicate with other actors (e.g., Traffic info provider).}}
 	
 	
 	\subsection{Software System Attributes}
 	
 	
-	
 	\subsubsection{Reliability}
+	The reliability can be expressed as the percentage of the operations that succeeds, then we can write the following relation:
 	
-	
+	\bigskip
+	\begin{center}
+		\textit{Reliability}  = 100\% - (\textit{probability of Failure} * 100)
+	\end{center}
+
+	\bigskip
+	The system must have a reliability greater or equal than 99.9\%, that means that the operations that fails are less than 0.1\%.
+
 	
 	\subsubsection{Availability}
-	
+	The system must be up at least 99\% of the time with the exception of ordinary maintenance work.
 	
 	
 	\subsubsection{Security}
-	
+	The security attribute depends on following factors:
+	\begin{itemize}
+		\item Every communication between application server and client must comply the  HTTPS protocol.
+		\item The communication between different servers must be SSL/TLS encrypted.
+		\item The sensitive informations (i.e. password) must be properly stored (i.e., key-hashed salted hash).
+	\end{itemize}
 	
 	
 	\subsubsection{Mantainability}
-	
+	The code and the documentation must match in order to make the code easy to understand to future maintainers.
 	
 	
 	\subsubsection{Portability}
-	
+	The back-end application must be written in Java EE7 in order to be able to run on every server that runs JEE7. The web application must support at least the main modern browser (e.g., IE, Firefox, Chrome, Safari). The mobile application must be developed both for IOS and Android.
 	
 	
 	\section{Formal Analysis Using Alloy}
