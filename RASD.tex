@@ -44,7 +44,7 @@
 
 \date{
 	Delivery date: 2017 May 07\\
-	\bigskip v0.6
+	\bigskip v0.7
 }
 
 \begin{document}
@@ -113,17 +113,22 @@
 	
 	\subsection{Definitions, Acronyms, Abbreviations}
 	\begin{description}
-		\item[Actor:] Specifies a role played by a user or any other system that interacts with the system;
-		\item[API: ]Application Programming Interfaces.
+		\item[Actor:] Specifies a role played by a user or any other system that interacts with the system.
+		\item[API:] Application Programming Interfaces.
+		\item[Availability:] the amount of time that the above remains online with respect to the total time.
 		\item[Back -- end application:] Computer program that remains in the background, or resides on a server located in a back room. A user, generally, interfaces only with a front -- end application.
 		\item[Front -- end application:] Any application the users interact with directly. It provides the so called presentation layer.
 		\item[GPS:] Global Positioning System
 		\item[Guest:] Any person who is not registered or logged in to the Travlendar+ service.
-		\item[JEE:] Java Enterprise Edition
+		\item[JEE:] Java Enterprise Edition.
+		\item[Maintainability:] determines the probability that a failed machine can be restored to its normal operable state within a given timeframe, using the prescribed practices and procedures.
 		\item[Mobile application:] Computer program designed to run on a mobile device such as smartphone or tablet.
 		\item[OS:] Operative system.
+		\item[Portability:] measurement of how easily an application can be transferred from one computer environment to another.
 		\item[RASD:] Requirements Analysis and Specification Document.
-		\item[System:]
+		\item[Reliability:] Ability of a computer program to perform its intended functions and operations in a system's environment, without experiencing failure.
+		\item[Security:] Prevention of access to information by unauthorized recipients, and intentional but unauthorized destruction or alteration of that information.
+		\item[System:] Hardware and software components that run a computer or computers.
 		\item[User:] Any person subscribed and logged in to the service who hence can insert a meeting using Travlendar+.
 		\item[User Interface:] It is the way through which a user interacts with an application or a website.
 		\item[Web application:] Client -- server application accessible by an user through a browser.
@@ -138,6 +143,7 @@
 		\item[v0.4] Add \textit{External Interface Requirements}. Modify \textit{Goal}, \textit{Definitions, Acronyms, Abbreviations}, \textit{Product Functions}, \textit{Use Case Model}, \textit{Assumption and Dependences}, \textit{World and Machine model}.
 		\item[v0.5] Add \textit{Functional Requirements}.
 		\item[v0.6] Add \textit{Performance Requirements} and \textit{Software System Attributes}.
+		\item[v0.7] Add Activity diagrams.
 	\end{description}
 	
 	
@@ -207,8 +213,8 @@
 	\bigskip
 	\begin{figure}[htbp]
 		\begin{center}
-		\includegraphics[width=0.75\textwidth]{img/UseCaseModel.png}
-		\caption{Use Case Model. Explains actors and functionalities offered by the system.}
+		\includegraphics[width=0.75\textwidth]{img/diagrams/uc.png} \\ \bigskip
+		Figure 2.1: Use Case Model. Explains actors and functionalities offered by the system.
 		\label{default}
 		\end{center}
 	\end{figure}
@@ -275,14 +281,10 @@
 	
 	\bigskip
 	\bigskip
-	\begin{figure}[htbp]
-		\begin{center}
-		\includegraphics[width=\textwidth]{img/WorldAndMachineModel.png}
-		\caption{World and Machine model for the main functionalities offered by the system.}
-		\label{default}
-		\end{center}
-	\end{figure}
-
+	\begin{center}
+		\includegraphics[width=\textwidth]{img/diagrams/world_machine.png} \\ \bigskip
+		Figure 2.2: World and Machine model for the main functionalities offered by the system.
+	\end{center}
 	
 	\section{Specific Requirements}
 	
@@ -379,37 +381,31 @@ First, the guest must complete the registration form with personal data (i.e., f
 	\textbf{Scenario 2} \\
 	Benjamin has just moved to London and, at the suggestion of his friend Carl, decides to sign up for Travlendar + to better manage new meetings. Download the app on your mobile phone and open it. The home page appears and he clicks on SignUp. The registration form appears where he inserts all personal information and clicks "Submit" button to submit it. Just click the button will display a message informing him that his password has already been used.
 	
-	\bigskip
+	\newpage
 	\noindent
 	\textbf{Use cases} \\
 
-	\begin{table}[htp]
-	\caption{Register use case.}
-		\begin{center}
-    			\begin{tabular}{p{0.3\textwidth}|p{0.6\textwidth}}
-   			 	\hline
-    				Actor & Guest \\ \hline
-    				Goal & Goal 1 \\ \hline
-    				Input Condition & The person wants to subscribe to the service \\ \hline
-    				Event flow & 
-				\begin{enumerate}
-  					\item The guest opens the home page or mobile application of "Travlendar +"  and clicks the "SignUp" button;
-  					\item The registration form appears and the guest completes the mandatory fields;
-  					\item The guest allows the personal data processing to be marked on the corresponding box;
-  					\item The guest clicks the "Submit" button;
-  					\item The system saves the information in the database and sends a guest confirmation email to the guest, who becomes a user of the service.
- 				 \end{enumerate} \\ \hline
-    				Output Condition & The system informs the user of the registration successfully. \\ \hline
-    				Exception & The system can report some exceptions when an invalid or already used mail address is used. Another exception can be reported if the license number is non-existent or if the terms and conditions of use are not accepted. \\ \hline
-    			\end{tabular}
-		\end{center}
-	\end{table}
-	
-	
-	\bigskip
-	\noindent
-	\textbf{Activity diagram} \\
-	
+	\begin{center}
+		Table 3.1: Register use case.
+		
+		\bigskip
+		\begin{tabular}{p{0.3\textwidth}|p{0.6\textwidth}}
+	   		\hline
+	    		Actor & Guest \\ \hline
+	    		Goal & Goal 1 \\ \hline
+	    		Input Condition & The person wants to subscribe to the service \\ \hline
+	    		Event flow & 
+			\begin{enumerate}
+	  			\item The guest opens the home page or mobile application of "Travlendar +"  and clicks the "SignUp" button;
+	  			\item The registration form appears and the guest completes the mandatory fields;
+	  			\item The guest allows the personal data processing to be marked on the corresponding box;
+	  			\item The guest clicks the "Submit" button;
+	  			\item The system saves the information in the database and sends a guest confirmation email to the guest, who becomes a user of the service.
+	 		 \end{enumerate} \\ \hline
+	    		Output Condition & The system informs the user of the registration successfully. \\ \hline
+	    		Exception & The system can report some exceptions when an invalid or already used mail address is used. Another exception can be reported if the license number is non-existent or if the terms and conditions of use are not accepted. \\ \hline
+	    	\end{tabular}
+	\end{center}
 	
 	\bigskip
 	\noindent
@@ -432,6 +428,16 @@ First, the guest must complete the registration form with personal data (i.e., f
 		\item The system sends a recording confirmation mail correctly, when the guest clicks the "Submit" button;
 		\item The guest can leave the registration process at any time.
 	\end{itemize}
+	
+	\newpage
+	\noindent
+	\textbf{Activity diagram} \\
+	
+	\begin{center}
+		\includegraphics[scale=0.25]{img/diagrams/register_ad.png} \\  \bigskip
+		Figire 3.1: Activity diagram for Register.
+	\end{center}
+	
 
 	\subsubsection{Login}
 	
@@ -456,30 +462,25 @@ First, the guest must complete the registration form with personal data (i.e., f
 	\noindent
 	\textbf{Use cases} \\
 	
-	\begin{table}[htp]
-	\caption{Purpose use case.}
-		\begin{center}
-    			\begin{tabular}{p{0.3\textwidth}|p{0.6\textwidth}}
-   			 	\hline
-    				Actor & User \\ \hline
-    				Goal & Goal 1 \\ \hline
-    				Input Condition & An  user already registered, wants to login. \\ \hline
-    				Event flow & 
-				\begin{enumerate}
-  					\item The user opens the home page or mobile application and the system shows the login page;
-  					\item The user inserts his / her mail address and password;
-  					\item The user clicks the "Login" button.
- 				 \end{enumerate} \\ \hline
-    				Output Condition & The system connects the user to his / her personal page. \\ \hline
-    				Exception &The exception that may arise is the inputting of an insertion mail or an incorrect password. The system sends the user an error message asking you to verify the address and re-enter the password. \\ \hline
-    			\end{tabular}
-		\end{center}
-	\end{table}
-	
-	\bigskip
-	\noindent
-	\textbf{Activity diagram} \\
-	
+	\begin{center}
+		Table 3.2: Login use case.
+		
+		\bigskip
+    		\begin{tabular}{p{0.3\textwidth}|p{0.6\textwidth}}
+   			\hline
+    			Actor & User \\ \hline
+    			Goal & Goal 1 \\ \hline
+    			Input Condition & An  user already registered, wants to login. \\ \hline
+    			Event flow & 
+			\begin{enumerate}
+  				\item The user opens the home page or mobile application and the system shows the login page;
+  				\item The user inserts his / her mail address and password;
+  				\item The user clicks the "Login" button.
+ 			\end{enumerate} \\ \hline
+    			Output Condition & The system connects the user to his / her personal page. \\ \hline
+    			Exception &The exception that may arise is the inputting of an insertion mail or an incorrect password. The system sends the user an error message asking you to verify the address and re-enter the password. \\ \hline
+    		\end{tabular}
+	\end{center}
 	
 	\bigskip
 	\noindent
@@ -492,6 +493,22 @@ First, the guest must complete the registration form with personal data (i.e., f
 		\item The system must send a new password to the specified mail attachment (if this is valid), if the user clicks the "Forgot Password?" button;
 		\item After requesting a new password, the system must allow the user to authenticate only with new credentials.
 	\end{itemize}
+	
+	\newpage
+	\noindent
+	\textbf{Activity diagram} \\
+	
+	\begin{center}
+		\includegraphics[scale=0.25]{img/diagrams/login_ad.png} \\ \bigskip
+		Figire 3.2.1: Activity diagram for Login.
+	\end{center}
+	
+	\bigskip
+	\begin{center}
+		\includegraphics[scale=0.25]{img/diagrams/login_sd.png} \\  \bigskip
+		Figire 3.2.2: Login sequence diagram.
+	\end{center}
+	
 
 	\subsubsection{Create meetings}
 	
@@ -514,32 +531,33 @@ First, the guest must complete the registration form with personal data (i.e., f
 	\noindent
 	\textbf{Use cases} \\
 	
-	\begin{table}[htp]
-	\caption{Create meetings use case.}
-		\begin{center}
-    			\begin{tabular}{p{0.3\textwidth}|p{0.6\textwidth}}
-   			 	\hline
-    				Actor & User \\ \hline
-    				Goal & Goal 4 \\ \hline
-    				Input Condition & An user wants to create a new meeting on his/her calendar.\\ \hline
-    				Event flow & 
-				\begin{enumerate}
-  					\item The user must login by entering his/her mail and password;
-  					\item The user clicks the "+ New" button to create a new meeting;
-  					\item The system shows the form to be filled;
-  					\item The user compiles the form and clicks the "Save" button;
-  					\item The system checks the information and saves it in the database; in the case of incorrect information, the user alerts you with an error message.
- 				 \end{enumerate} \\ \hline
-    				Output Condition & The system creates a new meeting on the user's calendar in the home page. \\ \hline
-    				Exception & The exception that may emerge is that the mean to reach the site is not valid (e.g., if you have to drive a motorway, you cannot use the bicycle), or your downtime is less than the time you need. Another exception is raised if the meeting creation date is later than the date of the meeting. \\ \hline
-    			\end{tabular}
-		\end{center}
-	\end{table}
+	\begin{center}
+		Table 3.3: Create meetings use case table.
+		
+		\bigskip
+    		\begin{tabular}{p{0.3\textwidth}|p{0.6\textwidth}}
+   		 	\hline
+    			Actor & User \\ \hline
+    			Goal & Goal 4 \\ \hline
+    			Input Condition & An user wants to create a new meeting on his/her calendar.\\ \hline
+    			Event flow & 
+			\begin{enumerate}
+  				\item The user must login by entering his/her mail and password;
+  				\item The user clicks the "+ New" button to create a new meeting;
+  				\item The system shows the form to be filled;
+  				\item The user compiles the form and clicks the "Save" button;
+  				\item The system checks the information and saves it in the database; in the case of incorrect information, the user alerts you with an error message.
+ 			 \end{enumerate} \\ \hline
+    			Output Condition & The system creates a new meeting on the user's calendar in the home page. \\ \hline
+    			Exception & The exception that may emerge is that the mean to reach the site is not valid (e.g., if you have to drive a motorway, you cannot use the bicycle), or your downtime is less than the time you need. Another exception is raised if the meeting creation date is later than the date of the meeting. \\ \hline
+    		\end{tabular}
+	\end{center}
 	
 	\bigskip
-	\noindent
-	\textbf{Activity diagram} \\
-	
+	\begin{center}
+		\includegraphics[scale=0.25]{img/diagrams/create_meeting_uc.png} \\  \bigskip
+		Figire 3.3.1: Create meeting Use case diagram.
+	\end{center}
 	
 	\bigskip
 	\noindent
@@ -561,6 +579,16 @@ First, the guest must complete the registration form with personal data (i.e., f
 		\item After verification of the correctness of the information, the system must create the meeting on the personal calendar;
 		\item The system must send an error message in case of inappropriate data or mean.
 	\end{itemize}
+	
+	\newpage
+	\noindent
+	\textbf{Activity diagram} \\
+	
+	\begin{center}
+		\includegraphics[scale=0.25]{img/diagrams/create_meetings_ad.png} \\ \bigskip
+		Figire 3.3.2: Activity diagram for Create meetings.
+	\end{center}
+	
 
 	\subsubsection{Modify meetings}
 	
@@ -583,36 +611,31 @@ First, the guest must complete the registration form with personal data (i.e., f
 	\noindent
 	\textbf{Use cases} \\
 	
-	\begin{table}[htp]
-	\caption{Modify meetings use case.}
-		\begin{center}
-    			\begin{tabular}{p{0.3\textwidth}|p{0.6\textwidth}}
-   			 	\hline
-    				Actor & User \\ \hline
-    				Goal &  Goal 5 \\ \hline
-    				Input Condition & The user wants to modify a meeting on his/her calendar. \\ \hline
-    				Event flow & 
-				\begin{enumerate}
-  					\item The user must login by entering your mail and password;
-  					\item The user selects the meeting he/she wants to modify with one click;
-  					\item The system shows a dialog box with "Modify" and "Delete" buttons;
-  					\item The user presses the "Modify" button;
-  					\item The system shows the form with the meeting information;
-  					\item The user modifies the form and press the "Save" button;
-  					\item The system verifies the information and saves it in the database; in the case of incorrect information, the system alerts the user with an error message.
- 				 \end{enumerate} \\ \hline
-    				Output Condition & The system modify a meeting on the calendar on the user's home. \\ \hline
-    				Exception & The exceptions that can be raised are the same as those for creating the event. The exception that may be raised is that the way to reach the site is not valid (for example, if you have to drive a motorway, you can not use the bicycle), or your downtime is less than the time you need. Another exception is raised if the meeting change date is later than the date of the meeting. \\ \hline
-    			\end{tabular}
-		\end{center}
-	\end{table}
+	\begin{center}
+		Table 3.4: Modify meetings use case.
+		
+		\bigskip
+    		\begin{tabular}{p{0.3\textwidth}|p{0.6\textwidth}}
+   			\hline
+    			Actor & User \\ \hline
+    			Goal &  Goal 5 \\ \hline
+    			Input Condition & The user wants to modify a meeting on his/her calendar. \\ \hline
+			Event flow & 
+			\begin{enumerate}
+  				\item The user must login by entering your mail and password;
+  				\item The user selects the meeting he/she wants to modify with one click;
+  				\item The system shows a dialog box with "Modify" and "Delete" buttons;
+  				\item The user presses the "Modify" button;
+  				\item The system shows the form with the meeting information;
+  				\item The user modifies the form and press the "Save" button;
+  				\item The system verifies the information and saves it in the database; in the case of incorrect information, the system alerts the user with an error message.
+ 			 \end{enumerate} \\ \hline
+    			Output Condition & The system modify a meeting on the calendar on the user's home. \\ \hline
+    			Exception & The exceptions that can be raised are the same as those for creating the event. The exception that may be raised is that the way to reach the site is not valid (for example, if you have to drive a motorway, you can not use the bicycle), or your downtime is less than the time you need. Another exception is raised if the meeting change date is later than the date of the meeting. \\ \hline
+    		\end{tabular}
+	\end{center}
 	
-	\bigskip
-	\noindent
-	\textbf{Activity diagram} \\
-	
-	
-	\bigskip
+	\newpage
 	\noindent
 	\textbf{Functional requirements} \\
 	\begin{itemize}
@@ -633,6 +656,15 @@ First, the guest must complete the registration form with personal data (i.e., f
 		\item Once the information is verified, the system has to change the appointment on the personal calendar;
 		\item The system must send an error message in case of inappropriate date or time.
 	\end{itemize}
+	
+	\newpage
+	\noindent
+	\textbf{Activity diagram} \\
+	
+	\begin{center}
+		\includegraphics[scale=0.25]{img/diagrams/modify_meetings_ad.png} \\ \bigskip
+		Figire 3.4: Activity diagram for Modify meetings.
+	\end{center}
 
 
 	\subsubsection{Delete meetings}
@@ -651,34 +683,29 @@ First, the guest must complete the registration form with personal data (i.e., f
 	\noindent
 	\textbf{Use cases} \\
 	
-	\begin{table}[htp]
-	\caption{Delete meetings use case.}
-		\begin{center}
-    			\begin{tabular}{p{0.3\textwidth}|p{0.6\textwidth}}
-   			 	\hline
-    				Actor & User \\ \hline
-    				Goal & Goal 6 \\ \hline
-    				Input Condition & The user wants to delete a meeting on his/her calendar. \\ \hline
-    				Event flow & 
-				\begin{enumerate}
-  					\item The must login by entering your mail and password;
-  					\item The user selects the meeting he/she wants to select with one click;
-  					\item The system shows a dialog box with two "Modify" and "Delete" buttons;
-  					\item The user clicks the "Delete" button;
-  					\item The system prompts the user if he/she is sure he/she want to delete the meeting with a dialog box;
-  					\item The user presses the "Yes" button;
-  					\item The system processes the information, updates the database, and deletes the event from the calendar.
- 				 \end{enumerate} \\ \hline
-    				Output Condition & The system deletes a meeting on the user's home calendar. \\ \hline
-    				Exception & The delete fails and the user is notified. \\ \hline
-    			\end{tabular}
-		\end{center}
-	\end{table}
-	
-	\bigskip
-	\noindent
-	\textbf{Activity diagram} \\
-	
+	\begin{center}
+		Table 3.5: Delete meetings use case.
+		
+		\bigskip
+    		\begin{tabular}{p{0.3\textwidth}|p{0.6\textwidth}}
+   		 	\hline
+    			Actor & User \\ \hline
+    			Goal & Goal 6 \\ \hline
+    			Input Condition & The user wants to delete a meeting on his/her calendar. \\ \hline
+    			Event flow & 
+			\begin{enumerate}
+  				\item The must login by entering your mail and password;
+  				\item The user selects the meeting he/she wants to select with one click;
+  				\item The system shows a dialog box with two "Modify" and "Delete" buttons;
+  				\item The user clicks the "Delete" button;
+  				\item The system prompts the user if he/she is sure he/she want to delete the meeting with a dialog box;
+  				\item The user presses the "Yes" button;
+  				\item The system processes the information, updates the database, and deletes the event from the calendar.
+ 			 \end{enumerate} \\ \hline
+    			Output Condition & The system deletes a meeting on the user's home calendar. \\ \hline
+    			Exception & The delete fails and the user is notified. \\ \hline
+    		\end{tabular}
+	\end{center}
 	
 	\bigskip
 	\noindent
@@ -690,7 +717,16 @@ First, the guest must complete the registration form with personal data (i.e., f
 		\item The system must ask the user whether or not he/she want to delete the meeting;
 		\item The system must update the DB and delete the meeting from the calendar.
 	\end{itemize}
-
+	
+	\newpage
+	\noindent
+	\textbf{Activity diagram} \\
+	
+	\begin{center}
+		\includegraphics[scale=0.25]{img/diagrams/delete_meetings_ad.png} \\ \bigskip
+		Figire 3.5: Activity diagram for Delete meetings.
+	\end{center}
+	\newpage
 
 	\subsubsection{Manage profile informations}
 	
@@ -708,32 +744,26 @@ First, the guest must complete the registration form with personal data (i.e., f
 	\noindent
 	\textbf{Use cases} \\
 	
-	\begin{table}[htp]
-	\caption{Manage profile informations use case.}
-		\begin{center}
-    			\begin{tabular}{p{0.3\textwidth}|p{0.6\textwidth}}
-
-   			 	\hline
-    				Actor & User \\ \hline
-    				Goal & Goal 2 \\ \hline
-    				Input Condition & An user wants to view or update his/her personal informations. \\ \hline
-    				Event flow & 
-				\begin{enumerate}
-  					\item The user opens a web browser page or the mobile application and, if not already, authenticates to the service;
-  					\item The user reaches his/her profile settings page;
-  					\item The user updates his/her personal information.
- 				 \end{enumerate} \\ \hline
-    				Output Condition & The user's informations is successfully updated and the user is notified. \\ \hline
-    				Exception & The update fails and the user is notified.\\
-    				\hline
-    			\end{tabular}
-		\end{center}
-	\end{table}
-	
-	\bigskip
-	\noindent
-	\textbf{Activity diagram} \\
-	
+	\begin{center}
+		Table 3.6: Manage profile informations use case.
+		
+		\bigskip
+   		\begin{tabular}{p{0.3\textwidth}|p{0.6\textwidth}}
+   		 	\hline
+    			Actor & User \\ \hline
+    			Goal & Goal 2 \\ \hline
+    			Input Condition & An user wants to view or update his/her personal informations. \\ \hline
+    			Event flow & 
+			\begin{enumerate}
+  				\item The user opens a web browser page or the mobile application and, if not already, authenticates to the service;
+  				\item The user reaches his/her profile settings page;
+  				\item The user updates his/her personal information.
+ 			 \end{enumerate} \\ \hline
+    			Output Condition & The user's informations is successfully updated and the user is notified. \\ \hline
+    			Exception & The update fails and the user is notified.\\
+    			\hline
+    		\end{tabular}
+	\end{center}
 	
 	\bigskip
 	\noindent
@@ -744,6 +774,15 @@ First, the guest must complete the registration form with personal data (i.e., f
 		\item The system must allow the user to change any information provided during the registration phase, only if the new informations does not conflicts with the registration constrains;
 		\item Both if a modification succeed or fails the user must be notified.
 	\end{itemize}
+	
+	\newpage
+	\noindent
+	\textbf{Activity diagram} \\
+	
+	\begin{center}
+		\includegraphics[scale=0.24]{img/diagrams/manage_profile_informations_ad.png} \\ \bigskip
+		Figire 3.6: Activity diagram for Manage profile informations.
+	\end{center}
 
 
 	\subsubsection{Delete profile}
@@ -762,32 +801,27 @@ First, the guest must complete the registration form with personal data (i.e., f
 	\noindent
 	\textbf{Use cases} \\
 	
-	\begin{table}[htp]
-	\caption{Delete profile use case.}
-		\begin{center}
+	\begin{center}
+		Table 3.7: Delete profile use case.
+		
+		\bigskip
     			\begin{tabular}{p{0.3\textwidth}|p{0.6\textwidth}}
-
-   			 	\hline
-    				Actor & User \\ \hline
-    				Goal & Goal 3 \\ \hline
-    				Input Condition & An user wants to delete his/her account. \\ \hline
-    				Event flow & 
-				\begin{enumerate}
-  					\item The user opens a web browser page or the mobile application and, if not already, authenticates to the service;
-  					\item The user reaches his/her profile settings page;
-  					\item The user updates his/her personal information.
- 				 \end{enumerate} \\ \hline
-    				Output Condition & The user's account is deleted, his/her data is erased from the system and of course he/she no longer can login with his/her credentials unless he/she re-register to the service. \\ \hline
-    				Exception & The account's deletion fails and the user is notified. \\
-    				\hline
-    			\end{tabular}
-		\end{center}
-	\end{table}
-	
-	\bigskip
-	\noindent
-	\textbf{Activity diagram} \\
-	
+   		 	\hline
+    			Actor & User \\ \hline
+    			Goal & Goal 3 \\ \hline
+    			Input Condition & An user wants to delete his/her account. \\ \hline
+    			Event flow & 
+			\begin{enumerate}
+  				\item The user opens a web browser page or the mobile application and, if not already, authenticates to the service;
+  				\item The user reaches his/her profile settings page;
+  				\item The user clicks "Delete account" button;
+  				\item The user confirms his/her intent to delete the account.
+ 			 \end{enumerate} \\ \hline
+    			Output Condition & The user's account is deleted, his/her data is erased from the system and of course he/she no longer can login with his/her credentials unless he/she re-register to the service. \\ \hline
+    			Exception & The account's deletion fails and the user is notified. \\
+    			\hline
+    		\end{tabular}
+	\end{center}
 	
 	\bigskip
 	\noindent
@@ -801,6 +835,16 @@ First, the guest must complete the registration form with personal data (i.e., f
 		\item Both if a modification succeed or fails the user must be notified.
 	\end{itemize}
 	
+	\newpage
+	\noindent
+	\textbf{Activity diagram} \\
+	
+	\begin{center}
+		\includegraphics[scale=0.25]{img/diagrams/delete_profile_ad.png} \\ \bigskip
+		Figire 3.7: Activity diagram for Delete profile.
+	\end{center}
+	\newpage
+	
 
 	\subsubsection{Activate travel mean(s)}
 	
@@ -812,36 +856,31 @@ First, the guest must complete the registration form with personal data (i.e., f
 	\bigskip
 	\noindent
 	\textbf{Scenario 1} \\
-	It?s almost summer. Mario decides that the weather is good enough to allow him to use the bike. Mario opens the Travelendar+ app on his Android smartphone and navigates to the settings page, scrolls down until he reaches "Bike" in the travel menas list and toggles the checkbox near to it. From now on the system, if he thinks it is appropriate, will suggest also the bike as a travel mean.
+	It's almost summer. Mario decides that the weather is good enough to allow him to use the bike. Mario opens the Travelendar+ app on his Android smartphone and navigates to the settings page, scrolls down until he reaches "Bike" in the travel menas list and toggles the checkbox near to it. From now on the system, if he thinks it is appropriate, will suggest also the bike as a travel mean.
 	
 	\bigskip
 	\noindent
 	\textbf{Use cases} \\
 	
-	\begin{table}[htp]
-	\caption{Activate travel mean(s) use case.}
-		\begin{center}
-    			\begin{tabular}{p{0.3\textwidth}|p{0.6\textwidth}}
-   			 	\hline
-    				Actor & User \\ \hline
-    				Goal & Goal 9 \\ \hline
-    				Input Condition & The user wants to activate a travel mean. \\ \hline
-    				Event flow & 
-				\begin{enumerate}
-  					\item The user opens a web browser page or the mobile application and, if not already, authenticates to the service;
-  					\item The user reaches his/her profile settings page;
-  					\item The user checks the checkbox corresponding to the travel mean he/she wants to activate.
- 				 \end{enumerate} \\ \hline
-    				Output Condition & The travel mean(s) is now activated as desired and the user is notified. \\ \hline
-    				Exception & The travel mean(s) activation fails and the user is notified. \\ \hline
-    			\end{tabular}
-		\end{center}
-	\end{table}
-	
-	\bigskip
-	\noindent
-	\textbf{Activity diagram} \\
-	
+	\begin{center}
+		Table 3.8: Activate travel mean(s) use case.
+		
+		\bigskip
+    		\begin{tabular}{p{0.3\textwidth}|p{0.6\textwidth}}
+   		 	\hline
+    			Actor & User \\ \hline
+    			Goal & Goal 9 \\ \hline
+    			Input Condition & The user wants to activate a travel mean. \\ \hline
+    			Event flow & 
+			\begin{enumerate}
+  				\item The user opens a web browser page or the mobile application and, if not already, authenticates to the service;
+  				\item The user reaches his/her profile settings page;
+  				\item The user checks the checkbox corresponding to the travel mean he/she wants to activate.
+ 			 \end{enumerate} \\ \hline
+    			Output Condition & The travel mean(s) is now activated as desired and the user is notified. \\ \hline
+    			Exception & The travel mean(s) activation fails and the user is notified. \\ \hline
+    		\end{tabular}
+	\end{center}
 	
 	\bigskip
 	\noindent
@@ -853,7 +892,16 @@ First, the guest must complete the registration form with personal data (i.e., f
 		\item If a new travel mean has been selected, from now on it must be taken in count when the system calculates the optimal travel between two locations;
 		\item Both if a modification succeed or fails the user must be notified.
 	\end{itemize}
-
+	
+	\newpage
+	\noindent
+	\textbf{Activity diagram} \\
+	
+	\begin{center}
+		\includegraphics[scale=0.25]{img/diagrams/activate_travel_mean_ad.png} \\ \bigskip
+		Figire 3.8: Activity diagram for Activate travel mean(s).
+	\end{center}
+	\newpage
 
 	\subsubsection{Deactivate travel mean(s)}
 	
@@ -865,36 +913,31 @@ First, the guest must complete the registration form with personal data (i.e., f
 	\bigskip
 	\noindent
 	\textbf{Scenario 1} \\
-	Otis, after breaking his leg, realizes that the only suitable means for his travels are taxi and Uber. Otis opens a browser window, reaches the Travelendar+ homepage and logs in. Then she clicks on her profile picture in the right of navigation bar, a dropdown menu appears and by clicking ?Edit Profile? she reaches a page showing her profile information and unchecks all the checkboxes near to the travel means except for ?Taxi? and ?Uber?. From now on the system could not rely on other travel means than taxi and Uber.
+	Otis, after breaking his leg, realizes that the only suitable means for his travels are taxi and Uber. Otis opens a browser window, reaches the Travelendar+ homepage and logs in. Then she clicks on her profile picture in the right of navigation bar, a dropdown menu appears and by clicking "Edit Profile" she reaches a page showing her profile information and unchecks all the checkboxes near to the travel means except for "Taxi" and "Uber". From now on the system could not rely on other travel means than taxi and Uber.
 	
 	\bigskip
 	\noindent
 	\textbf{Use cases} \\
 	
-	\begin{table}[htp]
-	\caption{Deactivate travel mean(s) use case.}
-		\begin{center}
-    			\begin{tabular}{p{0.3\textwidth}|p{0.6\textwidth}}
-   			 	\hline
-    				Actor & User \\ \hline
-    				Goal & Goal 9 \\ \hline
-    				Input Condition & The user wants to deactivate a travel mean. \\ \hline
-    				Event flow & 
-				\begin{enumerate}
-  					\item The user opens a web browser page or the mobile application and, if not already, authenticates to the service;
-  					\item The user reaches his/her profile settings page;
-  					\item The user unchecks the checkbox corresponding to the travel mean he/she wants to deactivate.
- 				 \end{enumerate} \\ \hline
-    				Output Condition & The travel mean(s) is now deactivated as desired and the user is notified. \\ \hline
-    				Exception & The travel mean(s) deactivation fails and the user is notified. \\ \hline
-    			\end{tabular}
-		\end{center}
-	\end{table}
-	
-	\bigskip
-	\noindent
-	\textbf{Activity diagram} \\
-	
+	\begin{center}
+		Table 3.9: Deactivate travel mean(s) use case.
+		
+		\bigskip
+    		\begin{tabular}{p{0.3\textwidth}|p{0.6\textwidth}}
+   		 	\hline
+    			Actor & User \\ \hline
+    			Goal & Goal 9 \\ \hline
+    			Input Condition & The user wants to deactivate a travel mean. \\ \hline
+    			Event flow & 
+			\begin{enumerate}
+  				\item The user opens a web browser page or the mobile application and, if not already, authenticates to the service;
+  				\item The user reaches his/her profile settings page;
+  				\item The user unchecks the checkbox corresponding to the travel mean he/she wants to deactivate.
+ 			 \end{enumerate} \\ \hline
+    			Output Condition & The travel mean(s) is now deactivated as desired and the user is notified. \\ \hline
+    			Exception & The travel mean(s) deactivation fails and the user is notified. \\ \hline
+    		\end{tabular}
+	\end{center}
 	
 	\bigskip
 	\noindent
@@ -906,8 +949,17 @@ First, the guest must complete the registration form with personal data (i.e., f
 		\item If a travel mean has been deselected, from now on it can not be taken in count when the system calculates the optimal travel between two locations;
 		\item Both if a modification succeed or fails the user must be notified
 	\end{itemize}
-
-
+	
+	\newpage
+	\noindent
+	\textbf{Activity diagram} \\
+	
+	\begin{center}
+		\includegraphics[scale=0.25]{img/diagrams/deactivate_travel_mean_ad.png} \\ \bigskip
+		Figire 3.9: Activity diagram for Deactivate travel mean(s).
+	\end{center}
+	\newpage
+	
 
 	\subsubsection{Provide constraints}
 	
@@ -925,40 +977,43 @@ First, the guest must complete the registration form with personal data (i.e., f
 	\noindent
 	\textbf{Use cases} \\
 	
-	\begin{table}[htp]
-	\caption{Provide constraints use case.}
-		\begin{center}
-    			\begin{tabular}{p{0.3\textwidth}|p{0.6\textwidth}}
-
-   			 	\hline
-    				Actor & User \\ \hline
-    				Goal & Goal 8 \\ \hline
-    				Input Condition & The user wants to select a specific travel mean for a specific travel. \\ \hline
-    				Event flow & 
-				\begin{enumerate}
-  					\item The user opens a web browser page or the mobile application and, if not already, authenticates to the service;
-  					\item The user opens the detail page of a certain event;
-  					\item The user selects a certain travel mean as preferred for that travel.
- 				 \end{enumerate} \\ \hline
-    				Output Condition & The change succeeded and the mean for that travel is updated. \\ \hline
-    				Exception & The change fails and the user is notified. \\ \hline
-    			\end{tabular}
-		\end{center}
-	\end{table}
-	
-	\bigskip
-	\noindent
-	\textbf{Activity diagram} \\
-	
+	\begin{center}
+		Table 3.10: Provide constraints use case.
+		
+		\bigskip
+  		\begin{tabular}{p{0.3\textwidth}|p{0.6\textwidth}}
+   		 	\hline
+    			Actor & User \\ \hline
+    			Goal & Goal 8 \\ \hline
+    			Input Condition & The user wants to select a specific travel mean for a specific travel. \\ \hline
+    			Event flow & 
+			\begin{enumerate}
+  				\item The user opens a web browser page or the mobile application and, if not already, authenticates to the service;
+  				\item The user opens the detail page of a certain event;
+  				\item The user selects a certain travel mean as preferred for that travel.
+ 			 \end{enumerate} \\ \hline
+    			Output Condition & The change succeeded and the mean for that travel is updated. \\ \hline
+    			Exception & The change fails and the user is notified. \\ \hline
+    		\end{tabular}
+	\end{center}
 	
 	\bigskip
 	\noindent
 	\textbf{Functional requirements} \\
 	\begin{itemize}
 		\item The user must be already logged in;
-		\item The system must allow the user to use a specific travel mean to reach a given event (only if the mean can reach the event?s location);
+		\item The system must allow the user to use a specific travel mean to reach a given event (only if the mean can reach the event's location);
 		\item Both if a modification succeed or fails the user must be notified.
 	\end{itemize}
+	
+	\newpage
+	\noindent
+	\textbf{Activity diagram} \\
+	
+	\begin{center}
+		\includegraphics[scale=0.24]{img/diagrams/provide_constraints_ad.png} \\ \bigskip
+		Figire 3.10: Activity diagram for Provide constraints.
+	\end{center}
 
 
 	\subsubsection{Minimize carbon footprint}
@@ -971,36 +1026,31 @@ First, the guest must complete the registration form with personal data (i.e., f
 	\bigskip
 	\noindent
 	\textbf{Scenario 1} \\
-	Serena, while watching a National Geographic documentary, realized that climate change is a real thing and everyone should do his best to limitate pollution. For such reason she wants to minimize her carbon footprint during her travels. Serena opens a browser window, reaches the Travelendar+ homepage and logs in. Then she clicks on her profile picture in the right of navigation bar, a dropdown menu appears and by clicking ?Edit Profile? she reaches a page showing her profile information and toggles the checkbox near to ?Minimize carbon footprint?. From now on the suggested travel mean is the less polluting one.
+	Serena, while watching a National Geographic documentary, realized that climate change is a real thing and everyone should do his best to limitate pollution. For such reason she wants to minimize her carbon footprint during her travels. Serena opens a browser window, reaches the Travelendar+ homepage and logs in. Then she clicks on her profile picture in the right of navigation bar, a dropdown menu appears and by clicking "Edit Profile" she reaches a page showing her profile information and toggles the checkbox near to ?Minimize carbon footprint?. From now on the suggested travel mean is the less polluting one.
 	
 	\bigskip
 	\noindent
 	\textbf{Use cases} \\
 	
-	\begin{table}[htp]
-	\caption{Minimize carbon footprint use case.}
-		\begin{center}
-    			\begin{tabular}{p{0.3\textwidth}|p{0.6\textwidth}}
-   			 	\hline
-    				Actor & User \\ \hline
-    				Goal & Goal 12 \\ \hline
-    				Input Condition & The user wants to move from an appointment to another with the less polluting mean(s). \\ \hline
-    				Event flow & 
-				\begin{enumerate}
-  					\item The user opens a web browser page or the mobile application and, if not already, authenticates to the service;
-					\item The user reaches his/her profile settings page;
-					\item The user checks the checkbox corresponding to "Minimize carbon footprint".
- 				 \end{enumerate} \\ \hline
-    				Output Condition & The preference update succeeded and the user is notified. \\ \hline
-    				Exception & The preference update fails and the user is notified. \\ \hline
-    			\end{tabular}
-		\end{center}
-	\end{table}
-	
-	\bigskip
-	\noindent
-	\textbf{Activity diagram} \\
-	
+	\begin{center}
+		Table 3.11: Minimize carbon footprint use case.
+		
+		\bigskip
+   		\begin{tabular}{p{0.3\textwidth}|p{0.6\textwidth}}
+   		 	\hline
+    			Actor & User \\ \hline
+    			Goal & Goal 12 \\ \hline
+    			Input Condition & The user wants to move from an appointment to another with the less polluting mean(s). \\ \hline
+    			Event flow & 
+			\begin{enumerate}
+  				\item The user opens a web browser page or the mobile application and, if not already, authenticates to the service;
+				\item The user reaches his/her profile settings page;
+				\item The user checks the checkbox corresponding to "Minimize carbon footprint".
+ 			 \end{enumerate} \\ \hline
+    			Output Condition & The preference update succeeded and the user is notified. \\ \hline
+    			Exception & The preference update fails and the user is notified. \\ \hline
+    		\end{tabular}
+	\end{center}
 	
 	\bigskip
 	\noindent
@@ -1011,6 +1061,16 @@ First, the guest must complete the registration form with personal data (i.e., f
 		\item If the user has expressed the intention to minimize his/her carbon footprint, the suggested travel mean must be the less polluting one;
 		\item Both if a modification succeed or fails the user must be notified.
 	\end{itemize}
+	
+	\newpage
+	\noindent
+	\textbf{Activity diagram} \\
+	
+	\begin{center}
+		\includegraphics[scale=0.25]{img/diagrams/minimize_carbon_footprint_ad.png} \\ \bigskip
+		Figire 3.11: Activity diagram for Minimize carbon footprint.
+	\end{center}
+	\newpage
 
 
 	\subsubsection{Specify lunch timing}
@@ -1034,33 +1094,28 @@ First, the guest must complete the registration form with personal data (i.e., f
 	\noindent
 	\textbf{Use cases} \\
 	
-	\begin{table}[htp]
-	\caption{Specify lunch timing use case.}
-		\begin{center}
-    			\begin{tabular}{p{0.3\textwidth}|p{0.6\textwidth}}
-   			 	\hline
-    				Actor & User \\ \hline
-    				Goal & Goal 13 and Goal 14 \\ \hline
-    				Input Condition & The user specifies a time interval for lunch. \\ \hline
-    				Event flow & 
-				\begin{enumerate}
-  					\item The user must login by entering your mail and password;
-  					\item The user selects with a "LunchTime" button;
-  					\item The system opens a form to complete with date and time interval;
-  					\item The user inserts information regarding date and time interval;
-  					\item The user saves the information by pressing the "Save" button;
-  					\item The system processes the information, updates the database and notifies the user that the operation has been successful (specifying the time interval for lunch). If not, it generates an error message.
- 				 \end{enumerate} \\ \hline
-    				Output Condition & The system selects within the time interval, half an hour for the lunch break. \\ \hline
-    				Exception & The system issues an error message if there is no half-hour for the lunch break during the specified time interval. \\ \hline
-    			\end{tabular}
-		\end{center}
-	\end{table}
-	
-	\bigskip
-	\noindent
-	\textbf{Activity diagram} \\
-	
+	\begin{center}
+		Table 3.12: Specify lunch timing use case.
+		
+		\bigskip
+    		\begin{tabular}{p{0.3\textwidth}|p{0.6\textwidth}}
+   		 	\hline
+    			Actor & User \\ \hline
+    			Goal & Goal 13 and Goal 14 \\ \hline
+    			Input Condition & The user specifies a time interval for lunch. \\ \hline
+    			Event flow & 
+			\begin{enumerate}
+  				\item The user must login by entering your mail and password;
+  				\item The user selects with a "LunchTime" button;
+  				\item The system opens a form to complete with date and time interval;
+  				\item The user inserts information regarding date and time interval;
+  				\item The user saves the information by pressing the "Save" button;
+  				\item The system processes the information, updates the database and notifies the user that the operation has been successful (specifying the time interval for lunch). If not, it generates an error message.
+ 			 \end{enumerate} \\ \hline
+    			Output Condition & The system selects within the time interval, half an hour for the lunch break. \\ \hline
+    			Exception & The system issues an error message if there is no half-hour for the lunch break during the specified time interval. \\ \hline
+    		\end{tabular}
+	\end{center}
 	
 	\bigskip
 	\noindent
@@ -1079,6 +1134,15 @@ First, the guest must complete the registration form with personal data (i.e., f
 		\item The system must alert the user of the selected time interval
 		\item The system must send an error message if an incorrect date or time is not available.
 	\end{itemize}
+	
+	\newpage
+	\noindent
+	\textbf{Activity diagram} \\
+	
+	\begin{center}
+		\includegraphics[scale=0.24]{img/diagrams/specify_lunch_timing_ad.png} \\ \bigskip
+		Figire 3.12: Activity diagram for Specify lunch timing.
+	\end{center}
 
 	
 	\subsection{Performance requiremens}
