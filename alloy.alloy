@@ -1,0 +1,126 @@
+//SIGNATURES
+
+sig Sex{
+male: Bool,
+female: Bool
+}{(male=true implies female=false)||(female=true implies male=false)}
+
+//Float type abstraction
+sig Float{}
+
+//String type abstraction
+sig StringLetter{}
+
+sig Location{
+	latitude: Float,
+	longitude: Float
+}
+{latitude >= -90.00
+latitude <= 90.00
+longitude >= -180.00
+longitude <= 180.00}
+
+abstract sig Mean{}
+sig TRAIN extends Mean{}
+sig UNDERGROUND extends Mean{}
+sig TRAM extends Mean{}
+sig BUS extends Mean{}
+sig TAXI extends Mean{}
+sig CARSHARING extends Mean{}
+sig BIKESHARING extends Mean{}
+sig PLANE extends Mean{}
+sig FERRY extends Mean{}
+sig BYWALK extends Mean{}
+
+//Data type abstraction
+sig Data{}
+
+//Time type abstraction
+sig Time{}
+
+sig Meeting{
+	name: one StringLetter,
+	start: one Data,
+	end: one Data,
+	place: one Location,
+	people: Int,
+	transportMode: some Mean
+	timeToReach: one Time
+}
+
+
+
+//Supposing that duration is an integer attribute
+sig Break{
+	name: one StringLetter,
+	startAtLeast: one Time,
+	endAtMost: one Time,
+	duration: one Int
+}
+{duration > 0}
+
+sig ServerCalendar{
+	meetingEvent: some Meeting,
+breakEvent: some Break
+}
+{#meetingEvent >=0
+#breakEvent>=0}
+
+sig User{
+	firstName: one StringLetter,
+	lastName: one StringLetter,
+	dateOfBirth: one Data,
+	sex: one Sex,
+	mailAddress: one StringLetter,
+	password: one StringLetter,
+	drivingLicenceNumber: lone Int,
+	userMeeting: some Meeting,
+	userBreak: one Break,
+	userMeans: some Mean
+}
+{drivingLicenceNumber > 0}
+
+
+//FACTS
+
+//No two distinct overlapping position
+fact NoPositionOverlapping{
+	no disj pos1, pos2: Position|
+	(pos1.latitude = pos2.latitude and pos1.longitute = pos2.longitude)}
+
+//No two distinct coinciding users
+fact UniqueUser{
+	no disj us1, us2: User|
+	(us1 != us2 and 
+	(us1.mailAddress = us2.mailAddress or
+	us1.password = us2.password or
+	us1.drivingLicenceNumber = us2.drivingLicenceNumber))}
+
+//No two distinct overlapping meeting
+fact UniqueMeeting{
+	no disj meet1, meet2: Meeting|
+	(meet1!=meet2 and
+	(meet1.name = meet2.name or
+	(meet1.start = meet2.start and
+	meet1.end = meet2.end) or
+	meet1.location = meet2.location))}
+
+//No two distinct overlapping break
+fact UniqueBreak{
+	no disj br1, br2: Break|
+	(br1 != br2 and
+	(br1.name = br2. name or
+	(br1.startAtLeast = b2.startAtLeast and
+	br2.endAtMost = b2. endAtMost) or
+	br1.duration = br2.duration))}
+
+//inizio e fine meeting
+
+//time to reach
+
+
+
+//ASSERTIONS
+
+
+

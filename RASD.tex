@@ -44,7 +44,7 @@
 
 \date{
 	Delivery date: 2017 May 07\\
-	\bigskip v0.7
+	\bigskip v0.9
 }
 
 \begin{document}
@@ -59,38 +59,56 @@
 	
 	
 	\subsection{Purpose}
-	The Requirements Analysis and Specification Document for the Travlendar+ system management is intended to describe the system itself, its functional and non-functional requirements, its components, its constraints, the relationship with the real world, and users by providing several use cases and scenarios.
-	
+	The Requirements Analysis and Specification Document for the Travlendar+ system management is intended
+	\begin{itemize}
+		\item to describe the system itself, 
+		\item its functional and non-functional requirements, 
+		\item its functional and non-functional requirements, 
+		\item the components, 
+		\item its constraints,
+		\item the relationship with real world and users,  providing several use cases and scenarios.
+	\end{itemize}
+
+	\bigskip
 	A part of the documentation uses Alloy, a language to describe structures and a tool to explore and provide a formal specification of some features of the system.
+
+	\bigskip
+	This document is addressed primarily 
+	\begin{itemize}
+		\item to developers and programmers who must meet the requirements,
+		\item testers who need to determine if the requirements are met,
+		\item project managers, who control the development process,
+		\item and users who validate the goals of the system.
+	\end{itemize}
 	
 	\bigskip
 	This document is predisposed primarily to developers and programmers who must meet the requirements, testers who need to determine if the requirements are met, project managers, who control the development process, and users who validate the goals of the system.
 	
 	
 	\subsection{Scope}
-	The product is a digital management system to support the creation of a calendar-based application that automatically computes and accounts for travel time between appointments to make sure that users are not late for appointments and support users in their travels.
+	The product is a digital management system to support the creation of a calendar-based application which automatically computes and accounts for travel time between appointments in order to make sure that users are not late for appointments and supports users in their travels.
 
 	\bigskip
 	The system consists of two back -- end server applications:
 	\begin{itemize}
-		\item An application that handles requests for entering appointments or trips, managing schedules and routes;
-		\item An application that communicates with the systems of transportation companies. ***
+		\item one handles requests for entering appointments or trips, managing schedules and routes;
+		\item the other communicates with the systems of transport companies.
 	\end{itemize}
 
 	\bigskip
 	And two front -- end applications:
 	\begin{itemize}
-		\item The web-based application to provide the end user with a friendly interface to take advantage of services of Travlendar+;
-		\item A mobile application that allows the user to easily access the service wherever he needs.***
+		\item The web-based application which provides the end user with a friendly interface to take advantage of services of Travlendar+;
+		\item A mobile application that allows the user to easily access the service wherever he/she needs.
 	\end{itemize}
 
 	\bigskip
-	The system is intended for users who must be allowed to register and access the system via username and password, to make the appointment and management process easier and quicker.
+	The system is intended for users who must be allowed to register and access the system via username and password, to make the appointment and manage the process easier and quicker.
 
-	Users can create meetings, and when meetings are created at locations that are unreachable in the allotted time, a warning is created; the application must also take into account possible issues related to the request (e.g. public service strikes on the scheduled day for the meeting). 
+	Users can create meetings, and when meetings are created in locations that are unreachable at the allotted time, a warning is created; the application must also take into account possible issues related to the request (e.g. public service strikes on the day scheduled for the meeting). 
 	
 	\bigskip
-	The system should allow users to define various kind of user preferences: user can activate or deactivate each travel means, should be able to provide constraints on different travel means and select combinations of transportation means that minimize carbon footprint. In addition, the user must specify a flexible lunch: the system must handle this, allowing the user to have half an hour to have lunch within the set time interval.
+	The system should allow users to define various kinds of user preferences: users can activate or deactivate each travel means, should be able to provide constraints on different travel means and select combinations of transportation means that minimize carbon footprint. In addition, the user must specify a flexible break: the system must manage this aspect, grant 30 minutes to the users in order to have break within the set time interval.
 	
 	
 	\subsection{Goal}
@@ -99,15 +117,19 @@
 	\begin{enumerate}
 		\item Let the user register to the service and login via provided credentials;
 		\item Let the user manage his/her own profile;
+		\item Let the user delete his/her own profile;
 		\item Let the user insert his/her meeting in the schedule application;
+		\item Let the user modify his/her meetings in the schedule application;
+		\item Let the user delete his/her meetings in the schedule application;
 		\item Let the system work efficiently by generating an alarm when a meeting is not possible within the specified time range;
 		\item Let the system indicate which best travel means is to be used for a given meeting;
 		\item Let the user indicate his/her preferences on the travel means;
 		\item Automatically the system searches for the shortest path to reach the meeting site;
 		\item Automatically the system searches the cheapest means of transport to reach the meeting site;
-		\item Let the user specify a flexible lunch, i.e. a period of time to eat;
 		\item Let the user specify its intent to minimize his carbon footprint;
-		\item Automatically the system must find at least half an hour to have lunch (within the "flexible lunch" time).
+		\item Let the user specify a flexible break; 
+		\item Let the user specify an interval time for a break;
+		\item Automatically the system must find the specify interval time to have break.
 	\end{enumerate}
 
 	
@@ -131,7 +153,7 @@
 		\item[System:] Hardware and software components that run a computer or computers.
 		\item[User:] Any person subscribed and logged in to the service who hence can insert a meeting using Travlendar+.
 		\item[User Interface:] It is the way through which a user interacts with an application or a website.
-		\item[Web application:] Client -- server application accessible by an user through a browser.
+		\item[Web application:] Client -- server application accessible by a user through a browser.
 	\end{description}
 	
 	
@@ -139,11 +161,13 @@
 	\begin{description}
 		\item[v0.1] Construct basic document's structure.
 		\item[v0.2] Add \textit{Purpose}, \textit{Scope}, \textit{Goal}, \textit{Definitions, Acronyms, Abbreviations}, \textit{Reference documents}, \textit{Document structure}.
-		\item[v0.3] Add \textit{Product Perspective}, \textit{Product Functions}, \textit{User Characteristics}, \textit{Assumptions and Dependencies}, \textit{Constraints}, \textit{World and Machine model interpretation}. Modify \textit{Definition, Acronyms, Abbreviations} and document structure. Create a simple Appendix, that will be completed at the end.
+		\item[v0.3] Add \textit{Product Perspective}, \textit{Product Functions}, \textit{User Characteristics}, \textit{Assumptions and Dependencies}, \textit{Constraints}, \textit{World and Machine model interpretation}. Modify \textit{Definition, Acronyms, Abbreviations} and document structure. Create a simple Appendix, which will be completed at the end.
 		\item[v0.4] Add \textit{External Interface Requirements}. Modify \textit{Goal}, \textit{Definitions, Acronyms, Abbreviations}, \textit{Product Functions}, \textit{Use Case Model}, \textit{Assumption and Dependences}, \textit{World and Machine model}.
 		\item[v0.5] Add \textit{Functional Requirements}.
 		\item[v0.6] Add \textit{Performance Requirements} and \textit{Software System Attributes}.
 		\item[v0.7] Add Activity diagrams.
+		\item[v0.8] Change part of LunchTime in Break: add and modify last three goals, modify use case part.
+		\item[v0.9] Correct the form and sintax of the document.
 	\end{description}
 	
 	
@@ -157,7 +181,7 @@
 	\begin{description}
 		\item[Section 1: Introduction] A general introduction and overview of the system-to-be purpose, scope and goals, along with some important information about this document.
 		\item[Section 2: Overall description] It describes the general factors that affects the product and its requirements. The section provides a background for those requirements which are defined in detail in Section 3 and makes them easier to figure out.
-		\item[Section 3: Specific Requirements] All the software requirements are specified to a level of detail which is sufficient to let the designers satisfy them. Both functional and non-functional requirements are mentioned.
+		\item[Section 3: Specific Requirements] All the software requirements are suffliciently specified in order to allow the designers to use them. Both functional and non-functional requirements are mentioned.
 	\end{description}
 	
 	\bigskip
@@ -170,12 +194,12 @@
 	
 	
 	\subsubsection{User interfaces}
-	The user have two main ways to access the system:
+	The user has two main ways to access the system:
 	\begin{itemize}
-		\item through a web application accessible from any modern browser
-		\item through a mobile application that can run on any modern smartphone
+		\item via a web application accessible from any modern browser
+		\item via a mobile application that can run on any modern smartphone
 	\end{itemize}
-	Although they are two different platforms, the user interface must be unified and intuitive, allowing anyone to use it without any training needed.
+	Although they are two different platforms, the user interface must be unified and intuitive, allowing anyone to use it without any specific training.
 
 
 	\subsubsection{Hardware interfaces}
@@ -193,11 +217,11 @@
 
 	\bigskip
 	The backend application must rely on a commercial DBMS to store data and must be implemented in Java.
-	The backend also have to interface with the APIs of a public transportation and  traffic informations provider.***
+	The backend also have to interface with the APIs of a public transportation and  traffic information provider.
 	
 	
 	\subsection{Product Functions}
-	The system allows the users to create meetings, helps them to reach the location.
+	The system allows the users to create meetings and helps them to reach the location.
 	
 	The users can:
 	\begin{itemize}
@@ -206,7 +230,7 @@
 		\item manage personal information and delete their accounts;
 		\item create meetings;
 		\item manage their preferences, such as activate/deactivate travel mean, provide constraints on travel mean, specify their intent to minimize his carbon footprint;
-		\item specify lunch time.
+		\item specify break time.
 	\end{itemize}
 	
 	\bigskip
@@ -221,20 +245,20 @@
 	
 	
 	\subsection{User Characteristics}
-	The target user is someone who needs an automated system to manage appointments that also handle the scheduling of travels.
-	
-	The meeting should not overlap with any pre-existing one and should allow the user to move from his/her current position to the meeting position, according with preferred travel means and traffic conditions.
+	The target user is someone who needs an automated system to manage appointments and schedules the travels.
+
+	The meeting should not overlap with any pre - existing one and the app should allow the user to move from his/her present position to the meeting site, using the means of transport preferred and according to traffic conditions. 
 	
 	
 	\subsection{Assumptions and Dependences}
 	The following assumptions are given for granted:
 	\begin{itemize}
-		\item  Transport means are complied with the user's request.
-		\item  Device is always connect to the server.
-		\item  All users provided correct and valid data at time the registration.
+		\item  Means of transport comply with user’s reques.
+		\item  The device is always connected to the server.
+		\item  All users provide correct and valid data at time of registration.
 		\item  GPS shows the actual position of the owner.
-		\item  Provider Information shows correct and update data.
-		\item  The event, when it's inserted, must not be in the past.
+		\item  Provider Information shows correct and updated data.
+		\item  The event, when inserted, modified or deleted, must not be in the past.
 	\end{itemize}
 	
 	
@@ -271,13 +295,13 @@
 	In this part of RASD, a description of the system-to-be is provided following the World and Machine model introduced by Jackson and Zave.
 	
 	\bigskip
-	They indicate as the Machine the portion of the system to be developed, typically software-to-be plus hardware. The Machine domain is the set of phenomena located entirely in the machine and that the machine control (e.g., machine algorithms, controlled device, ...)
+	They indicate as the Machine the portion of the system-to-be developed, typically software-to-be plus hardware. The Machine domain is the set of phenomena located entirely in the machine and that the machine control (e.g., machine algorithms, controlled device, ...)
 	
 	\bigskip
 	Opposite, the World domain is a set of phenomena that the machine cannot observe.
 
 	\bigskip
-	The World is connected with the Machine through Shared Phenomena--part can be observable both by the Machine and by the World. The Shared Phenomena can be controlled by the world and observed by the Machine or controller by the machine and observe by the world.
+	The World is connected with the Machine through Shared Phenomena part of it both observed by the Machine and by the World themselves. The Shared Phenomena can be controlled by the World and observed by the Machine or controlled by the Machine and observed by the World.
 	
 	\bigskip
 	\bigskip
@@ -298,11 +322,11 @@
 		\item If the session is not already active the user must be redirected to a Login page. If he/she is not already registered he/she can create a new account within the same page. Moreover, the user must be able to Sign In/Sign Up not only with username and password but also with his/her social accounts (e.g. Google, Facebook, Twitter);
 		\item Once logged, the user must be redirected to his/her personal page;
 		\item A toolbar must allow the user to navigate through the pages described below;
-		\item The user's personal page must display an overview of user's future events (display them in a list or in a calendar view) and must also offer the possibility to insert new ones;
+		\item The user's personal page must display an overview of user's future events (display them in a list, in a calendar or in a map) and must also offer the possibility to insert new ones;
 		\item Clicking on an event the user must be redirected to the event's detail page;
 		\item The event's detail page must display detailed information such as location of the event, time and suggested mean (including the path)  needed to reach it;
 		\item The event's detail page must allow the user to modify or delete the event;
-		\item If an user tries to inserted or modified an event which location is unreachable in the remaining time an alert should be displayed;
+		\item If an user tries to insert or modified an event which location is unreachable in the remaining time an alert should be displayed;
 		\item The Account settings page must allow the user to modify its/her personal informations or delete the account;
 		\item The user must be allowed to select between different languages (en, it, de, fr, es, ru, zh, ja, ar);
 		\item The UI must comply the Flat Design principles;
@@ -367,19 +391,19 @@
 	\noindent
 	\textbf{Purpose} \\
 	Anyone who want to subscribe to Travlendar + can make the registration process through the mobile app or the web site.
-First, the guest must complete the registration form with personal data (i.e., first name, last name, birthdate, sex, mail, password) and accept privacy terms and conditions.
+First, the guest must complete the registration form with personal data (i.e., first name, last name, birthdate, sex, e-mail, password) and accept privacy terms and conditions.
 
 	Once the guest submits the information, the system checks and sends a confirmation email. If the operation is successful, the guest becomes a user and may start using the application.
 	
 	\bigskip
 	\noindent
 	\textbf{Scenario 1} \\
-	Allyson wants to register at Travlendar + using the web page. She opens the main home page of research mean and type "travlendar +". When you reach Travlendar's home page, click on SignUp and the registration form appears. It inserts all your data, such as first name, last name, birthdate, sex, email and password, and accepts the terms and conditions of privacy. When you finish this step, click the Submit button, and after a few seconds you will receive a confirmation email of your registration.
+	Allyson wants to register at Travlendar + using the web page. She opens the main home page of research mean and type "travlendar +". When you reach Travlendar's home page, click on "Sign up" and the registration form appears. It inserts all your data, such as first name, last name, birthdate, sex, e-mail and password, and accepts the terms and conditions of privacy. When you finish this step, click the "Done" button, and after a few seconds you will receive a confirmation email of your registration.
 
 	\bigskip
 	\noindent
 	\textbf{Scenario 2} \\
-	Benjamin has just moved to London and, at the suggestion of his friend Carl, decides to sign up for Travlendar + to better manage new meetings. Download the app on your mobile phone and open it. The home page appears and he clicks on SignUp. The registration form appears where he inserts all personal information and clicks "Submit" button to submit it. Just click the button will display a message informing him that his password has already been used.
+	Benjamin has just moved to London and, at the suggestion of his friend Carl, decides to sign up for Travlendar + to better manage new meetings. Download the app on your mobile phone and open it. The home page appears and he clicks on "Sign up". The registration form appears where he inserts all personal information and clicks "Done" button to submit it. Just click the button will display a message informing him that his password has already been used.
 	
 	\newpage
 	\noindent
@@ -396,10 +420,10 @@ First, the guest must complete the registration form with personal data (i.e., f
 	    		Input Condition & The person wants to subscribe to the service \\ \hline
 	    		Event flow & 
 			\begin{enumerate}
-	  			\item The guest opens the home page or mobile application of "Travlendar +"  and clicks the "SignUp" button;
+	  			\item The guest opens the home page or mobile application of "Travlendar +"  and clicks the "Sign up" button;
 	  			\item The registration form appears and the guest completes the mandatory fields;
 	  			\item The guest allows the personal data processing to be marked on the corresponding box;
-	  			\item The guest clicks the "Submit" button;
+	  			\item The guest clicks the "Done" button;
 	  			\item The system saves the information in the database and sends a guest confirmation email to the guest, who becomes a user of the service.
 	 		 \end{enumerate} \\ \hline
 	    		Output Condition & The system informs the user of the registration successfully. \\ \hline
@@ -425,7 +449,7 @@ First, the guest must complete the registration form with personal data (i.e., f
 				\item Driving license number (optional)
 			\end{itemize}
 		\item If the terms and conditions of use and privacy are not accepted, the system must not complete the registration process;
-		\item The system sends a recording confirmation mail correctly, when the guest clicks the "Submit" button;
+		\item The system sends a recording confirmation mail correctly, when the guest clicks the "Done" button;
 		\item The guest can leave the registration process at any time.
 	\end{itemize}
 	
@@ -446,7 +470,7 @@ First, the guest must complete the registration form with personal data (i.e., f
 	\textbf{Purpose} \\
 	The purpose of the Login phase is to guarantee access to authorized users. Access can be made by inserting mail and password, or through a social network account (i.e., Facebook, Instagram, Linkedin).
 
-	It is also possible to retrieve password if it has been forgotten by clicking the "Forgot Password?" button. Once the button is clicked, a mail with credentials is sent.
+	It is also possible to retrieve password if it has been forgotten by clicking the "Forgot password?" button. Once the button is clicked, a mail with credentials is sent.
 
 	\bigskip
 	\noindent
@@ -474,8 +498,8 @@ First, the guest must complete the registration form with personal data (i.e., f
     			Event flow & 
 			\begin{enumerate}
   				\item The user opens the home page or mobile application and the system shows the login page;
-  				\item The user inserts his / her mail address and password;
-  				\item The user clicks the "Login" button.
+  				\item The user inserts his / her e-mail address and password;
+  				\item The user clicks the "Sign in" button.
  			\end{enumerate} \\ \hline
     			Output Condition & The system connects the user to his / her personal page. \\ \hline
     			Exception &The exception that may arise is the inputting of an insertion mail or an incorrect password. The system sends the user an error message asking you to verify the address and re-enter the password. \\ \hline
@@ -490,7 +514,7 @@ First, the guest must complete the registration form with personal data (i.e., f
 		\item You must have correct mail and password available to successfully login;
 		\item The user-entered password must match a specific mail address;
 		\item Bad credentials must not allow the user authentication;
-		\item The system must send a new password to the specified mail attachment (if this is valid), if the user clicks the "Forgot Password?" button;
+		\item The system must send a new password to the specified mail attachment (if this is valid), if the user clicks the "Forgot password?" button;
 		\item After requesting a new password, the system must allow the user to authenticate only with new credentials.
 	\end{itemize}
 	
@@ -520,12 +544,12 @@ First, the guest must complete the registration form with personal data (i.e., f
 	\bigskip
 	\noindent
 	\textbf{Scenario 1} \\
-	Emma has to enter a driving lesson for tomorrow. Then she logs in her "Travlendar +" personal page as authorized user and press the "+ New" button to create the appointment. Then the system open a form where she must enter the name of the event, date, time, place and mode to reach it. Once completed, you press the "Save" button. The system verifies the correctness of the information and creates the event on the calendar.
+	Emma has to enter a driving lesson for tomorrow. Then she logs in her "Travlendar +" personal page as authorized user and press the "New meeting" button to create the appointment. Then the system open a form where she must enter the name of the event, date, time, place and mode to reach it. Once completed, you press the "Save" button. The system verifies the correctness of the information, calculates the most appropriate way to reach it and creates the event on the calendar.
 	
 	\bigskip
 	\noindent
 	\textbf{Scenario 2} \\
-	Franklin just took an appointment from the hairdresser in half an hour. She then decided to create an appointment on her mobile app "Travelendar +". Log in with your smartphone and press the "+ New" button. A form appears to be completed with the event, date, time, place and mode to reach it. Franklin wants to use a bike sharing service. Once the form is completed, submit it. The system checks the information and issues an error message because the site can not be reached in half an hour by bike.
+	Franklin just took an appointment from the hairdresser in half an hour. She then decided to create an appointment on her mobile app "Travelendar +". Log in with your smartphone and press the "+" button. A form appears to be completed with the event, date, time and place. Once the form is completed, submit it. The system checks the information and issues an error message because the site can not be reached in half an hour by bike (Franklin’s only active travel mean is bike sharing service).
 	
 	\bigskip
 	\noindent
@@ -543,10 +567,10 @@ First, the guest must complete the registration form with personal data (i.e., f
     			Event flow & 
 			\begin{enumerate}
   				\item The user must login by entering his/her mail and password;
-  				\item The user clicks the "+ New" button to create a new meeting;
+  				\item The user clicks the "+" / "New event" button to create a new meeting;
   				\item The system shows the form to be filled;
   				\item The user compiles the form and clicks the "Save" button;
-  				\item The system checks the information and saves it in the database; in the case of incorrect information, the user alerts you with an error message.
+  				\item The system checks the information, calculates the most appropriate way to reach the meeting's location and saves it in the database; in the case of incorrect information, the user alerts you with an error message.
  			 \end{enumerate} \\ \hline
     			Output Condition & The system creates a new meeting on the user's calendar in the home page. \\ \hline
     			Exception & The exception that may emerge is that the mean to reach the site is not valid (e.g., if you have to drive a motorway, you cannot use the bicycle), or your downtime is less than the time you need. Another exception is raised if the meeting creation date is later than the date of the meeting. \\ \hline
@@ -566,9 +590,9 @@ First, the guest must complete the registration form with personal data (i.e., f
 		\item The user must log in successfully;
 		\item The user must insert the following information in the form:
 			\begin{itemize}
-				\item Meeting name
-				\item Meeting data
-				\item Meeting Time
+				\item Name
+				\item Start
+				\item End
 				\item Place
 				\item People
 				\item Transport modes
@@ -1073,22 +1097,22 @@ First, the guest must complete the registration form with personal data (i.e., f
 	\newpage
 
 
-	\subsubsection{Specify lunch timing}
+	\subsubsection{Specify break timing}
 	
 	\bigskip
 	\noindent
 	\textbf{Purpose} \\
-	The purpose is to allow the user to enter a time interval where the system must ensure at least half an hour for the lunch break, based on the present appointments.
+	The purpose is to allow the user to enter a time interval where the system must ensure at least half an hour for the break, based on the present appointments.
 	
 	\bigskip
 	\noindent
 	\textbf{Scenario 1} \\
-	Ubald is a university professor and on Wednesday he has two hours lesson in the morning (10 a.m. -12 a.m.) and two hours lesson in the afternoon (1 p.m. ? 3 p.m.). Ubald connects to the "Travlendar +" home page and selects the "LunchTime" entry. The system shows you a form to be filled with the date and time interval for the lunch break. Ubald inserts as interval from 12.30 to 15.30 and submits it by pressing the "Save" button. The system verifies availability and successfully saves it in the database.
+	Ubald is a university professor and on Wednesday he has two hours lesson in the morning (10 a.m. -12 a.m.) and two hours lesson in the afternoon (1 p.m. – 3 p.m.). Ubald connects to the "Travlendar +" home page and selects the "BrekTime" entry. The system shows you a form to be filled with the date and time interval for the break. Ubald inserts as interval from 12.30 to 15.30 and submits it by pressing the "Save" button. The system verifies availability and successfully saves it in the database.
 	
 	\bigskip
 	\noindent
 	\textbf{Scenario 2} \\
-	Vichy is a manager who has to go to Naples for a meeting at 3:15 p.m.. She bought a train ticket from Milan at 10.30 a.m.. The journey lasts 270 minutes. Vichy opens the mobile application of "Travlendar +" and selects the "LunchTime" entry. The system shows you a form to be filled with the date and time interval for the lunch break. Vichy inserts as interval from 1 p.m. to 3 p.m. and submits it by pressing the "Save" button. The system checks the information and sends an error message.
+	Vichy is a manager who has to go to Naples for a meeting at 3:15 p.m.. She bought a train ticket from Milan at 10.30 a.m.. The journey lasts 270 minutes. Vichy opens the mobile application of "Travlendar +" and selects the "BrekTime" entry. The system shows you a form to be filled with the date and time interval for the break. Vichy inserts as interval from 1 p.m. to 3 p.m. and submits it by pressing the "Save" button. The system checks the information and sends an error message.
 	
 	\bigskip
 	\noindent
@@ -1102,18 +1126,18 @@ First, the guest must complete the registration form with personal data (i.e., f
    		 	\hline
     			Actor & User \\ \hline
     			Goal & Goal 13 and Goal 14 \\ \hline
-    			Input Condition & The user specifies a time interval for lunch. \\ \hline
+    			Input Condition & The user specifies a time interval for break. \\ \hline
     			Event flow & 
 			\begin{enumerate}
   				\item The user must login by entering your mail and password;
-  				\item The user selects with a "LunchTime" button;
+  				\item The user selects with a "BreakTime" button;
   				\item The system opens a form to complete with date and time interval;
-  				\item The user inserts information regarding date and time interval;
+  				\item The user inserts information regarding time interval and duration of break;
   				\item The user saves the information by pressing the "Save" button;
-  				\item The system processes the information, updates the database and notifies the user that the operation has been successful (specifying the time interval for lunch). If not, it generates an error message.
+  				\item The system processes the information, updates the database and notifies the user that the operation has been successful (specifying the time interval for break). If not, it generates an error message.
  			 \end{enumerate} \\ \hline
-    			Output Condition & The system selects within the time interval, half an hour for the lunch break. \\ \hline
-    			Exception & The system issues an error message if there is no half-hour for the lunch break during the specified time interval. \\ \hline
+    			Output Condition & The system selects within the time interval, time of specify duration for the break. \\ \hline
+    			Exception & The system issues an error message if there is no duration time for the break during the specified time interval. \\ \hline
     		\end{tabular}
 	\end{center}
 	
@@ -1124,14 +1148,14 @@ First, the guest must complete the registration form with personal data (i.e., f
 		\item The user must log in successfully.
 		\item The user must enter information in the form:
 			\begin{itemize}
-				\item Date
-				\item Now start
-				\item Fine
+				\item Start time
+				\item End time
+				\item Duration
 			\end{itemize}
 		\item The system must verify that the date is behind the insertion date.
-		\item The system must check that the available time (half-hour) is sufficient for the lunch break.
+		\item The system must check that the available time (duration time) is sufficient for the break.
 		\item Once the information is verified, the system must update the database.
-		\item The system must alert the user of the selected time interval
+		\item The system must alert the user of the selected time interval.
 		\item The system must send an error message if an incorrect date or time is not available.
 	\end{itemize}
 	
