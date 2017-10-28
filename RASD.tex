@@ -69,7 +69,7 @@
 }
 
 \date{
-	Delivery date: 2017 May 07\\
+	Delivery date: 2017 Oct 29\\
 	\bigskip v0.11
 }
 
@@ -419,19 +419,19 @@
 	\noindent
 	\textbf{Purpose} \\
 	Anyone who want to subscribe to Travlendar + can make the registration process through the mobile app or the web site.
-First, the guest must complete the registration form with personal data (i.e., first name, last name, birthdate, sex, e-mail, password) and accept privacy terms and conditions.
-
-	Once the guest submits the information, the system checks and sends a confirmation email. If the operation is successful, the guest becomes a user and may start using the application.
+	The guest must first complete the registration form with personal data (i.e., first name, last name, birth, sex, e-mail, password) and accept terms on data protection and conditions.
 	
+	Once the information are submitted, the system checks them and sends a confirmation email. If the operation is successful, the guest becomes a user and may start using the application.
+
 	\bigskip
 	\noindent
 	\textbf{Scenario 1} \\
-	Allyson wants to register at Travlendar + using the web page. She opens the main home page of research mean and type "travlendar +". When you reach Travlendar's home page, click on "Sign up" and the registration form appears. It inserts all your data, such as first name, last name, birthdate, sex, e-mail and password, and accepts the terms and conditions of privacy. When you finish this step, click the "Done" button, and after a few seconds you will receive a confirmation email of your registration.
+	Allyson wants to register Travlendar + using the web page. She opens the home page of a search engine and types "travlendar +". When you reach home page of Travlendar, click on “Sign up” and the registration form appears. She types in her data, such as first name, last name, birthdate, sex, email and password, and accepts the terms of data protection. At the end she clicks on the "Done" button, and after a few seconds she will receives an email confirming her registration.
 
 	\bigskip
 	\noindent
 	\textbf{Scenario 2} \\
-	Benjamin has just moved to London and, at the suggestion of his friend Carl, decides to sign up for Travlendar + to better manage new meetings. Download the app on your mobile phone and open it. The home page appears and he clicks on "Sign up". The registration form appears where he inserts all personal information and clicks "Done" button to submit it. Just click the button will display a message informing him that his password has already been used.
+	Benjamin has just moved to London and his friend Carl has spoken to him about  Travlendar +, so he decides to sign up in order to manage better his new meetings. He downloads the app on his mobile phone and opens it. The home page appears and he clicks on "Sign up". The registration form appears. He inserts types in his personal data and clicks on “Done”. Immediately after his click, a message informs him that his password has been already used.
 	
 	\newpage
 	\noindent
@@ -451,11 +451,11 @@ First, the guest must complete the registration form with personal data (i.e., f
 	  			\item The guest opens the home page or mobile application of "Travlendar +"  and clicks the "Sign up" button;
 	  			\item The registration form appears and the guest completes the mandatory fields;
 	  			\item The guest allows the personal data processing to be marked on the corresponding box;
-	  			\item The guest clicks the "Done" button;
-	  			\item The system saves the information in the database and sends a guest confirmation email to the guest, who becomes a user of the service.
+	  			\item The guest clicks on "Done" button;
+	  			\item The system saves the information in the database and sends an email to the guest confirming his/her subscription and that he/she has become a user of the service.
 	 		 \end{enumerate} \\ \hline
-	    		Output Condition & The system informs the user of the registration successfully. \\ \hline
-	    		Exception & The system can report some exceptions when an invalid or already used mail address is used. Another exception can be reported if the license number is non-existent or if the terms and conditions of use are not accepted. \\ \hline
+	    		Output Condition & The system informs the user that he/she has registred successfully. \\ \hline
+	    		Exception & The system can report alert messages when a non valid or already used mail address is typed in. Another exception can be reported if the license number does not exist or when the terms and conditions of use are not accepted. \\ \hline
 	    	\end{tabular}
 	\end{center}
 	
@@ -464,7 +464,7 @@ First, the guest must complete the registration form with personal data (i.e., f
 	\textbf{Functional requirements} \\
 	
 	\begin{itemize}
-		\item The system must not accept a mail already used for the registration process;
+		\item The system must not accept an email address already used during the registration procedure.
 		\item The system requires the following mandatory personal information:
 			\begin{itemize}
 				\item First Name
@@ -476,9 +476,9 @@ First, the guest must complete the registration form with personal data (i.e., f
 				\item Password
 				\item Driving license number (optional)
 			\end{itemize}
-		\item If the terms and conditions of use and privacy are not accepted, the system must not complete the registration process;
-		\item The system sends a recording confirmation mail correctly, when the guest clicks the "Done" button;
-		\item The guest can leave the registration process at any time.
+		\item If the terms and conditions of use and data protection are not accepted, the system must not complete the registration procedure.
+		\item As soon as the guest clicks on "Done", the system sends automatically an email of confirmation.
+		\item The guest can leave the registration procedure at any time.
 	\end{itemize}
 
 	\begin{figure}[h!]
@@ -501,19 +501,20 @@ First, the guest must complete the registration form with personal data (i.e., f
 	\bigskip
 	\noindent
 	\textbf{Purpose} \\
-	The purpose of the Login phase is to guarantee access to authorized users. Access can be made by inserting mail and password, or through a social network account (i.e., Facebook, Instagram, Linkedin).
+	The Login phase aims to guarantee the access to authorized users. Access can be made by inserting mail and password, or via a social network account (i.e., \textit{Facebook}, \textit{Instagram}, \textit{Linkedin}).
+	
+	If the user forgets his/her password, it is also possible to retrieve it clicking on "Forgot Password?". Once the button is clicked, an email with credentials is sent.
 
-	It is also possible to retrieve password if it has been forgotten by clicking the "Forgot password?" button. Once the button is clicked, a mail with credentials is sent.
 
 	\bigskip
 	\noindent
 	\textbf{Scenario 1} \\
-	Catherine wants to enter a new meeting in her calendar. Catherine accesses the "Travlendar +" home page with her laptop. Enter personal mail and password (used to sign up). Then you click on "Login" and, since everything is correct, you get access as an authorized user.
+	Catherine wants to enter a new meeting in her calendar. She accesses the "Travlendar +" home page on her laptop entering her personal email and password (registered when she signed up). She clicks then on "Sign in" and gets in as authorized user because everything is correct.
 	
 	\bigskip
 	\noindent
 	\textbf{Scenario 2} \\
-	Dominique wants to insert his dental visit on next Tuesday. Opens the app on your mobile phone and places credentials. Now there is a problem, you do not remember the password used to authenticate yourself. Then, Dominique click on the "Forgot Password?" button. The system forwards the new password to its email address to be used to authenticate itself.
+	Dominique wants to insert his check up to the dentist on next Tuesday. He opens the app on his mobile phone and types his credentials. However there is a problem now: he can’t remember the password used when authenticated himself. Dominique clicks therefore on "Forgot password?" button. The system forwards to the email address recorded a new password.
 	
 	\bigskip
 	\noindent
@@ -527,15 +528,15 @@ First, the guest must complete the registration form with personal data (i.e., f
    			\hline
     			Actor & User \\ \hline
     			Goal & Goal 1 \\ \hline
-    			Input Condition & An  user already registered, wants to login. \\ \hline
+    			Input Condition & A user already registered, wants to login. \\ \hline
     			Event flow & 
 			\begin{enumerate}
-  				\item The user opens the home page or mobile application and the system shows the login page;
-  				\item The user inserts his / her e-mail address and password;
-  				\item The user clicks the "Sign in" button.
+  				\item The user opens the home page or the mobile application and the system shows the login page;
+  				\item The user inserts his/her email address and password;
+  				\item The user clicks on "Sign in" button.
  			\end{enumerate} \\ \hline
     			Output Condition & The system connects the user to his / her personal page. \\ \hline
-    			Exception &The exception that may arise is the inputting of an insertion mail or an incorrect password. The system sends the user an error message asking you to verify the address and re-enter the password. \\ \hline
+    			Exception & The exception that may arise is the inputting of an insertion mail or an incorrect password. The system sends the user an error message asking him/her to verify the address and/or the password re-enter them. \\ \hline
     		\end{tabular}
 	\end{center}
 	
@@ -543,12 +544,12 @@ First, the guest must complete the registration form with personal data (i.e., f
 	\noindent
 	\textbf{Functional requirements} \\
 	\begin{itemize}
-		\item The user must be already registered with the system for successful login;
-		\item You must have correct mail and password available to successfully login;
-		\item The user-entered password must match a specific mail address;
-		\item Bad credentials must not allow the user authentication;
-		\item The system must send a new password to the specified mail attachment (if this is valid), if the user clicks the "Forgot password?" button;
-		\item After requesting a new password, the system must allow the user to authenticate only with new credentials.
+		\item The user must have been already registered with the system for successful login.
+		\item The user must have correct email and password available to successfully login.
+		\item The user must use a password connected to a specific email address.
+		\item Bad credentials must not allow the user authentication.
+		\item If the user clicks on "Forgot password?" the system must send a new password to the email address recorded (if valid).
+		\item When a new password has been requested, the system must allow the user to authenticate only with new credentials.
 	\end{itemize}
 	
 	\newpage
@@ -585,12 +586,12 @@ First, the guest must complete the registration form with personal data (i.e., f
 	\bigskip
 	\noindent
 	\textbf{Scenario 1} \\
-	Emma has to enter a driving lesson for tomorrow. Then she logs in her "Travlendar +" personal page as authorized user and press the "New meeting" button to create the appointment. Then the system open a form where she must enter the name of the event, date, time, place and mode to reach it. Once completed, you press the "Save" button. The system verifies the correctness of the information, calculates the most appropriate way to reach it and creates the event on the calendar.
+	Emma has to enter a driving lesson for tomorrow. Then she logs in her "Travlendar +" personal page as authorized user and press the "New event" button to create the appointment. Then the system open a form where she must enter the name of the event, date, time and place. Once completed, she press "Save" button. The system verifies the correctness of the information, calculates the most appropriate way to reach it and creates the event on the calendar.
 	
 	\bigskip
 	\noindent
 	\textbf{Scenario 2} \\
-	Franklin just took an appointment from the hairdresser in half an hour. She then decided to create an appointment on her mobile app "Travelendar +". Log in with your smartphone and press the "+" button. A form appears to be completed with the event, date, time and place. Once the form is completed, submit it. The system checks the information and issues an error message because the site can not be reached in half an hour by bike (Franklin’s only active travel mean is bike sharing service).
+	Franklin just took an appointment from the hairdresser in half an hour. He has decided afterward to create an appointment on her mobile app "Travelendar +". Log in with your smartphone and press the "+" button. A form appears to be completed with the event, date, time and place. Once the form is completed, submit it. The system checks the information and issues an error message because the site can not be reached in half an hour by bike (Franklin’s only active travel mean is bike sharing service).
 	
 	\bigskip
 	\noindent
@@ -610,11 +611,11 @@ First, the guest must complete the registration form with personal data (i.e., f
   				\item The user must login by entering his/her mail and password;
   				\item The user clicks the "+" / "New event" button to create a new meeting;
   				\item The system shows the form to be filled;
-  				\item The user compiles the form and clicks the "Save" button;
-  				\item The system checks the information, calculates the most appropriate way to reach the meeting's location and saves it in the database; in the case of incorrect information, the user alerts you with an error message.
+  				\item The user fulfills the form and clicks on "Save";
+  				\item The system checks the information, calculates the most appropriate way to reach the meeting's location and saves them in the database; in the case of incorrect information, the user alerts you with an error message.
  			 \end{enumerate} \\ \hline
     			Output Condition & The system creates a new meeting on the user's calendar in the home page. \\ \hline
-    			Exception & The exception that may emerge is that the mean to reach the site is not valid (e.g., if you have to drive a motorway, you cannot use the bicycle), or your downtime is less than the time you need. Another exception is raised if the meeting creation date is later than the date of the meeting. \\ \hline
+    			Exception & The exception might be generated when the mean to reach the site is not valid (e.g., if you have to drive on a motorway, you cannot use the bicycle), or your downtime is less than the time you need. Another exception is raised if the date creating the meeting is later than the date of the meeting. \\ \hline
     		\end{tabular}
 	\end{center}
 	
@@ -641,7 +642,7 @@ First, the guest must complete the registration form with personal data (i.e., f
 				\item People
 				\item Transport modes
 			\end{itemize}
-		\item The system must verify that the meeting data is later than the creation date;
+		\item The system must verify that the meeting's date is later than the creation date;
 		\item The system must check that the way to reach is compatible with the path;
 		\item The system must verify that the time available is sufficient to reach the appointment site;
 		\item After verification of the correctness of the information, the system must create the meeting on the personal calendar;
@@ -665,17 +666,17 @@ First, the guest must complete the registration form with personal data (i.e., f
 	\bigskip
 	\noindent
 	\textbf{Purpose} \\
-	The purpose of this part is to allow the user, after saving an meeting on the calendar, to be able to modify some information (such as date, time, number of people, place, means of transport). The system must verify the compatibility of the modification.
+	The purpose of this part is to allow the user, after saving a meeting on the calendar, to be able to modify some information (such as date, time, number of people, place, means of transport). The system must verify the compatibility of the modification.
 	
 	\bigskip
 	\noindent
 	\textbf{Scenario 1} \\
-	Gordon was just called by the school secretary and was advised that he had a lesson in IIIA class at 10 a.m. instead of at 9 a.m. on Thursday. Enter the personal page of "Travlendar +" and select the appointment. Press the "Modify" button next to the selected event. The system shows the form already completed and Gordon changes the time. Press the "Save" button. The system checks the information and updates the appointment successfully.
+	Gordon was just called by the school secretary and was advised that he had a lesson in IIIA class at 10 a.m. instead of at 9 a.m. on Thursday. Enter the personal page of "Travlendar +" and select the appointment. Press the "Modify" button next to the selected event. The system shows the form already completed and Gordon changes the time. Press  "Save" button. The system checks the information and updates successfully the appointment.
 	
 	\bigskip
 	\noindent
 	\textbf{Scenario 2} \\
-	Helen has to hold a conference in Paris. Now she is at Milan Malpensa Airport and she has just been notified that the plane has 120 minutes late. He decides to change the meeting to control if she can reach the conference place in time. Enter your personal page through the mobile application. Helen selects the meeting and press the "Modify" button. Then, she change the times in the form and press "Save". The system verifies the information and sends an error message because by changing the time the plane will fail to reach Paris in time for the conference.
+	Helen has to hold a conference in Paris. Now she is at Milan Malpensa Airport and she has just been notified that the plane has 120 minutes delay. He decides to change the meeting to control if she can reach the conference place in time. Enter your personal page through the mobile application. Helen selects the meeting and presses the "Modify" button. Then, she changes the times in the form and presses "Save". The system verifies the information and sends an error message because changing the time the plane can’t  reach Paris in time for the conference.
 	
 	\bigskip
 	\noindent
@@ -692,15 +693,15 @@ First, the guest must complete the registration form with personal data (i.e., f
     			Input Condition & The user wants to modify a meeting on his/her calendar. \\ \hline
 			Event flow & 
 			\begin{enumerate}
-  				\item The user must login by entering your mail and password;
+  				\item The user must login entering his/her email and password;
   				\item The user selects the meeting he/she wants to modify with one click;
   				\item The system shows a dialog box with "Modify" and "Delete" buttons;
   				\item The user presses the "Modify" button;
   				\item The system shows the form with the meeting information;
-  				\item The user modifies the form and press the "Save" button;
+  				\item The user modifies the form and presses the "Save" button;
   				\item The system verifies the information and saves it in the database; in the case of incorrect information, the system alerts the user with an error message.
  			 \end{enumerate} \\ \hline
-    			Output Condition & The system modify a meeting on the calendar on the user's home. \\ \hline
+    			Output Condition & The system modifies a meeting on the calendar on the user's home. \\ \hline
     			Exception & The exceptions that can be raised are the same as those for creating the event. The exception that may be raised is that the way to reach the site is not valid (for example, if you have to drive a motorway, you can not use the bicycle), or your downtime is less than the time you need. Another exception is raised if the meeting change date is later than the date of the meeting. \\ \hline
     		\end{tabular}
 	\end{center}
@@ -767,12 +768,12 @@ First, the guest must complete the registration form with personal data (i.e., f
 	\bigskip
 	\noindent
 	\textbf{Purpose} \\
-	The purpose of this part is to allow the user, after creating or modifying an meeting on the calendar, to be able to delete it.
+	The purpose of this part is to allow the user, after creating or modifying an meeting on the calendar, to delete it.
 	
 	\bigskip
 	\noindent
 	\textbf{Scenario 1} \\
-	Igor is a computer science student. On Monday and Tuesday he attends the course of Database 2. The professor has just written an e-mail, signaling that next Monday there will be no lesson. Igor opens the "Travlendar +" application on his smartphone and he logs in. He selects the "DB2 lesson" meeting and clicks the "Delete" button. The system asks whether he is sure to cancel the meeting. Igor confirms. The system processes the information and updates the database.
+	Igor is a computer science student. He attends on Monday and Tuesday the course  Database 2. The professor has just written an email, signaling that on next Monday there will be no lesson. Igor opens the "Travlendar +" application on his smartphone and he logs in. He selects the "DB2 lesson" meeting and clicks on “Delete” button. The system asks whether he is sure to cancel the meeting. Igor confirms. The system processes the information and updates the database.
 	
 	\bigskip
 	\noindent
@@ -789,12 +790,12 @@ First, the guest must complete the registration form with personal data (i.e., f
     			Input Condition & The user wants to delete a meeting on his/her calendar. \\ \hline
     			Event flow & 
 			\begin{enumerate}
-  				\item The must login by entering your mail and password;
+  				\item The user must login entering your email and password;
   				\item The user selects the meeting he/she wants to select with one click;
-  				\item The system shows a dialog box with two "Modify" and "Delete" buttons;
-  				\item The user clicks the "Delete" button;
-  				\item The system prompts the user if he/she is sure he/she want to delete the meeting with a dialog box;
-  				\item The user presses the "Yes" button;
+  				\item The system shows a dialog box with two buttons: "Modify" and "Delete";
+  				\item The user clicks on "Delete" button;
+  				\item The system prompts the user if he/she is sure and wants to delete the meeting with a dialog box;
+  				\item The user presses on "Yes" button;
   				\item The system processes the information, updates the database, and deletes the event from the calendar.
  			 \end{enumerate} \\ \hline
     			Output Condition & The system deletes a meeting on the user's home calendar. \\ \hline
@@ -809,7 +810,7 @@ First, the guest must complete the registration form with personal data (i.e., f
 		\item The user must log in successfully;
 		\item The user must have already created a meeting;
 		\item The user must select the meeting he/she wants to delete;
-		\item The system must ask the user whether or not he/she want to delete the meeting;
+		\item The system must ask the user whether or not he/she wants to delete the meeting;
 		\item The system must update the DB and delete the meeting from the calendar.
 	\end{itemize}
 	
@@ -835,7 +836,7 @@ First, the guest must complete the registration form with personal data (i.e., f
 	\bigskip
 	\noindent
 	\textbf{Scenario 1} \\
-	Karlie, due to a problem with her e-mail services provider, wants to change her e-mail address. Karlie opens a browser window, reaches the Travelendar+ homepage and logs in. Then she clicks on her profile picture in the right of navigation bar, a dropdown menu appears and by clicking "Edit Profile" she reaches a page showing her profile information. Then she modifies her e-mail address and clicks the "Save Changes" button. The system notifies Karlie that her e-mail address has been correctly updated.
+	Karlie, due to a problem with her e-mail services provider, wants to change her email address. Karlie opens a browser window, reaches the Travelendar+ homepage and logs in. Then she clicks on her profile picture in the right of the navigation bar, a dropdown menu appears and clicking "Edit Profile" she reaches a page showing her profile information. She changes her email address and clicks then on "Save Changes" button. The system notifies Karlie that her email address has been correctly updated.
 	
 	\bigskip
 	\noindent
@@ -849,14 +850,14 @@ First, the guest must complete the registration form with personal data (i.e., f
    		 	\hline
     			Actor & User \\ \hline
     			Goal & Goal 2 \\ \hline
-    			Input Condition & An user wants to view or update his/her personal informations. \\ \hline
+    			Input Condition & A user wants to view or update his/her personal informations. \\ \hline
     			Event flow & 
 			\begin{enumerate}
-  				\item The user opens a web browser page or the mobile application and, if not already, authenticates to the service;
+  				\item The user opens a web browser page or the mobile application and, if he/she has not already done it, authenticates to the service;
   				\item The user reaches his/her profile settings page;
   				\item The user updates his/her personal information.
  			 \end{enumerate} \\ \hline
-    			Output Condition & The user's informations is successfully updated and the user is notified. \\ \hline
+    			Output Condition & Information concerning the user is successfully updated and the user is notified. \\ \hline
     			Exception & The update fails and the user is notified.\\
     			\hline
     		\end{tabular}
@@ -867,9 +868,9 @@ First, the guest must complete the registration form with personal data (i.e., f
 	\textbf{Functional requirements} \\
 	\begin{itemize}
 		\item The user must be already logged in;
-		\item The system must display to the user his/her personal informations;
-		\item The system must allow the user to change any information provided during the registration phase, only if the new informations does not conflicts with the registration constrains;
-		\item Both if a modification succeed or fails the user must be notified.
+		\item The system must display to the user his/her own personal informations;
+		\item The system must allow the user to change any information provided during the registration phase, only if the new piece of information does not get in conflict with the registration constrains;
+		\item Either a modification succeeds or it fails, the user must be notified.
 	\end{itemize}
 	
 	\newpage
@@ -889,12 +890,12 @@ First, the guest must complete the registration form with personal data (i.e., f
 	\bigskip
 	\noindent
 	\textbf{Purpose} \\
-	Both web and mobile applications must allow the user to delete his/her account if no longer wants to use the service.
+	Both web and mobile applications must allow the user to delete his/her account if does no longer want to use the service.
 	
 	\bigskip
 	\noindent
 	\textbf{Scenario 1} \\
-	Luca decides that he no longer wants to use Travelendar+ and wants to delete his account. Luca opens the mobile application and clicks the profile button on the navigation bar, the profile informations page is now displayed. He clicks the "Delete Account" red button and after he has confirmed his intentions, Luca is no longer a Travelendar+ registered user and all his data is no longer stored on the system.
+	Luca decides that he no longer wants to use Travelendar+ and wants to delete his account. Luca opens the mobile application and clicks the profile button on the navigation bar, the profile informations page is now displayed. He clicks on the red button "Delete Account". As soon as and after he confirms his intentions, Luca is no longer a Travelendar+ registered user and  his data are no longer stored in the system.
 	
 	\bigskip
 	\noindent
@@ -911,12 +912,12 @@ First, the guest must complete the registration form with personal data (i.e., f
     			Input Condition & An user wants to delete his/her account. \\ \hline
     			Event flow & 
 			\begin{enumerate}
-  				\item The user opens a web browser page or the mobile application and, if not already, authenticates to the service;
+  				\item The user opens a web browser page or the mobile application and, if he/she has not already done it, authenticates to the service;
   				\item The user reaches his/her profile settings page;
-  				\item The user clicks "Delete account" button;
+  				\item The user clicks on "Delete account" button;
   				\item The user confirms his/her intent to delete the account.
  			 \end{enumerate} \\ \hline
-    			Output Condition & The user's account is deleted, his/her data is erased from the system and of course he/she no longer can login with his/her credentials unless he/she re-register to the service. \\ \hline
+    			Output Condition & The user’s account is deleted, his/her data are erased from the system and of course he/she can no longer login with his/her credentials, unless he/she registers into the service again. \\ \hline
     			Exception & The account's deletion fails and the user is notified. \\
     			\hline
     		\end{tabular}
@@ -930,8 +931,8 @@ First, the guest must complete the registration form with personal data (i.e., f
 		\item The system must allow the user to delete his/her profile;
 		\item The user must confirm his/her intention to delete his/her profile;
 		\item Once the user's profile has been deleted, the system must no longer store the user's personal informations.
-		\item Once the user's profile has been deleted, the user no longer can login with his/her credentials unless he/she re-register to the service;
-		\item Both if a modification succeed or fails the user must be notified.
+		\item Once the user’s profile has been deleted, the user can no longer login with his/her credentials unless he/she re-register to the service;
+		\item Either a modification succeeds or it fails, the user must be notified.
 	\end{itemize}
 	
 	\newpage
@@ -952,12 +953,12 @@ First, the guest must complete the registration form with personal data (i.e., f
 	\bigskip
 	\noindent
 	\textbf{Purpose} \\
-	Both web and mobile applications must allow the user to specify his/her intention to use specific travel mean to move from an event to another.
+	Both web and mobile applications must allow the user to specify his/her intention to use a specific travel mean to move from an event to another.
 	
 	\bigskip
 	\noindent
 	\textbf{Scenario 1} \\
-	It's almost summer. Mario decides that the weather is good enough to allow him to use the bike. Mario opens the Travelendar+ app on his Android smartphone and navigates to the settings page, scrolls down until he reaches "Bike" in the travel menas list and toggles the checkbox near to it. From now on the system, if he thinks it is appropriate, will suggest also the bike as a travel mean.
+	It’s almost summer. Mario decides that the weather is good enough to allow him to use the bike. Mario opens the Travelendar+ app on his Android smartphone and navigates to the settings page, scrolls down until he reaches "Bike" in the travel menas list and toggles the checkbox near to it. From now on the system will also suggest him the bike as an appropriate mean of transport, if it thinks it is appropriate.
 	
 	\bigskip
 	\noindent
@@ -974,11 +975,11 @@ First, the guest must complete the registration form with personal data (i.e., f
     			Input Condition & The user wants to activate a travel mean. \\ \hline
     			Event flow & 
 			\begin{enumerate}
-  				\item The user opens a web browser page or the mobile application and, if not already, authenticates to the service;
+  				\item The user opens a web browser page or the mobile application and, if he/she has not already done it, authenticates to the service;
   				\item The user reaches his/her profile settings page;
   				\item The user checks the checkbox corresponding to the travel mean he/she wants to activate.
  			 \end{enumerate} \\ \hline
-    			Output Condition & The travel mean(s) is now activated as desired and the user is notified. \\ \hline
+    			Output Condition & The travel mean(s) is/are now activated as desired; the user is notified about it. \\ \hline
     			Exception & The travel mean(s) activation fails and the user is notified. \\ \hline
     		\end{tabular}
 	\end{center}
@@ -989,9 +990,9 @@ First, the guest must complete the registration form with personal data (i.e., f
 	\begin{itemize}
 		\item The user must be already logged in;
 		\item The system must display to the user which travel mean is already selected;
-		\item The system must allow the user to select a travel mean if it was not selected already;
-		\item If a new travel mean has been selected, from now on it must be taken in count when the system calculates the optimal travel between two locations;
-		\item Both if a modification succeed or fails the user must be notified.
+		\item The system must allow the user to select a travel mean if it was not already selected;
+		\item If a new travel mean has been selected, from now on it must the system take it into consideration when it calculates the more convenient travel between the two locations;
+		\item Either a modification succeeds or it fails, the user must be notified.
 	\end{itemize}
 	
 	\newpage
@@ -1011,12 +1012,12 @@ First, the guest must complete the registration form with personal data (i.e., f
 	\bigskip
 	\noindent
 	\textbf{Purpose} \\
-	Both web and mobile applications must allow the user to specify his/her intention not to use specific travel mean to move from an event to another.
+	Both web and mobile applications must allow the user to specify his/her intention to do not use a specific travel mean to move from an event to another.
 	
 	\bigskip
 	\noindent
 	\textbf{Scenario 1} \\
-	Otis, after breaking his leg, realizes that the only suitable means for his travels are taxi and Uber. Otis opens a browser window, reaches the Travelendar+ homepage and logs in. Then she clicks on her profile picture in the right of navigation bar, a dropdown menu appears and by clicking "Edit Profile" she reaches a page showing her profile information and unchecks all the checkboxes near to the travel means except for "Taxi" and "Uber". From now on the system could not rely on other travel means than taxi and Uber.
+	Otis, after breaking his leg, realizes that the only suitable means for his travels are taxi and Uber. Otis opens a browser window, reaches the Travelendar+ homepage and logs in. Then he clicks on his profile picture in the right of navigation bar, a dropdown menu appears and clicking "Edit Profile" he reaches a page showing his profile information and unchecks all the checkboxes near to the travel means excepted, either "Taxi" or "Uber". From now on the system could only rely on one other travel mean, either Taxi or Uber.
 	
 	\bigskip
 	\noindent
@@ -1033,11 +1034,11 @@ First, the guest must complete the registration form with personal data (i.e., f
     			Input Condition & The user wants to deactivate a travel mean. \\ \hline
     			Event flow & 
 			\begin{enumerate}
-  				\item The user opens a web browser page or the mobile application and, if not already, authenticates to the service;
+  				\item The user opens a web browser page or the mobile application and, if he/she has not already done, authenticates to the service;
   				\item The user reaches his/her profile settings page;
   				\item The user unchecks the checkbox corresponding to the travel mean he/she wants to deactivate.
  			 \end{enumerate} \\ \hline
-    			Output Condition & The travel mean(s) is now deactivated as desired and the user is notified. \\ \hline
+    			Output Condition & The travel mean(s) is/are now deactivated as desired and the user is notified. \\ \hline
     			Exception & The travel mean(s) deactivation fails and the user is notified. \\ \hline
     		\end{tabular}
 	\end{center}
@@ -1047,10 +1048,10 @@ First, the guest must complete the registration form with personal data (i.e., f
 	\textbf{Functional requirements} \\
 	\begin{itemize}
 		\item The user must be already logged in;
-		\item The system must display to the user which travel mean is already selected;
-		\item The system must allow the user to deselect a travel mean if it was not selected already;
-		\item If a travel mean has been deselected, from now on it can not be taken in count when the system calculates the optimal travel between two locations;
-		\item Both if a modification succeed or fails the user must be notified
+		\item The system must display the user travel mean already selected;
+		\item The system must allow the user to deselect a travel mean if it was not previously selected;
+		\item If a travel mean has been deselected, from now on it can not be taken in consideration when the system calculates the optimal travel between two locations;
+		\item Either a modification succeeds or it fails, the user must be notified.
 	\end{itemize}
 	
 	\newpage
@@ -1076,7 +1077,7 @@ First, the guest must complete the registration form with personal data (i.e., f
 	\bigskip
 	\noindent
 	\textbf{Scenario 1} \\
-	Quentin has a meeting scheduled for tomorrow morning at 9:00AM not far away from his house. The system suggests taking the bus, but Quentin needs to take to the meeting a cumbersome model of the building he will present to his boss. Due to his particular need he decides that the most appropriate transport mean is a taxi. He opens the Travelendar+ app on his iPhone. In the event detail page he selects the taxi as preferred travel mean and the system re-calculates the travel time and eventually reserves a vehicle for the next morning.
+	Quentin has a meeting scheduled for tomorrow morning at 9:00AM not far away from his house. The system suggests him to take the bus, but Quentin needs to take to the meeting a cumbersome model of the building he will present to his boss. Due to his particular need he decides that the most appropriate transport mean is a taxi. He opens the Travelendar+ app on his iPhone. In the page detailing events, he selects the taxi as the preferred mean of transport and the system re-calculates the travel time and eventually reserves a vehicle for the next morning.
 	
 	\bigskip
 	\noindent
@@ -1093,9 +1094,9 @@ First, the guest must complete the registration form with personal data (i.e., f
     			Input Condition & The user wants to select a specific travel mean for a specific travel. \\ \hline
     			Event flow & 
 			\begin{enumerate}
-  				\item The user opens a web browser page or the mobile application and, if not already, authenticates to the service;
+  				\item The user opens a web browser page or the mobile application and, if he/she has not already done it, authenticates to the service;
   				\item The user opens the detail page of a certain event;
-  				\item The user selects a certain travel mean as preferred for that travel.
+  				\item The user selects a certain travel mean, the one he/she prefers for travelling.
  			 \end{enumerate} \\ \hline
     			Output Condition & The change succeeded and the mean for that travel is updated. \\ \hline
     			Exception & The change fails and the user is notified. \\ \hline
@@ -1108,7 +1109,7 @@ First, the guest must complete the registration form with personal data (i.e., f
 	\begin{itemize}
 		\item The user must be already logged in;
 		\item The system must allow the user to use a specific travel mean to reach a given event (only if the mean can reach the event's location);
-		\item Both if a modification succeed or fails the user must be notified.
+		\item Either a modification succeeds or it fails, the user must be notified.
 	\end{itemize}
 	
 	\newpage
@@ -1133,7 +1134,7 @@ First, the guest must complete the registration form with personal data (i.e., f
 	\bigskip
 	\noindent
 	\textbf{Scenario 1} \\
-	Serena, while watching a National Geographic documentary, realized that climate change is a real thing and everyone should do his best to limitate pollution. For such reason she wants to minimize her carbon footprint during her travels. Serena opens a browser window, reaches the Travelendar+ homepage and logs in. Then she clicks on her profile picture in the right of navigation bar, a dropdown menu appears and by clicking "Edit Profile" she reaches a page showing her profile information and toggles the checkbox near to ?Minimize carbon footprint?. From now on the suggested travel mean is the less polluting one.
+	Serena, while she was watching a National Geographic documentary, realized that climate change is a real thing and everyone should do his best to limit pollution. For this reason she wants to minimize her carbon footprint during her travels. Serena opens a browser window, reaches the Travelendar+ homepage and logs in. Then she clicks on her profile picture in the right of navigation bar, a dropdown menu appears and by clicking "Edit Profile" she reaches a page showing her profile information and toggles the checkbox near to "Minimize carbon footprint". From now on the suggested travel mean is the less polluting one.
 	
 	\bigskip
 	\noindent
@@ -1150,11 +1151,11 @@ First, the guest must complete the registration form with personal data (i.e., f
     			Input Condition & The user wants to move from an appointment to another with the less polluting mean(s). \\ \hline
     			Event flow & 
 			\begin{enumerate}
-  				\item The user opens a web browser page or the mobile application and, if not already, authenticates to the service;
+  				\item The user opens a web browser page or the mobile application and, if he/she has not already done it, authenticates to the service;
 				\item The user reaches his/her profile settings page;
 				\item The user checks the checkbox corresponding to "Minimize carbon footprint".
  			 \end{enumerate} \\ \hline
-    			Output Condition & The preference update succeeded and the user is notified. \\ \hline
+    			Output Condition & The preference update succeeds and the user is notified. \\ \hline
     			Exception & The preference update fails and the user is notified. \\ \hline
     		\end{tabular}
 	\end{center}
@@ -1166,7 +1167,7 @@ First, the guest must complete the registration form with personal data (i.e., f
 		\item The user must be already logged in;
 		\item The system must allow the user to express his/her intention to minimize his/her carbon footprint or not;
 		\item If the user has expressed the intention to minimize his/her carbon footprint, the suggested travel mean must be the less polluting one;
-		\item Both if a modification succeed or fails the user must be notified.
+		\item Either a modification succeeds or it fails, the user must be notified.
 	\end{itemize}
 	
 	\newpage
@@ -1192,12 +1193,12 @@ First, the guest must complete the registration form with personal data (i.e., f
 	\bigskip
 	\noindent
 	\textbf{Scenario 1} \\
-	Ubald is a university professor and on Wednesday he has two hours lesson in the morning (10 a.m. -12 a.m.) and two hours lesson in the afternoon (1 p.m. – 3 p.m.). Ubald connects to the "Travlendar +" home page and selects the "BrekTime" entry. The system shows you a form to be filled with the date and time interval for the break. Ubald inserts as interval from 12.30 to 15.30 and submits it by pressing the "Save" button. The system verifies availability and successfully saves it in the database.
+	Ubald is a university professor and on Wednesday he has two hours lesson in the morning (10 a.m. -12 a.m.) and two hours lesson in the afternoon (1 p.m. – 3 p.m.). Ubald connects to the "Travlendar +" home page and selects the "BreakTime" entry. The system shows you a form to be filled in with the date and time interval for the break. Ubald inserts the break  from 12.30 to 15.30 and submits it by pressing on "Save". The system verifies availability and saves it successfully in the database.
 	
 	\bigskip
 	\noindent
 	\textbf{Scenario 2} \\
-	Vichy is a manager who has to go to Naples for a meeting at 3:15 p.m.. She bought a train ticket from Milan at 10.30 a.m.. The journey lasts 270 minutes. Vichy opens the mobile application of "Travlendar +" and selects the "BrekTime" entry. The system shows you a form to be filled with the date and time interval for the break. Vichy inserts as interval from 1 p.m. to 3 p.m. and submits it by pressing the "Save" button. The system checks the information and sends an error message.
+	Vichy is a manager who has to go to Naples for a meeting at 3:15 p.m.. She bought a train ticket from Milan at 10.30 a.m.. The journey lasts 270 minutes. Vichy opens the mobile application of "Travlendar +" and selects the entry "BreakTime". The system shows a form to be filled in with the date and duration for the break. Vichy inserts as interval 1 p.m. - 3 p.m. and submits it pressing on"Save" button. The system checks the information and sends an error message.
 	
 	\bigskip
 	\noindent
@@ -1214,12 +1215,12 @@ First, the guest must complete the registration form with personal data (i.e., f
     			Input Condition & The user specifies a time interval for break. \\ \hline
     			Event flow & 
 			\begin{enumerate}
-  				\item The user must login by entering your mail and password;
-  				\item The user selects with a "BreakTime" button;
-  				\item The system opens a form to complete with date and time interval;
-  				\item The user inserts information regarding time interval and duration of break;
-  				\item The user saves the information by pressing the "Save" button;
-  				\item The system processes the information, updates the database and notifies the user that the operation has been successful (specifying the time interval for break). If not, it generates an error message.
+  				\item The user must login entering his/her email and password.;
+  				\item The user selects "Break Time" button;
+  				\item The system opens a form to be completed indicating date and duration of the interval;
+  				\item The user inserts information regarding the date and the duration of break;
+  				\item The user saves the information pressing on "Save" button;
+  				\item The system processes the information, updates the database and notifies the user that the operation has been successfully concluded (specifying the start and end time for break). If not, it generates an error message.
  			 \end{enumerate} \\ \hline
     			Output Condition & The system selects within the time interval, time of specify duration for the break. \\ \hline
     			Exception & The system issues an error message if there is no duration time for the break during the specified time interval. \\ \hline
@@ -1239,9 +1240,9 @@ First, the guest must complete the registration form with personal data (i.e., f
 			\end{itemize}
 		\item The system must verify that the date is behind the insertion date.
 		\item The system must check that the available time (duration time) is sufficient for the break.
-		\item Once the information is verified, the system must update the database.
-		\item The system must alert the user of the selected time interval.
-		\item The system must send an error message if an incorrect date or time is not available.
+		\item Once the information are verified, the system must update the database.
+		\item The system must alert the user about the selected time interval.
+		\item The system must send an error message if an incorrect date or time space is not available.
 	\end{itemize}
 	
 	\newpage
@@ -1276,7 +1277,7 @@ First, the guest must complete the registration form with personal data (i.e., f
 	
 	
 	\subsubsection{Reliability}
-	The reliability can be expressed as the percentage of the operations that succeeds, then we can write the following relation:
+	Reliability can be expressed as a percentage on the total operations that succeeds, then we can write the following relation:
 	
 	\bigskip
 	\begin{center}
@@ -1284,7 +1285,7 @@ First, the guest must complete the registration form with personal data (i.e., f
 	\end{center}
 
 	\bigskip
-	The system must have a reliability greater or equal than 99.9\%, that means that the operations that fails are less than 0.1\%.
+	The system must have a reliability greater or equal than 99.9\%, that means that failing the operations are less than 0.1\%.
 
 	
 	\subsubsection{Availability}
@@ -1292,16 +1293,16 @@ First, the guest must complete the registration form with personal data (i.e., f
 	
 	
 	\subsubsection{Security}
-	The security attribute depends on following factors:
+	The security attribute depends on the following factors:
 	\begin{itemize}
 		\item Every communication between application server and client must comply the  HTTPS protocol.
-		\item The communication between different servers must be SSL/TLS encrypted.
-		\item The sensitive informations (i.e. password) must be properly stored (i.e., key-hashed salted hash).
+		\item Communication between different servers must be SSL/TLS encrypted.
+		\item Sensitive informations (i.e. password) must be properly stored (i.e., key-hashed salted hash).
 	\end{itemize}
 	
 	
 	\subsubsection{Mantainability}
-	The code and the documentation must match in order to make the code easy to understand to future maintainers.
+	Code and the documentation must match in order to make the code easy to understand for future maintainers.
 	
 	
 	\subsubsection{Portability}
@@ -1309,11 +1310,7 @@ First, the guest must complete the registration form with personal data (i.e., f
 
 
 	\newpage
-	\subsubsection{Class Diagram}
-	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-	consequat. 
+	\subsubsection{Class Diagram} 
 
 	\begin{figure}[h!]
 		\bigskip
@@ -1326,26 +1323,73 @@ First, the guest must complete the registration form with personal data (i.e., f
 	\section{Formal Analysis Using Alloy}
 
 	\begin{lstlisting}
-
+	
 	//SIGNATURES
 
-	//Define type sex
-	abstract sig Sex {}
-	one sig Male extends Sex{}
-	one sig Female extends Sex{}
+	one sig ServerCalendar{
+		events: set Event,
+		now: one Int //current date
+	}
+	{
+		#events >= 0
+		now     >= 0
+	}
 
-	//String type abstraction
-	sig StringLetter{}
+	sig User{
+		firstName:            one StringLetter,
+		lastName:             one StringLetter,
+		dateOfBirth:          one Int,
+		sex:                  one Sex,
+		mailAddress:          one StringLetter,
+		password:             one StringLetter,
+		drivingLicenceNumber: lone Int,
+		userMeans:            some Mean
+	}
+	{
+		drivingLicenceNumber > 0
+	}
 
-	sig Location{
-		latitude:  one Int,
-		longitude: one Int
-	} 
-	{	
-		latitude  >= -90
-		latitude  <= 90
-		longitude >= -180
-		longitude <= 180
+	abstract sig Event {}
+
+	sig Meeting extends Event{
+	    user:          one User,
+		name:          one StringLetter,
+		insertionTime: one Int,
+		start:         one Int,
+		end:           one Int,
+		place:         one Location,
+		people:        one Int
+	}
+	{
+		insertionTime >= 0
+		start         >= 0
+		end           >  0
+		end           >  start
+	}
+
+	//Supposing that duration is an integer attribute
+	sig Break extends Event{
+	    user:          one User,
+		name:          one StringLetter,
+		insertionTime: one Int, //date of insertion the break into the calendar
+		startAtLeast:  one Int,
+		endAtMost:     one Int,
+		start:         one Int,
+		end:           one Int,
+		duration:      one Int
+	}
+	{
+		insertionTime >= 0
+		start         <  end
+		startAtLeast  <  endAtMost
+		start         >= 0
+		end           >  0
+		startAtLeast  >= 0
+		endAtMost     >  0
+		duration      >  0
+		duration      =  end - start
+		start         >= startAtLeast
+		end           <= endAtMost
 	}
 
 	abstract sig Mean{
@@ -1369,109 +1413,62 @@ First, the guest must complete the registration form with personal data (i.e., f
 	sig FERRY       extends Mean {}
 	sig BYWALK      extends Mean {}
 
-	sig Meeting{
-		name:          one StringLetter,
-		insertionTime: one Int,
-		start:         one Int,
-		end:           one Int,
-		place:         one Location,
-		people:        Int,
-		transportMode: some Mean,
+	sig Location{
+		latitude:  one Int,
+		longitude: one Int
 	}
-	{
-		insertionTime >= 0
-		start         >= 0
-		end           > 0
-		end           > start
+	{    
+		latitude  >= -90
+		latitude  <= 90
+		longitude >= -180
+		longitude <= 180
 	}
 
-	//Supposing that duration is an integer attribute
-	sig Break{
-		name:          one StringLetter,
-		insertionTime: one Int, //date of insertion the break into the calendar
-		startAtLeast:  one Int,
-		endAtMost:     one Int,
-		start:         one Int,
-		end:           one Int,
-		duration:      one Int
-	}
-	{
-		insertionTime >= 0
-		start         < end
-		startAtLeast  < endAtMost
-		start         >= 0
-		end           > 0
-		startAtLeast  >= 0
-		endAtMost     > 0
-		duration      > 0
-		duration      = end - start
-		start         >= startAtLeast 
-		end           <= endAtMost
-	}
+	abstract sig Sex {}
+	one sig Male   extends Sex{}
+	one sig Female extends Sex{}
 
-	sig ServerCalendar{
-		meetingEvents: set Meeting,
-		breakEvents:   set Break,
-		now:           one Int //current date
-	}
-	{
-		#meetingEvents > 0
-		#breakEvents   > 0
-		now            >= 0
-	}
-
-	sig User{
-		firstName:            one StringLetter,
-		lastName:             one StringLetter,
-		dateOfBirth:          one Int,
-		sex:                  one Sex,
-		mailAddress:          one StringLetter,
-		password:             one StringLetter,
-		drivingLicenceNumber: lone Int,
-		userMeeting:          some Meeting,
-		userBreak:            one Break,
-		userMeans:            some Mean
-	}
-	{
-		drivingLicenceNumber > 0
-	}
+	sig StringLetter{}
 
 
 	// PREDICATES
 
 	pred insertMeeting [s, s': ServerCalendar, m: Meeting] {
-	    s'.meetingEvents = s.meetingEvents + m
-	    m.insertionTime >= s.now
-	    m.insertionTime <= s'.now
+		s'.events = s.events + m
+		m.insertionTime >= s.now
+		m.insertionTime <= s'.now
 	}
 
 	pred insertBreak [s, s': ServerCalendar,b: Break] {
-	    s'.breakEvents = s.breakEvents + b
-	    b.insertionTime >= s.now
-	    b.insertionTime <= s'.now
+		s'.events = s.events + b
+		b.insertionTime >= s.now
+		b.insertionTime <= s'.now
 	}
 
 	pred removeMeeting [s, s': ServerCalendar, m: Meeting] {
-	    s'.meetingEvents = s.meetingEvents - m
+		s'.events = s.events - m
 	}
 
 	pred removeBreak [s, s': ServerCalendar, b: Break] {
-	    s'.breakEvents = s.breakEvents - b
+		s'.events= s.events - b
 	}
 
 	pred overlapsMM[m1, m2: Meeting] {
-	    (m1.start < m2.start and m1.end  >m2.start) or
-		(m1.start >= m2.start and m1.start < m2.end)
+	    m1.user = m2.user implies
+		((m1.start < m2.start and m1.end  >m2.start) or
+		(m1.start >= m2.start and m1.start < m2.end))
 	}
 
 	pred overlapsMB[m: Meeting, b: Break] {
-	    (m.start < b.start and m.end > b.start) or
-		(m.start >= b.start and m.start < b.end)
+	    m.user = b.user implies
+		((m.start < b.start and m.end > b.start) or
+		(m.start >= b.start and m.start < b.end))
 	}
 
 	pred overlapsBB[b1, b2: Break] {
-	    (b1.start < b2.start and b1.end  >b2.start) or
-		(b1.start >= b2.start and b1.start < b2.end)
+	    b1.user = b2.user implies
+		((b1.start < b2.start and b1.end  >b2.start) or
+		(b1.start >= b2.start and b1.start < b2.end))
 	}
 
 
@@ -1480,32 +1477,33 @@ First, the guest must complete the registration form with personal data (i.e., f
 	//No two distinct overlapping position
 	fact NoPositionOverlapping{
 		no disj pos1, pos2: Location|
-		(pos1.latitude = pos2.latitude and 
-		 pos1.longitude = pos2.longitude)
+		(pos1.latitude = pos2.latitude and pos1.longitude = pos2.longitude)
 	}
 
 	//No two distinct coinciding users
 	fact UniqueUser{
-		no disj us1, us2: User|
-			(us1 != us2 and 
-			(us1.mailAddress = us2.mailAddress or
-			us1.drivingLicenceNumber = us2.drivingLicenceNumber))
+		no disj u1, u2: User|
+		(u1 != u2 and
+		(u1.mailAddress = u2.mailAddress or
+		u1.drivingLicenceNumber = u2.drivingLicenceNumber))
 	}
 
 	//No two distinct overlapping meeting
 	fact UniqueMeeting{
-		no disj meet1, meet2: Meeting|
-			(meet1 != meet2 and
-			(meet1.start = meet2.start or
-			meet1.end = meet2.end))
+		no disj m1, m2: Meeting|
+		(m1 != m2 and
+		(m1.user = m2.user or
+	    m1.start = m2.start or
+		m1.end = m2.end))
 	}
 
 	//No two distinct overlapping break
 	fact UniqueBreak{
-		no disj br1, br2: Break|
-			(br1 != br2 and
-			(br1.startAtLeast = br2.startAtLeast or
-			br1.endAtMost = br2. endAtMost ))
+		no disj b1, b2: Break|
+		(b1 != b2 and
+		(b1.user = b2.user or
+	    b1.startAtLeast = b2.startAtLeast or
+		b1.endAtMost = b2. endAtMost ))
 	}
 
 	//No meeting overlapping meeting
@@ -1538,14 +1536,14 @@ First, the guest must complete the registration form with personal data (i.e., f
 		all b: Break | (b.insertionTime <= b.start)
 	}
 
-	//Server Calendar contains all meetings
-	fact containAllMeeting {
-		all m: Meeting, c: ServerCalendar | (m in c.meetingEvents)
+	//Server Calendar contains all breaks
+	fact containAllMeetings {
+		all m: Meeting, c: ServerCalendar | (m in c.events)
 	}
 
 	//Server Calendar contains all breaks
-	fact containAllBreak {
-		all b: Break, c: ServerCalendar | (b in c.breakEvents)
+	fact containAllBreaks {
+		all b: Break, c: ServerCalendar | (b in c.events)
 	}
 
 	//duration break
@@ -1573,30 +1571,50 @@ First, the guest must complete the registration form with personal data (i.e., f
 	  no disj b1, b2: Break | overlapsBB[b1, b2]
 	}
 
-	//Available seats imply higher capacity of the means of transport
-	assert Available {
-		all m:Meeting, t: Mean | 
-			((m.people <= t.available_seats) 
-				implies (m.people <= t.capacity))
-	}
-
-	//Duration of break is equal to difference between end and start time
-	assert DurationBreak{
-		all b: Break | (b.duration = (b.end - b.start))
-	}
-
-
 	pred show() {}
 
-	run show for 5 
+	run show for 15
+
+
 	\end{lstlisting}
-			
+
+	\begin{figure}[h!]
+		\bigskip
+		\centering
+		\includegraphics[scale=0.5]{img/diagrams/mm.png}
+		\caption{Metamodel.}
+	\end{figure}
+	\newpage
+	\appendix
+	\section{Appendix}
+
+	\subsection{Software and tools used}
+	The software and tools used during the drawing of this document are:
+	\begin{description}
+		\item[LaTex:] used to build this document.
+		\item[Google Drive / Google Documents:] used to always update and share the documents.
+		\item[draw.io:] used to draw diagrams (https://www.draw.io).
+		\item[Marvel:] used to build the mockups (https://marvelapp.com).
+		\item[GitHub:] used as version control and to keep it shared between group members and teachers (https://www.github.com).
+		\item[Alloy Analyzer:] used to analyze specifications and requirements.
+	\end{description}
+
+
+	\subsection{Hours of work}
+	Most of the work on this document was made in the presence of both members of the group. The approximate number of hours worked by each member of the group is as follow (including hours spent in group work):
+
+	\bigskip
+	Davide Rossetto: about 40 hours
 	
-	\section{Effort Spent}
+	Alessandro Tatti: about 40 hours
+
+
+	\section{Bibliography}
+
+	[1] AA 2017/2018 Software Engineering 2 - Project goal, schedule and rules
 	
-	
-	
-	\section{References}
-	
-	
+	\noindent
+	\bigskip
+	[2] Jackson, Zave - The World and the Machine
+
 \end{document}
