@@ -2,7 +2,6 @@
 
 \usepackage[hidelinks]{hyperref}
 \usepackage{enumitem}
-\usepackage{listings}
 \usepackage{amsfonts}
 \usepackage[framemethod = tikz]{mdframed}
 
@@ -25,6 +24,33 @@
 	linktocpage=false
 }
 
+\usepackage{listings}
+\input{alloy.sty}
+
+% define a style for the alloy language
+\lstdefinestyle{alloy}{
+	commentstyle=\itshape,
+	keywordstyle=\bfseries,
+	stringstyle=\itshape,
+}
+
+% define command for inline use; usage: \alloy|sig A {f: some B}|
+\def\alloy{\lstinline[
+	language=alloy,
+	style=alloy,
+	basicstyle=\ttfamily\small
+]}
+
+\renewcommand{\ttdefault}{pcr}  % font type with bfseries and ttfamily
+% general definitions
+\lstset{
+	language=alloy,
+	basicstyle=\footnotesize,
+	tabsize=4,
+	numbers=left,
+    stepnumber=1
+}
+
 \usepackage{titlesec}
 
 \newcommand\chaptername{Section}
@@ -44,7 +70,7 @@
 
 \date{
 	Delivery date: 2017 May 07\\
-	\bigskip v0.9
+	\bigskip v0.11
 }
 
 \begin{document}
@@ -168,6 +194,8 @@
 		\item[v0.7] Add Activity diagrams.
 		\item[v0.8] Change part of LunchTime in Break: add and modify last three goals, modify use case part.
 		\item[v0.9] Correct the form and sintax of the document.
+		\item[v0.10] Add mockups.
+		\item[v0.11] Add \textit{Formal Analysis Using Alloy}.
 	\end{description}
 	
 	
@@ -452,17 +480,22 @@ First, the guest must complete the registration form with personal data (i.e., f
 		\item The system sends a recording confirmation mail correctly, when the guest clicks the "Done" button;
 		\item The guest can leave the registration process at any time.
 	\end{itemize}
-	
-	\newpage
-	\noindent
-	\textbf{Activity diagram} \\
-	
-	\begin{center}
-		\includegraphics[scale=0.25]{img/diagrams/register_ad.png} \\  \bigskip
-		Figire 3.1: Activity diagram for Register.
-	\end{center}
-	
 
+	\begin{figure}[h!]
+		\bigskip
+		\centering
+		\includegraphics[scale=0.22]{img/diagrams/register_ad.png}
+		\caption{Activity diagram for Register.}
+	\end{figure}
+
+	\begin{figure}[h!]
+		\bigskip
+		\centering
+		\includegraphics[scale=0.25]{img/mockups/register_m.png}
+		\caption{Mockup for registration on a mobile device.}
+	\end{figure}
+
+	\newpage
 	\subsubsection{Login}
 	
 	\bigskip
@@ -522,18 +555,26 @@ First, the guest must complete the registration form with personal data (i.e., f
 	\noindent
 	\textbf{Activity diagram} \\
 	
-	\begin{center}
-		\includegraphics[scale=0.25]{img/diagrams/login_ad.png} \\ \bigskip
-		Figire 3.2.1: Activity diagram for Login.
-	\end{center}
+	\begin{figure}[h!]
+		\bigskip
+		\centering
+		\includegraphics[scale=0.25]{img/diagrams/login_ad.png}
+		\caption{Activity diagram for Login.}
+	\end{figure}
+	\begin{figure}[h!]
+		\bigskip
+		\centering
+		\includegraphics[scale=0.25]{img/diagrams/login_sd.png}
+		\caption{Login sequence diagram.}
+	\end{figure}
+	\begin{figure}[h!]
+		\bigskip
+		\centering
+		\includegraphics[scale=0.25]{img/mockups/login_m.png}
+		\caption{Mockup for Login on a mobile device.}
+	\end{figure}
 	
-	\bigskip
-	\begin{center}
-		\includegraphics[scale=0.25]{img/diagrams/login_sd.png} \\  \bigskip
-		Figire 3.2.2: Login sequence diagram.
-	\end{center}
-	
-
+	\newpage
 	\subsubsection{Create meetings}
 	
 	\bigskip
@@ -578,13 +619,16 @@ First, the guest must complete the registration form with personal data (i.e., f
 	\end{center}
 	
 	\bigskip
-	\begin{center}
-		\includegraphics[scale=0.25]{img/diagrams/create_meeting_uc.png} \\  \bigskip
-		Figire 3.3.1: Create meeting Use case diagram.
-	\end{center}
+	\begin{figure}[h!]
+		\bigskip
+		\centering
+		\includegraphics[scale=0.25]{img/diagrams/create_meeting_uc.png}
+		\caption{Create meeting Use case diagram.}
+	\end{figure}
 	
 	\bigskip
 	\noindent
+	\newpage
 	\textbf{Functional requirements} \\
 	\begin{itemize}
 		\item The user must log in successfully;
@@ -608,10 +652,12 @@ First, the guest must complete the registration form with personal data (i.e., f
 	\noindent
 	\textbf{Activity diagram} \\
 	
-	\begin{center}
-		\includegraphics[scale=0.25]{img/diagrams/create_meetings_ad.png} \\ \bigskip
-		Figire 3.3.2: Activity diagram for Create meetings.
-	\end{center}
+	\begin{figure}[h!]
+		\bigskip
+		\centering
+		\includegraphics[scale=0.25]{img/diagrams/create_meetings_ad.png}
+		\caption{Activity diagram for Create meetings.}
+	\end{figure}
 	
 
 	\subsubsection{Modify meetings}
@@ -685,12 +731,37 @@ First, the guest must complete the registration form with personal data (i.e., f
 	\noindent
 	\textbf{Activity diagram} \\
 	
-	\begin{center}
-		\includegraphics[scale=0.25]{img/diagrams/modify_meetings_ad.png} \\ \bigskip
-		Figire 3.4: Activity diagram for Modify meetings.
-	\end{center}
+	\begin{figure}[h!]
+		\bigskip
+		\centering
+		\includegraphics[scale=0.25]{img/diagrams/modify_meetings_ad.png}
+		\caption{Activity diagram for Modify meetings.}
+	\end{figure}
+
+	\begin{figure}
+		\centering
+		\begin{minipage}{.45\textwidth}
+			\centering
+			\includegraphics[width=.4\linewidth]{img/mockups/listView_m.png}
+			\caption{Meetings list view on mobile.}
+			\label{fig:test1}
+		\end{minipage}
+		\begin{minipage}{.45\textwidth}
+			\centering
+			\includegraphics[width=.4\linewidth]{img/mockups/mapView_m.png}
+			\caption{Meetings map view on mobile.}
+			\label{fig:test2}
+		\end{minipage}
+	\end{figure}
+	\begin{figure}[h!]
+		\bigskip
+		\centering
+		\includegraphics[scale=0.25]{img/mockups/mapView_w.png}
+		\caption{Mockup for meetings map view on a browser.}
+	\end{figure}
 
 
+	\newpage
 	\subsubsection{Delete meetings}
 	
 	\bigskip
@@ -746,10 +817,12 @@ First, the guest must complete the registration form with personal data (i.e., f
 	\noindent
 	\textbf{Activity diagram} \\
 	
-	\begin{center}
-		\includegraphics[scale=0.25]{img/diagrams/delete_meetings_ad.png} \\ \bigskip
-		Figire 3.5: Activity diagram for Delete meetings.
-	\end{center}
+	\begin{figure}[h!]
+		\bigskip
+		\centering
+		\includegraphics[scale=0.25]{img/diagrams/delete_meetings_ad.png}
+		\caption{Activity diagram for Delete meetings.}
+	\end{figure}
 	\newpage
 
 	\subsubsection{Manage profile informations}
@@ -803,10 +876,12 @@ First, the guest must complete the registration form with personal data (i.e., f
 	\noindent
 	\textbf{Activity diagram} \\
 	
-	\begin{center}
-		\includegraphics[scale=0.24]{img/diagrams/manage_profile_informations_ad.png} \\ \bigskip
-		Figire 3.6: Activity diagram for Manage profile informations.
-	\end{center}
+	\begin{figure}[h!]
+		\bigskip
+		\centering
+		\includegraphics[scale=0.23]{img/diagrams/manage_profile_informations_ad.png}
+		\caption{Activity diagram for Manage profile informations.}
+	\end{figure}
 
 
 	\subsubsection{Delete profile}
@@ -863,10 +938,12 @@ First, the guest must complete the registration form with personal data (i.e., f
 	\noindent
 	\textbf{Activity diagram} \\
 	
-	\begin{center}
-		\includegraphics[scale=0.25]{img/diagrams/delete_profile_ad.png} \\ \bigskip
-		Figire 3.7: Activity diagram for Delete profile.
-	\end{center}
+	\begin{figure}[h!]
+		\bigskip
+		\centering
+		\includegraphics[scale=0.25]{img/diagrams/delete_profile_ad.png}
+		\caption{Activity diagram for Delete profile.}
+	\end{figure}
 	\newpage
 	
 
@@ -921,10 +998,12 @@ First, the guest must complete the registration form with personal data (i.e., f
 	\noindent
 	\textbf{Activity diagram} \\
 	
-	\begin{center}
-		\includegraphics[scale=0.25]{img/diagrams/activate_travel_mean_ad.png} \\ \bigskip
-		Figire 3.8: Activity diagram for Activate travel mean(s).
-	\end{center}
+	\begin{figure}[h!]
+		\bigskip
+		\centering
+		\includegraphics[scale=0.25]{img/diagrams/activate_travel_mean_ad.png}
+		\caption{Activity diagram for Activate travel mean(s).}
+	\end{figure}
 	\newpage
 
 	\subsubsection{Deactivate travel mean(s)}
@@ -978,10 +1057,12 @@ First, the guest must complete the registration form with personal data (i.e., f
 	\noindent
 	\textbf{Activity diagram} \\
 	
-	\begin{center}
-		\includegraphics[scale=0.25]{img/diagrams/deactivate_travel_mean_ad.png} \\ \bigskip
-		Figire 3.9: Activity diagram for Deactivate travel mean(s).
-	\end{center}
+	\begin{figure}[h!]
+		\bigskip
+		\centering
+		\includegraphics[scale=0.25]{img/diagrams/deactivate_travel_mean_ad.png}
+		\caption{Activity diagram for Deactivate travel mean(s).}
+	\end{figure}
 	\newpage
 	
 
@@ -1034,10 +1115,12 @@ First, the guest must complete the registration form with personal data (i.e., f
 	\noindent
 	\textbf{Activity diagram} \\
 	
-	\begin{center}
-		\includegraphics[scale=0.24]{img/diagrams/provide_constraints_ad.png} \\ \bigskip
-		Figire 3.10: Activity diagram for Provide constraints.
-	\end{center}
+	\begin{figure}[h!]
+		\bigskip
+		\centering
+		\includegraphics[scale=0.23]{img/diagrams/provide_constraints_ad.png}
+		\caption{Activity diagram for Provide constraints.}
+	\end{figure}
 
 
 	\subsubsection{Minimize carbon footprint}
@@ -1090,10 +1173,12 @@ First, the guest must complete the registration form with personal data (i.e., f
 	\noindent
 	\textbf{Activity diagram} \\
 	
-	\begin{center}
-		\includegraphics[scale=0.25]{img/diagrams/minimize_carbon_footprint_ad.png} \\ \bigskip
-		Figire 3.11: Activity diagram for Minimize carbon footprint.
-	\end{center}
+	\begin{figure}[h!]
+		\bigskip
+		\centering
+		\includegraphics[scale=0.25]{img/diagrams/minimize_carbon_footprint_ad.png}
+		\caption{Activity diagram for Minimize carbon footprint.}
+	\end{figure}
 	\newpage
 
 
@@ -1163,10 +1248,12 @@ First, the guest must complete the registration form with personal data (i.e., f
 	\noindent
 	\textbf{Activity diagram} \\
 	
-	\begin{center}
-		\includegraphics[scale=0.24]{img/diagrams/specify_lunch_timing_ad.png} \\ \bigskip
-		Figire 3.12: Activity diagram for Specify lunch timing.
-	\end{center}
+	\begin{figure}[h!]
+		\bigskip
+		\centering
+		\includegraphics[scale=0.23]{img/diagrams/specify_lunch_timing_ad.png}
+		\caption{Activity diagram for Specify lunch timing.}
+	\end{figure}
 
 	
 	\subsection{Performance requiremens}
@@ -1219,9 +1306,290 @@ First, the guest must complete the registration form with personal data (i.e., f
 	
 	\subsubsection{Portability}
 	The back-end application must be written in Java EE7 in order to be able to run on every server that runs JEE7. The web application must support at least the main modern browser (e.g., IE, Firefox, Chrome, Safari). The mobile application must be developed both for IOS and Android.
+
+
+	\newpage
+	\subsubsection{Class Diagram}
+	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+	consequat. 
+
+	\begin{figure}[h!]
+		\bigskip
+		\centering
+		\includegraphics[scale=0.25]{img/diagrams/cd.png}
+		\caption{Class Diagram.}
+	\end{figure}
 	
 	
 	\section{Formal Analysis Using Alloy}
+
+	\begin{lstlisting}
+
+	//SIGNATURES
+
+	//Define type sex
+	abstract sig Sex {}
+	one sig Male extends Sex{}
+	one sig Female extends Sex{}
+
+	//String type abstraction
+	sig StringLetter{}
+
+	sig Location{
+		latitude:  one Int,
+		longitude: one Int
+	} 
+	{	
+		latitude  >= -90
+		latitude  <= 90
+		longitude >= -180
+		longitude <= 180
+	}
+
+	abstract sig Mean{
+		capacity:        one Int,
+		available_seats: one Int
+	}
+	{
+		capacity>0
+		available_seats >= 0
+		available_seats <= capacity
+	}
+
+	sig TRAIN       extends Mean {}
+	sig UNDERGROUND extends Mean {}
+	sig TRAM        extends Mean {}
+	sig BUS         extends Mean {}
+	sig TAXI        extends Mean {}
+	sig CARSHARING  extends Mean {}
+	sig BIKESHARING extends Mean {}
+	sig PLANE       extends Mean {}
+	sig FERRY       extends Mean {}
+	sig BYWALK      extends Mean {}
+
+	sig Meeting{
+		name:          one StringLetter,
+		insertionTime: one Int,
+		start:         one Int,
+		end:           one Int,
+		place:         one Location,
+		people:        Int,
+		transportMode: some Mean,
+	}
+	{
+		insertionTime >= 0
+		start         >= 0
+		end           > 0
+		end           > start
+	}
+
+	//Supposing that duration is an integer attribute
+	sig Break{
+		name:          one StringLetter,
+		insertionTime: one Int, //date of insertion the break into the calendar
+		startAtLeast:  one Int,
+		endAtMost:     one Int,
+		start:         one Int,
+		end:           one Int,
+		duration:      one Int
+	}
+	{
+		insertionTime >= 0
+		start         < end
+		startAtLeast  < endAtMost
+		start         >= 0
+		end           > 0
+		startAtLeast  >= 0
+		endAtMost     > 0
+		duration      > 0
+		duration      = end - start
+		start         >= startAtLeast 
+		end           <= endAtMost
+	}
+
+	sig ServerCalendar{
+		meetingEvents: set Meeting,
+		breakEvents:   set Break,
+		now:           one Int //current date
+	}
+	{
+		#meetingEvents > 0
+		#breakEvents   > 0
+		now            >= 0
+	}
+
+	sig User{
+		firstName:            one StringLetter,
+		lastName:             one StringLetter,
+		dateOfBirth:          one Int,
+		sex:                  one Sex,
+		mailAddress:          one StringLetter,
+		password:             one StringLetter,
+		drivingLicenceNumber: lone Int,
+		userMeeting:          some Meeting,
+		userBreak:            one Break,
+		userMeans:            some Mean
+	}
+	{
+		drivingLicenceNumber > 0
+	}
+
+
+	// PREDICATES
+
+	pred insertMeeting [s, s': ServerCalendar, m: Meeting] {
+	    s'.meetingEvents = s.meetingEvents + m
+	    m.insertionTime >= s.now
+	    m.insertionTime <= s'.now
+	}
+
+	pred insertBreak [s, s': ServerCalendar,b: Break] {
+	    s'.breakEvents = s.breakEvents + b
+	    b.insertionTime >= s.now
+	    b.insertionTime <= s'.now
+	}
+
+	pred removeMeeting [s, s': ServerCalendar, m: Meeting] {
+	    s'.meetingEvents = s.meetingEvents - m
+	}
+
+	pred removeBreak [s, s': ServerCalendar, b: Break] {
+	    s'.breakEvents = s.breakEvents - b
+	}
+
+	pred overlapsMM[m1, m2: Meeting] {
+	    (m1.start < m2.start and m1.end  >m2.start) or
+		(m1.start >= m2.start and m1.start < m2.end)
+	}
+
+	pred overlapsMB[m: Meeting, b: Break] {
+	    (m.start < b.start and m.end > b.start) or
+		(m.start >= b.start and m.start < b.end)
+	}
+
+	pred overlapsBB[b1, b2: Break] {
+	    (b1.start < b2.start and b1.end  >b2.start) or
+		(b1.start >= b2.start and b1.start < b2.end)
+	}
+
+
+	//FACTS
+
+	//No two distinct overlapping position
+	fact NoPositionOverlapping{
+		no disj pos1, pos2: Location|
+		(pos1.latitude = pos2.latitude and 
+		 pos1.longitude = pos2.longitude)
+	}
+
+	//No two distinct coinciding users
+	fact UniqueUser{
+		no disj us1, us2: User|
+			(us1 != us2 and 
+			(us1.mailAddress = us2.mailAddress or
+			us1.drivingLicenceNumber = us2.drivingLicenceNumber))
+	}
+
+	//No two distinct overlapping meeting
+	fact UniqueMeeting{
+		no disj meet1, meet2: Meeting|
+			(meet1 != meet2 and
+			(meet1.start = meet2.start or
+			meet1.end = meet2.end))
+	}
+
+	//No two distinct overlapping break
+	fact UniqueBreak{
+		no disj br1, br2: Break|
+			(br1 != br2 and
+			(br1.startAtLeast = br2.startAtLeast or
+			br1.endAtMost = br2. endAtMost ))
+	}
+
+	//No meeting overlapping meeting
+	fact NoMeetingOverlappingMeeting {
+		no disj m1, m2:Meeting | overlapsMM[m1, m2]
+	}
+
+	//No meeting overlapping break
+	fact NoMeetingOverlappingBreak {
+		no disj m:Meeting, b: Break | overlapsMB[m, b]
+	}
+
+	//No break overlapping break
+	fact NoBreakOverlappingBreak {
+		no disj b1, b2: Break | overlapsBB[b1, b2]
+	}
+
+	//time for break
+	fact TimeBreak{
+		all b:Break | ((b.endAtMost - b.startAtLeast) >= b.duration)
+	}
+
+	//date of meeting is after date of insertion
+	fact meetingMustBeInFuture{
+		all m: Meeting | (m.insertionTime <= m.start)
+	}
+
+	//date of meeting is after date of insertion
+	fact breakMustBeInFuture{
+		all b: Break | (b.insertionTime <= b.start)
+	}
+
+	//Server Calendar contains all meetings
+	fact containAllMeeting {
+		all m: Meeting, c: ServerCalendar | (m in c.meetingEvents)
+	}
+
+	//Server Calendar contains all breaks
+	fact containAllBreak {
+		all b: Break, c: ServerCalendar | (b in c.breakEvents)
+	}
+
+	//duration break
+	fact breakDuration{
+		all b: Break | (b.end - b.start = b.duration)
+	}
+
+	//The number of people must be lower than the capacity of mean
+	fact ContainPeople{
+		all m: Meeting, t: Mean | (m.people <= t.capacity)
+	}
+
+	//The number of people must be lower than the available seats
+	fact AvailablePeople{
+		all m:Meeting, t: Mean| (m.people <= t.available_seats)
+	}
+
+
+	//ASSERTIONS
+
+	//No overlps
+	assert noOverlapping {
+	  no disj m1, m2: Meeting | overlapsMM[m1, m2]
+	  no disj m: Meeting, b: Break | overlapsMB[m, b]
+	  no disj b1, b2: Break | overlapsBB[b1, b2]
+	}
+
+	//Available seats imply higher capacity of the means of transport
+	assert Available {
+		all m:Meeting, t: Mean | 
+			((m.people <= t.available_seats) 
+				implies (m.people <= t.capacity))
+	}
+
+	//Duration of break is equal to difference between end and start time
+	assert DurationBreak{
+		all b: Break | (b.duration = (b.end - b.start))
+	}
+
+
+	pred show() {}
+
+	run show for 5 
+	\end{lstlisting}
 			
 	
 	\section{Effort Spent}
