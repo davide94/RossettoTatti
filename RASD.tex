@@ -1570,12 +1570,42 @@
 	  no disj m: Meeting, b: Break | overlapsMB[m, b]
 	  no disj b1, b2: Break | overlapsBB[b1, b2]
 	}
+	//Available seats imply higher capacity of the means of transport
+	assert available {
+		all m:Meeting, t: Mean | ((m.people <= t.available_seats) implies (m.people <= t.capacity))
+	}
+
+	//Duration of break is equal to difference between end and start time
+	assert breakBuration{
+		all b: Break | (b.duration = (b.end - b.start))
+	}
 
 	pred show() {}
 
 	run show for 15
 
+	\end{lstlisting}
 
+
+	\newpage
+	Here is the execution of checks on the assertions:
+
+	\bigskip
+	\begin{lstlisting}{numbers=none}
+	Executing "Check noOverlapping for 25"
+	   Solver=sat4j Bitwidth=4 MaxSeq=7 SkolemDepth=1 Symmetry=20
+	   408265 vars. 13116 primary vars. 1170897 clauses. 9215ms.
+	   No counterexample found. Assertion may be valid. 146ms.
+
+	Executing "Check available for 25"
+	   Solver=sat4j Bitwidth=4 MaxSeq=7 SkolemDepth=1 Symmetry=20
+	   408796 vars. 13166 primary vars. 921430 clauses. 4645ms.
+	   No counterexample found. Assertion may be valid. 1133ms.
+
+	Executing "Check reakBuration for 25"
+	   Solver=sat4j Bitwidth=4 MaxSeq=7 SkolemDepth=1 Symmetry=20
+	   408224 vars. 13141 primary vars. 920158 clauses. 3455ms.
+	   No counterexample found. Assertion may be valid. 387ms.
 	\end{lstlisting}
 
 	\begin{figure}[h!]
@@ -1583,6 +1613,12 @@
 		\centering
 		\includegraphics[scale=0.5]{img/diagrams/mm.png}
 		\caption{Metamodel.}
+	\end{figure}
+	\begin{figure}[h!]
+		\bigskip
+		\centering
+		\includegraphics[scale=0.4]{img/diagrams/i.png}
+		\caption{An Alloy instance.}
 	\end{figure}
 	\newpage
 	\appendix
