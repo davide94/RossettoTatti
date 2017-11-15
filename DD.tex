@@ -44,7 +44,7 @@
 
 \date{
 	Delivery date: 2017 Nov 26\\
-	\bigskip v0.3
+	\bigskip v0.4
 }
 
 \begin{document}
@@ -116,7 +116,8 @@
 	\begin{description}
 		\item[v0.1] Construct basic document's structure, add \textit{Overview}.
 		\item[v0.2] Add \textit{Purpose}, \textit{Scope}, \textit{Definitions, Acronyms, Abbreviations}, \textit{Reference documents} and \textit{Document structure}.
-		\item[v0.3] Add \textit{High level components} and \textit{Appendix}.
+		\item[v0.3] Add \textit{High level components}, \textit{Appendix} and \textit{Bibliography}.
+		\item[v0.4] Add \textit{Component view}.
 	\end{description}
 	
 	
@@ -179,16 +180,62 @@
 	\item [Web Browser:] The \textit{Presentation Layer} of the \textit{web-based application}; It just renders the pages obtained from the \textit{Web server} and executes its scripts.
 	\end{description}
 
-	\bigskip
 	\begin{figure}[ht]
 	\centering
 	\includegraphics[width=0.95\textwidth]{img/diagrams/layers.png}
 	\caption{Layer structure of the system.}
 	\end{figure}
 
-	\bigskip
+	\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.75\textwidth]{img/diagrams/hlc.png}
+	\caption{High-level components of the system.}
+	\end{figure}
+
+	\newpage
 
 	\subsection{Component view}
+
+	This section shows in a more detailed way the components introduced in the overview, their role and their interactions.
+
+	\subsubsection{Database}
+	The database layer must include a DBMS component in order to manage the insertion, modification, deletion, and registration of data transactions within the storage memory.
+	
+	The DBMS must guarantee the correct functioning of simultaneous transactions and ACID properties; the DBMS must be relational because the requirements of the application in terms of data storage do not require a more complex structure than the one provided by the relational data structure.
+	
+	The data layer must be accessible only through Application Server via a dedicated interface. The Application Server must provide a persistence unit to handle the dynamic behavior of all persistent application data.
+	
+	The database must be optimized during the implementation phase to ensure security by granting access to data according to the applicant's privilege level. Sensible data, for example passwords and personal information, must be encrypted correctly before being stored. Users must be granted access only on the provision of correct and valid credentials.
+
+	\begin{figure}[ht]
+	\centering
+	\includegraphics[width=\textwidth]{img/diagrams/er.png}
+	\caption{ER Diagram.}
+	\end{figure}
+
+
+	\subsubsection{Application Server}
+
+
+	\subsubsection{Web Server}
+	The Web Server Layer is responsible to provide the web pages to the users that intends to access the application's services via web.
+	
+	\bigskip
+	This layer does not contain any application logic; it only provides static web pages that, through propers Javascript scripts, are able to access the REST APIs of the Application Server and make it fruible to end users.
+
+	\bigskip
+	The scripts must be able tu consume all the API's endpoints for the functionalities intended to be fruible via web.
+	The comunication with the APIs must be through textual data files over HTTPS (e.g. XML or JSON), as previously specified in \textit{Application Server} section.
+
+
+	\subsubsection{Mobile Application Client}
+	The Mobile Application Client must be designed to allow easy communication and implementation independent with the Application Server.
+	The mobile application user interface should be designed following the guidelines provided by Android and iOS producers.
+	The application must provide a software module that manages the GPS connection so that it can track location data by providing it to application servers.
+
+
+	\subsubsection{Web Application Client}
+	A \textit{Web Application Client} is any modern browser (eg. IE, Firefox, Chrome, Safari) able tu run Javascript to allow the pages to consume the REST APIs of the \textit{Application Server}.
 
 
 	\subsection{Deployment view}
@@ -284,6 +331,11 @@
 	
 	\section{Bibliography}
 	
-
+	\begin{description}
+	\item[[1{]}] AA 2017/2018 Software Engineering 2 - Requirements Analysis and Specification Document - Davide Rossetto, Alessandro Tatti
+	\item[[2{]}] AA 2017/2018 Software Engineering 2 - Project goal, schedule and rules
+	\item[[3{]}] IEEE Standard 1016:2009 System design - Software design descriptions
+	\item[[4{]}]
+	\end{description}
 
 \end{document}
