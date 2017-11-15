@@ -44,7 +44,7 @@
 
 \date{
 	Delivery date: 2017 Nov 26\\
-	\bigskip v0.1
+	\bigskip v0.3
 }
 
 \begin{document}
@@ -60,29 +60,91 @@
 
 	
 	\subsection{Purpose}
+	The structure of the following document is divided into two sections:
+	\begin{enumerate}
+	\item Design Document (main section)
+	\item Integration Test Plan Document (secondary section)
+	\end{enumerate}
+
+	\bigskip
+	The Design Document (DD) is intended to provide a more detailed functional description of the Travlendar + system – to - be by providing technical details and describing the main architectural components, their interfaces, and their interactions.
 	
+	The relationships among the different modules are highlighted using UML standards and other useful diagrams that show the structure of the system.
+	
+	The document has to guide the software development team to implement the project architecture, providing a stable reference and a unique view of all parts of the software, defining their operation.
+
+	\bigskip
+	The second part of the document is intended to provide guidelines to adequately carry out the planning of the integration test phase.
+	
+	The document includes determining which necessary tools, drivers and data structures that will be useful during the test process.
+
 	
 	
 	\subsection{Scope}
+	The system aims to support a personal event management service, providing features for choosing the best path, means of transport, and insertion of the break. The system must also make sure there are no overlap among events and among events and pauses.
+
+	The system is structured with a four-layer architecture. The purpose of the document is to describe this architecture in detail.
+
+	\bigskip
+	The system described is suitable for different types of customers: different actors that interact with the system - to – be by generating a client-server dualism, so the flow of requests and responses.
 	
+	The architecture must be designed with the intention of being maintainable and extensible, to make future possible changes.
+	
+	\bigskip
+	This document aims to guide the implementation phase so that cohesion and decoupling are increased as much as possible. In order to do this, individual components must not include too many independent functions and reduce interdependence.
+	
+	This document will follow specific architectural styles and design templates used for future implementation, as well as common design paradigms that combine useful features of this concepts.
+
 
 	
 	\subsection{Definitions, Acronyms, Abbreviations}
-	
+	\begin{description}
+	\item[ACID:] Atomicity, Consistency, Isolation and Durability. This is the set of properties of database transactions.
+	\item[DD:] Design Document.
+	\item[DBMS:] DataBase Management System.
+	\item[E-R diagram:] entity – relationship diagram
+	\item[ITPD:] Integration Test Plan Document.
+	\item[JPA:] Java Persistence API.
+	\item[MVC:] Model-View-Controller.
+	\item[RASD:] Requirements Analysis and Specification Document.
+	\item[UML:] Unified Modeling Language
+	\item[UX:] User Experience.
+	\end{description}
 	
 	
 	\subsection{Revision history}
 	\begin{description}
 		\item[v0.1] Construct basic document's structure, add \textit{Overview}.
+		\item[v0.2] Add \textit{Purpose}, \textit{Scope}, \textit{Definitions, Acronyms, Abbreviations}, \textit{Reference documents} and \textit{Document structure}.
+		\item[v0.3] Add \textit{High level components} and \textit{Appendix}.
 	\end{description}
 	
 	
 	\subsection{Reference documents}
+	This document follows the guidelines provided by ISO/IEC/IEEE 1016:2009 [3] related to system design and software design descriptions for complex software systems.
+
+	\bigskip
+	The indications given in this document are based on those given in the previous delivery for the project, the RASD document [1].
 	
+	\bigskip
+	This document is strictly based on the RASD assignment [2] and the test plan example [4] presented during the lessons for the project of Software Engineering II, course held by Elisabetta Di Nitto and Matteo Giovanni Rossi at the Politecnico di Milano, A.Y. 2017/2018.
 	
 	
 	\subsection{Document structure}
 
+	This document consists of six sections:
+
+	\begin{description}
+	\item[Section 1:] Introduction. This section provides a general introduction and overview of the Design Document and the covered topics that were not previously taken into account by the RASD.
+	\item[Section 2:] Architectural Design. This section shows the main system components together with sub-components and their relationship. This section is divided into different parts whose focus is mainly on design choices, interactions, architectural styles and patterns.
+	\item[Section 3:] Algorithm Design. This section focuses on the definition of the most relevant algorithms to be implemented by the system – to – be.
+	\item[Section 4:] User Interface Design. It provides an overview on how the user interface will look like.
+	\item[Section 5:] Requirements Traceability. This section explains how the requirements you have defined in the RASD map to the design elements that you have defined in this document.
+	\item[Section 6:] Implementation, Integration and test plan. This section identifies the order in which the developer plan to implement the subcomponents of the system and the order in which he plans to integrate such subcomponents and test the integration.
+	\end{description}
+
+	\bigskip
+	At the end of the document are an Appendix and a Bibliography, providing additional information about the sections listed above.
 
 	\section{Architectural Design}
 
@@ -107,6 +169,24 @@
 
 	\subsection{High level components}
 
+	The high-level components of the system are the following:
+
+	\begin{description}
+	\item [Database:] The \textit{Data Layer} of the system; All the data structures and entities concerning data storage. This level does not contain any application logic.
+	\item [Application Server:] The layer that contains all the \textit{application logic} and \textit{key algorithms} of the system.
+	\item [Web Server:] The Layer that provides all the \textit{web pages} to the \textit{web-based application}. This level does not contain any application logic.
+	\item [Mobile Application:] The \textit{Presentation Layer} of the \textit{mobile application}; This level does not contain any application logic.
+	\item [Web Browser:] The \textit{Presentation Layer} of the \textit{web-based application}; It just renders the pages obtained from the \textit{Web server} and executes its scripts.
+	\end{description}
+
+	\bigskip
+	\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.95\textwidth]{img/diagrams/layers.png}
+	\caption{Layer structure of the system.}
+	\end{figure}
+
+	\bigskip
 
 	\subsection{Component view}
 
@@ -174,14 +254,36 @@
 	\subsubsection{Subsystem integration sequence}
 
 
+	\newpage
 	\appendix
 	\section{Appendix}
 
-	
+
 	\subsection{Software and tools used}
+
+	The software and tools used during the drawing of this document are:
+
+	\begin{description}
+	\item[LaTex:] used to build this document.
+	\item[Google Drive / Google Documents:] used to always update and share the documents.
+	\item[draw.io:] used to draw diagrams (https://www.draw.io).
+	\item[Marvel:] used to build the mockups (https://marvelapp.com).
+	\item[GitHub:] used as version control and to keep it shared between group members and teachers (https://www.github.com).
+	\end{description}
 	
 
+	\subsection{Hours of work}
+
+	Most of the work on this document was made in the presence of both members of the group. The approximate number of hours worked by each member of the group is as follow (including hours spent in group work):
+	
+	\bigskip
+	Davide Rossetto: about ... hours
+	
+	Alessandro Tatti: about ... hours
+
+	
 	\section{Bibliography}
+	
 
 
 \end{document}
