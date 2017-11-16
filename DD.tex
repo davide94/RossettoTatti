@@ -152,16 +152,16 @@
 
 	\subsection{Overview}
 
-	This section gives a detailed overview of physical and logical infrastructures of the system-to-be and descrives the main components and their interactions.
+	This section gives a detailed overview of physical and logical infrastructures of the system-to-be and describes the main components and their interactions.
 
 	A top-down approach is adopted for the description of the architectural design of the system:
 
 	\bigskip
 	\begin{description}
 	\item [High level components:] A description of the high-level components and their interactions.
-	\item [Component view:] A detailed vision of the components descrived in the previous section.
+	\item [Component view:] A detailed vision of the components described in the previous section.
 	\item [Deployment view:] A set of indications on how to deploy the components on physical tiers.
-	\item [Runtime view:] A detailed vision of the dynamic behaviour of the software.
+	\item [Runtime view:] A detailed vision of the dynamic behavior of the software.
 	\item [Component interfaces:] A description of the different interfaces.
 	\item [Architectural styles and patterns:] A set of Architectural styles, design patterns and paradigms used in the design phase.
 	\item [Other design decisions:] A list of all relevant decisions taken during the design process and not mentioned before.
@@ -215,17 +215,36 @@
 
 
 	\subsubsection{Application Server}
+	This layer must handle business logic, data layer connections, and application access modes from different clients and external systems.
+	
+	The main feature of Application Server is the specific business logic modules that describe business rules and workflows for each feature provided by the application itself.
+	
+	The interface with the data layer must be managed by a dedicated persistence unit to ensure that only the Application Server can access the database.
+	
+	\bigskip
+	Application Server must provide a means of interfacing with the Web server and mobile clients through specific APIs in order to separate the different levels from their individual implementation. It must provide a way to communicate with external systems by adapting the application to existing external infrastructures.
+	
+	\bigskip
+	The main business logic modules must include:
+
+	\begin{description}
+	\item[UserManager:] This module must manage all the logics concerning to user account creation, login and management.
+	\item[EventManager:] This module must contain all the logic needed to create and modify meetings and breaks. It must guarantee the consistency of the model preventing from overlapping among events. 
+	\item[MapManager:] This module must contain all the logic used to locate users and meetings. 
+	\item[TravelInformationProvider:] This module must be able to interface with external agents such as \textit{Travel information providers} (i.e., ATM, Trenord, Alitalia, etc.).
+	\item[NotificationManager:] This module must be able to notify the user when it is necessary to do so (e.g. an user tries to insert a meeting that overlaps with a previous one).
+	\end{description}
 
 
 	\subsubsection{Web Server}
 	The Web Server Layer is responsible to provide the web pages to the users that intends to access the application's services via web.
 	
 	\bigskip
-	This layer does not contain any application logic; it only provides static web pages that, through propers Javascript scripts, are able to access the REST APIs of the Application Server and make it fruible to end users.
+	This layer does not contain any application logic; it only provides static web pages that, through propers Javascript scripts, are able to access the REST APIs of the Application Server and make it accessible to end users.
 
 	\bigskip
-	The scripts must be able tu consume all the API's endpoints for the functionalities intended to be fruible via web.
-	The comunication with the APIs must be through textual data files over HTTPS (e.g. XML or JSON), as previously specified in \textit{Application Server} section.
+	The scripts must be able to consume all the API's endpoints for the functionalities intended to be accessible via web.
+	The communication with the APIs must be through textual data files over HTTPS (e.g. XML or JSON), as previously specified in \textit{Application Server} section.
 
 
 	\subsubsection{Mobile Application Client}
@@ -235,7 +254,7 @@
 
 
 	\subsubsection{Web Application Client}
-	A \textit{Web Application Client} is any modern browser (eg. IE, Firefox, Chrome, Safari) able tu run Javascript to allow the pages to consume the REST APIs of the \textit{Application Server}.
+	A \textit{Web Application Client} is any modern browser (eg., IE, Firefox, Chrome, Safari) able to run Javascript to allow the pages to consume the REST APIs of the \textit{Application Server}.
 
 
 	\subsection{Deployment view}
