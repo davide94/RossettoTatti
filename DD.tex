@@ -44,7 +44,7 @@
 
 \date{
 	Delivery date: 2017 Nov 26\\
-	\bigskip v0.4
+	\bigskip v0.5
 }
 
 \begin{document}
@@ -99,25 +99,26 @@
 	
 	\subsection{Definitions, Acronyms, Abbreviations}
 	\begin{description}
-	\item[ACID:] Atomicity, Consistency, Isolation and Durability. This is the set of properties of database transactions.
-	\item[DD:] Design Document.
-	\item[DBMS:] DataBase Management System.
-	\item[E-R diagram:] entity – relationship diagram
-	\item[ITPD:] Integration Test Plan Document.
-	\item[JPA:] Java Persistence API.
-	\item[MVC:] Model-View-Controller.
-	\item[RASD:] Requirements Analysis and Specification Document.
-	\item[UML:] Unified Modeling Language
-	\item[UX:] User Experience.
+	\item [ACID:] Atomicity, Consistency, Isolation and Durability. This is the set of properties of database transactions.
+	\item [DD:] Design Document.
+	\item [DBMS:] DataBase Management System.
+	\item [E-R diagram:] entity – relationship diagram
+	\item [ITPD:] Integration Test Plan Document.
+	\item [JPA:] Java Persistence API.
+	\item [MVC:] Model-View-Controller.
+	\item [RASD:] Requirements Analysis and Specification Document.
+	\item [UML:] Unified Modeling Language
+	\item [UX:] User Experience.
 	\end{description}
 	
 	
 	\subsection{Revision history}
 	\begin{description}
-		\item[v0.1] Construct basic document's structure, add \textit{Overview}.
-		\item[v0.2] Add \textit{Purpose}, \textit{Scope}, \textit{Definitions, Acronyms, Abbreviations}, \textit{Reference documents} and \textit{Document structure}.
-		\item[v0.3] Add \textit{High level components}, \textit{Appendix} and \textit{Bibliography}.
-		\item[v0.4] Add \textit{Component view}.
+		\item [v0.1] Construct basic document's structure, add \textit{Overview}.
+		\item [v0.2] Add \textit{Purpose}, \textit{Scope}, \textit{Definitions, Acronyms, Abbreviations}, \textit{Reference documents} and \textit{Document structure}.
+		\item [v0.3] Add \textit{High level components}, \textit{Appendix} and \textit{Bibliography}.
+		\item [v0.4] Add \textit{Component view}.
+		\item [v0.5] Add \textit{Deployment view}, \textit{Runtime view}, \textit{Component interfaces}, \textit{Architectural styles and patterns} and \textit{Other design decisions}.
 	\end{description}
 	
 	
@@ -136,12 +137,12 @@
 	This document consists of six sections:
 
 	\begin{description}
-	\item[Section 1:] Introduction. This section provides a general introduction and overview of the Design Document and the covered topics that were not previously taken into account by the RASD.
-	\item[Section 2:] Architectural Design. This section shows the main system components together with sub-components and their relationship. This section is divided into different parts whose focus is mainly on design choices, interactions, architectural styles and patterns.
-	\item[Section 3:] Algorithm Design. This section focuses on the definition of the most relevant algorithms to be implemented by the system – to – be.
-	\item[Section 4:] User Interface Design. It provides an overview on how the user interface will look like.
-	\item[Section 5:] Requirements Traceability. This section explains how the requirements you have defined in the RASD map to the design elements that you have defined in this document.
-	\item[Section 6:] Implementation, Integration and test plan. This section identifies the order in which the developer plan to implement the subcomponents of the system and the order in which he plans to integrate such subcomponents and test the integration.
+	\item [Section 1:] Introduction. This section provides a general introduction and overview of the Design Document and the covered topics that were not previously taken into account by the RASD.
+	\item [Section 2:] Architectural Design. This section shows the main system components together with sub-components and their relationship. This section is divided into different parts whose focus is mainly on design choices, interactions, architectural styles and patterns.
+	\item [Section 3:] Algorithm Design. This section focuses on the definition of the most relevant algorithms to be implemented by the system – to – be.
+	\item [Section 4:] User Interface Design. It provides an overview on how the user interface will look like.
+	\item [Section 5:] Requirements Traceability. This section explains how the requirements you have defined in the RASD map to the design elements that you have defined in this document.
+	\item [Section 6:] Implementation, Integration and test plan. This section identifies the order in which the developer plan to implement the subcomponents of the system and the order in which he plans to integrate such subcomponents and test the integration.
 	\end{description}
 
 	\bigskip
@@ -180,13 +181,14 @@
 	\item [Web Browser:] The \textit{Presentation Layer} of the \textit{web-based application}; It just renders the pages obtained from the \textit{Web server} and executes its scripts.
 	\end{description}
 
-	\begin{figure}[ht]
+	\begin{figure}[!ht]
 	\centering
 	\includegraphics[width=0.95\textwidth]{img/diagrams/layers.png}
 	\caption{Layer structure of the system.}
 	\end{figure}
 
-	\begin{figure}[ht]
+	\bigskip
+	\begin{figure}[!ht]
 	\centering
 	\includegraphics[width=0.75\textwidth]{img/diagrams/hlc.png}
 	\caption{High-level components of the system.}
@@ -207,7 +209,7 @@
 	
 	The database must be optimized during the implementation phase to ensure security by granting access to data according to the applicant's privilege level. Sensible data, for example passwords and personal information, must be encrypted correctly before being stored. Users must be granted access only on the provision of correct and valid credentials.
 
-	\begin{figure}[ht]
+	\begin{figure}[!ht]
 	\centering
 	\includegraphics[width=\textwidth]{img/diagrams/er.png}
 	\caption{ER Diagram.}
@@ -228,11 +230,11 @@
 	The main business logic modules must include:
 
 	\begin{description}
-	\item[UserManager:] This module must manage all the logics concerning to user account creation, login and management.
-	\item[EventManager:] This module must contain all the logic needed to create and modify meetings and breaks. It must guarantee the consistency of the model preventing from overlapping among events. 
-	\item[MapManager:] This module must contain all the logic used to locate users and meetings. 
-	\item[TravelInformationProvider:] This module must be able to interface with external agents such as \textit{Travel information providers} (i.e., ATM, Trenord, Alitalia, etc.).
-	\item[NotificationManager:] This module must be able to notify the user when it is necessary to do so (e.g. an user tries to insert a meeting that overlaps with a previous one).
+	\item [UserManager:] This module must manage all the logics concerning to user account creation, login and management.
+	\item [EventManager:] This module must contain all the logic needed to create and modify meetings and breaks. It must guarantee the consistency of the model preventing from overlapping among events. 
+	\item [MapManager:] This module must contain all the logic used to locate users and meetings. 
+	\item [TravelInformationProvider:] This module must be able to interface with external agents such as \textit{Travel information providers} (i.e., ATM, Trenord, Alitalia, etc.).
+	\item [NotificationManager:] This module must be able to notify the user when it is necessary to do so (e.g. an user tries to insert a meeting that overlaps with a previous one).
 	\end{description}
 
 
@@ -257,19 +259,213 @@
 	A \textit{Web Application Client} is any modern browser (eg., IE, Firefox, Chrome, Safari) able to run Javascript to allow the pages to consume the REST APIs of the \textit{Application Server}.
 
 
+	\subsubsection{Implementation Choices}
+
+	\textbf{Database Implementation}
+
+	\medskip
+	\noindent
+	The \textit{Data Layer} must respect the following constraints: 
+	\begin{itemize}
+	\item Relational DBMS;
+	\item MySQL 5.7 as DBMS implementation;
+	\item JPA (Java Persistence API) as database interface in the \textit{Application Server}.
+	\end{itemize}
+
+	\bigskip
+	\noindent
+	\textbf{Application Server Implementation}
+
+	\medskip
+	\noindent
+	In this layer the central character is JEE7 (Java Enterprise Edition).
+	This choice grant us several benefits such as security, reliability and availability.
+
+
+	More specifically:
+
+	\begin{itemize}
+	\item GlassFish Server as \textit{Application Server} implementation;
+	\item ...
+	\end{itemize}
+
+
+	\bigskip
+	\noindent
+	\textbf{Web Server Implementation}
+
+	\medskip
+	\noindent
+	The main choice for this layer is to use NGINX 1.12 as web server.
+
+	NGINX is the most widely used web server implementations, is event-driven and will grant us reliability and efficiency handling HTTP(S) requests.
+
+	\bigskip
+	The \textit{web server} will serve static files i.e. html, css, javascript files, that will be interpreted client-side.
+
+	Web pages must be able to connect to the \textit{application server}'s REST APIs and allow the user to access all the functionalities of the system through a web interface.
+
+
+	\bigskip
+	\noindent
+	\textbf{Mobile Application Implementation}
+
+	\medskip
+	\noindent
+	There must be two \textit{mobile application client} implementations to support both iOS and Android OSs:
+	\begin{description}
+		\item [iOS:] This implementation must be written in Swift using UIKit.
+		\item [Android:] This implementation must be written in Java.
+	\end{description}
+
+	\bigskip
+	\noindent
+	Both of them must:
+	\begin{itemize}
+	\item Communicate with the \textit{application server} through the REST APIs over HTTPS.
+	\item Follow the design guidelines provided by the devices' vendors.
+	\end{itemize}
+
 	\subsection{Deployment view}
+	\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.75\textwidth]{img/diagrams/dv.png}
+	\caption{Deployment View Diagram.}
+	\end{figure}
 
 
+	\newpage
 	\subsection{Runtime view}
+	This section describes the dynamic behavior of the system in the most relevant cases.
+
+	The sequence diagrams, shown below, highlight the runtime interactions between client, server, and database.
+	
+	\bigskip
+	Interactions are expanded and analyzed in detail when there are internal interactions between subcomponents of the Application Server.
+	
+	Direct interactions between Application Server and Database are not explicitly represented because they are abstract by the persistence unit of the Application Server.
+
+	\bigskip
+	\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.75\textwidth]{img/diagrams/sd_registration.png}
+	\caption{Registration \textit{sequence diagram}.}
+	\end{figure}
+
+	\newpage
+	\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.75\textwidth]{img/diagrams/sd_login.png}
+	\caption{Login/Credentials recovery \textit{sequence diagram}.}
+	\end{figure}
+
+	\newpage
+	\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.75\textwidth]{img/diagrams/sd_meeting.png}
+	\caption{Meeting creation, modification and deletion \textit{sequence diagram}.}
+	\end{figure}
+
+	\newpage
+	\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.75\textwidth]{img/diagrams/sd_break.png}
+	\caption{Break creation, modification and deletion \textit{sequence diagram}.}
+	\end{figure}
 
 
+	\newpage
 	\subsection{Component interfaces}
 	
-	
-	\subsection{Architectural styles and patterns}
+	This section of the Design Document describes in detail the interfaces of the various components of the system. The various sections underline the relevant details about the interfaces required to use and interact with each component of the Application Server.
 
+	\subsubsection{Database - Application Server}
+	The Application Server is the only one that can access the Database directly through the Java Persistence API mapping between objects and actual relations.
+
+
+	\subsubsection{Web Server - Web Browser}
+	As described in the RASD document, interactions between client’s  browsers and Web Servers are based on the HTTPS protocol.
+
+
+	\subsubsection{Application Server - Web Server and Clients}
+	The communication between the Application Server and the clients must take place via the RESTful APIs provided by the Application Server and implemented using JAX-RS.
+
+
+	\subsubsection{Application Server - External Systems}
+	Application Server must connect with the following external system:
+	\begin{itemize}
+	\item One or more travel and transport operators that use the interface APIs to which the Application Server must adapt in order to deal with or search for travel solutions.
+	\end{itemize}
+
+
+	\subsubsection{Internal interfaces for Application Server Components}
+
+
+	\subsection{Architectural styles and patterns}
+	The following architectural styles and patterns have been used:
+	
+	\bigskip
+	\noindent
+	\textbf{Client and server}
+	
+	\bigskip
+	\noindent
+	The client-server architecture is used at different levels in the Travlendar + system design:
+	\begin{itemize}
+	\item The mobile application is client with respect to the Application Server that receives and processes requests.
+	\item The user’s browser, which is a system client, communicates with the Web Server, which has the task of providing the requested web page.
+	\item The Application Server assumes client  role when querying the database.
+	\end{itemize}	
+
+	\bigskip
+	\noindent
+	\textbf{Multi - tiered architecture}
+	
+	\bigskip
+	\noindent
+	The multi - tiered client - server architecture allows to physically separate presentation, application processing, and data management operations.
+	Moreover, in case of a Web Server failure, the system is accessible from the mobile application, so the number of system levels will increase in the availability of the service.
+
+	\bigskip
+	\noindent
+	\textbf{Thin client}
+
+	\bigskip
+	\noindent
+	The thin client approach has been following during the design phase for  the interaction among the users machines and the system itself.
+	System logic is implemented by Application Server, which has sufficient computing power and can manage concurrency issues in an efficient way.
+	Mobile application and user browser does not contain a decision logic, but only the presentation function is performed.
+	This architectural choice allows users to enjoy the service through devices with limited computing power and easy updating software.
+
+	\bigskip
+	\noindent
+	\textbf{Model View Controller}
+
+	\bigskip
+	\noindent
+	The web and mobile applications follow the Model - View - Controller software design pattern.
+	It divides the application into three interconnected parts. This is done to separate internal representations of information from the ways information is presented to, and accepted from, the user.
+
+	\bigskip
+	\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.15\textwidth]{img/diagrams/rp.png}
+	\caption{Deployment View Diagram.}
+	\end{figure}
 
 	\subsection{Other design decisions}
+	\subsubsection{User's passwords storage}
+	Is good practice not to store user's passwords in plain text to prevent various kinds of cyberattacks. For this reason, this kind of sensible data must be ashed and salted before storing it in the database, preventing an attacker to know its actual value. 
+
+
+	\subsubsection{Maps}
+	As Previously said, the application make use of maps to graphically show to the user the location of the events. For obvious reasons the system will make use of an external map service.
+
+	The appointed service provider will be \textit{Google Maps}.
+
+
+	\subsubsection{Travel Information Provider}
+	To get informations about travel means schedules and routes we rely on an external services such as ATM APIs for the metropolitan area of Milan and Trenitalia for national travels.
 
 
 	\section{Algorithm Design}
@@ -330,11 +526,11 @@
 	The software and tools used during the drawing of this document are:
 
 	\begin{description}
-	\item[LaTex:] used to build this document.
-	\item[Google Drive / Google Documents:] used to always update and share the documents.
-	\item[draw.io:] used to draw diagrams (https://www.draw.io).
-	\item[Marvel:] used to build the mockups (https://marvelapp.com).
-	\item[GitHub:] used as version control and to keep it shared between group members and teachers (https://www.github.com).
+	\item [LaTex:] used to build this document.
+	\item [Google Drive / Google Documents:] used to always update and share the documents.
+	\item [draw.io:] used to draw diagrams (https://www.draw.io).
+	\item [Marvel:] used to build the mockups (https://marvelapp.com).
+	\item [GitHub:] used as version control and to keep it shared between group members and teachers (https://www.github.com).
 	\end{description}
 	
 
@@ -351,10 +547,10 @@
 	\section{Bibliography}
 	
 	\begin{description}
-	\item[[1{]}] AA 2017/2018 Software Engineering 2 - Requirements Analysis and Specification Document - Davide Rossetto, Alessandro Tatti
-	\item[[2{]}] AA 2017/2018 Software Engineering 2 - Project goal, schedule and rules
-	\item[[3{]}] IEEE Standard 1016:2009 System design - Software design descriptions
-	\item[[4{]}]
+	\item [[1{]}] AA 2017/2018 Software Engineering 2 - Requirements Analysis and Specification Document - Davide Rossetto, Alessandro Tatti
+	\item [[2{]}] AA 2017/2018 Software Engineering 2 - Project goal, schedule and rules
+	\item [[3{]}] IEEE Standard 1016:2009 System design - Software design descriptions
+	\item [[4{]}]
 	\end{description}
 
 \end{document}
