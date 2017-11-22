@@ -44,7 +44,7 @@
 
 \date{
 	Delivery date: 2017 Nov 26\\
-	\bigskip v0.5
+	\bigskip v0.7
 }
 
 \begin{document}
@@ -58,7 +58,6 @@
 	\section{Introduction}
 	
 
-	
 	\subsection{Purpose}
 	The structure of the following document is divided into two sections:
 	\begin{enumerate}
@@ -119,6 +118,8 @@
 		\item [v0.3] Add \textit{High level components}, \textit{Appendix} and \textit{Bibliography}.
 		\item [v0.4] Add \textit{Component view}.
 		\item [v0.5] Add \textit{Deployment view}, \textit{Runtime view}, \textit{Component interfaces}, \textit{Architectural styles and patterns} and \textit{Other design decisions}.
+		\item [v0.6] Add \textit{Requirements Traceability} and \textit{UX diagrams}.
+		\item [v0.7] Add \textit{Algorithm Design}.
 	\end{description}
 	
 	
@@ -137,11 +138,11 @@
 	This document consists of six sections:
 
 	\begin{description}
-	\item [Section 1:] Introduction. This section provides a general introduction and overview of the Design Document and the covered topics that were not previously taken into account by the RASD.
+	\item [Section 1:] Introduction. This section provides a general introduction and overview of the Design Document and the covered topics that were not previously taken into account by the RASD [1].
 	\item [Section 2:] Architectural Design. This section shows the main system components together with sub-components and their relationship. This section is divided into different parts whose focus is mainly on design choices, interactions, architectural styles and patterns.
 	\item [Section 3:] Algorithm Design. This section focuses on the definition of the most relevant algorithms to be implemented by the system – to – be.
 	\item [Section 4:] User Interface Design. It provides an overview on how the user interface will look like.
-	\item [Section 5:] Requirements Traceability. This section explains how the requirements you have defined in the RASD map to the design elements that you have defined in this document.
+	\item [Section 5:] Requirements Traceability. This section explains how the requirements you have defined in the RASD [1] map to the design elements that you have defined in this document.
 	\item [Section 6:] Implementation, Integration and test plan. This section identifies the order in which the developer plan to implement the subcomponents of the system and the order in which he plans to integrate such subcomponents and test the integration.
 	\end{description}
 
@@ -286,10 +287,19 @@
 
 	\begin{itemize}
 	\item GlassFish Server as \textit{Application Server} implementation;
-	\item ...
+	\item Enterprise JavaBeans (EJB)
+	\item JavaPersistenceAPI(JPA)
+	\item JAX-RS to implement proper RESTful APIs
 	\end{itemize}
 
+	\bigskip
+	\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=\textwidth]{img/diagrams/asc.png}
+	\caption{The components of the Application Server. An arrow going from component A to component B means that A uses interfacing methods provided by B.}
+	\end{figure}
 
+	\newpage
 	\bigskip
 	\noindent
 	\textbf{Web Server Implementation}
@@ -384,7 +394,7 @@
 
 
 	\subsubsection{Web Server - Web Browser}
-	As described in the RASD document, interactions between client’s  browsers and Web Servers are based on the HTTPS protocol.
+	As described in the RASD document [1], interactions between client’s  browsers and Web Servers are based on the HTTPS protocol.
 
 
 	\subsubsection{Application Server - Web Server and Clients}
@@ -399,6 +409,103 @@
 
 
 	\subsubsection{Internal interfaces for Application Server Components}
+	\bigskip
+	\noindent
+	\textbf{UserManager}
+	
+	\bigskip
+	\noindent
+	The \textit{UserManager} interacts with the following entities:
+	\begin{itemize}
+	\item \textit{user} entity.
+	\item \textit{location} entity.
+	\end{itemize}
+
+	\bigskip
+	The procedures implemented by the \textit{UserManager} are:
+	\begin{description}
+	\item [submitLoginCredentials]
+	\item [forgotPassword]
+	\item [registerUser]
+	\item [deleteUser]
+	\item [editProfile]
+	\item [updateCurrentPosition]
+	\end{description}
+
+	\bigskip
+	\noindent
+	\textbf{EventManager}
+
+	\bigskip
+	\noindent
+	The \textit{EventManager} interacts with the following entities:
+	\begin{itemize}
+	\item \textit{meeting} entity.
+	\item \textit{location} entity.
+	\item \textit{brake} entity.
+	\item \textit{transport\_mean} entity.
+	\end{itemize}
+
+	\bigskip
+	The procedures implemented by the \textit{EventManager} are:
+	\begin{description}
+	\item [createMeeting]
+	\item [editMeeting]
+	\item [deleteMeeting]
+	\item [getMeetings]
+	\item [createBreak]
+	\item [editBreak]
+	\item [deleteBreak]
+	\item [getBreak]
+	\end{description}
+
+	\bigskip
+	\noindent
+	\textbf{MapManager}
+
+	\bigskip
+	\noindent
+	The \textit{MapManager} interacts with the following entities:
+	\begin{itemize}
+	\item \textit{location} entity.
+	\end{itemize}
+
+	\bigskip
+	The procedures implemented by the \textit{MapManager} are:
+	\begin{description}
+	\item [computeLocation]
+	\end{description}
+
+	\bigskip
+	\noindent
+	\textbf{TravelInformationProvider}
+
+	\bigskip
+	\noindent
+	The \textit{TravelInformationProvider} interacts with the following entities:
+	\begin{itemize}
+	\item \textit{travel\_mean} entity.
+	\end{itemize}
+
+	\bigskip
+	The procedures implemented by the \textit{TravelInformationProvider} are:
+	\begin{description}
+	\item [computeTravel]
+	\end{description}
+
+	\bigskip
+	\noindent
+	\textbf{NotificationManager}
+
+	\bigskip
+	\noindent
+	The \textit{NotificationManager} doesn't interact with any entity
+
+	\bigskip
+	The procedures implemented by the \textit{NotificationManager} are:
+	\begin{description}
+	\item [sendEmail]
+	\end{description}
 
 
 	\subsection{Architectural styles and patterns}
@@ -447,7 +554,7 @@
 	It divides the application into three interconnected parts. This is done to separate internal representations of information from the ways information is presented to, and accepted from, the user.
 
 	\bigskip
-	\begin{figure}[!h]
+	\begin{figure}[!ht]
 	\centering
 	\includegraphics[width=0.15\textwidth]{img/diagrams/rp.png}
 	\caption{Deployment View Diagram.}
@@ -470,11 +577,38 @@
 
 	\section{Algorithm Design}
 
+	\subsection{Most appropriate mean selection}
+	As mentioned in the RASD document [1], the application are able to autonomously select the most appropriate travel mean to reach each meeting.
+
+	This decision is the output of the following algorithm:
+	\begin{enumerate}
+	\item Ask the \textit{TravelInformationProvider} for a list of possible means to reach the meeting;
+	\item Filter the list based on the user preferences (keep a mean only if the user selected it in his/her travel preferences);
+	\item Check if the user wants to minimize his/her carbon footprint:
+	\item \begin{enumerate}
+		\item If yes, select the less polluting travel mean.
+		\item If not, select the mean that takes the less time to reach the meeting.
+		\end{enumerate}
+	\item Done.
+	\end{enumerate}
+
 
 	\section{User Interface Design}
 
 
 	\subsection{UX diagrams}
+
+	The purpose of the UX diagram is to show the different screens provided by the user interface of an application and their dynamic content. It highlights the interactions between the different screens and the presence of input forms and data required on each screen.
+ 	
+ 	\bigskip
+	The diagram shown below describes both the Web and Mobile applications, and follows the user interface requirements that are provided in the RASD document [1] (Figure 4.1).
+ 	
+ 	\bigskip
+	The Web and mobile applications implement the same functionality.
+ 	
+ 	\bigskip
+	It is emphasized that possible user choices are represented as input modules because they are data to be sent to the system and involve updating the screen.
+
 
 
 	\subsection{User interface}
@@ -488,11 +622,56 @@
 
 	\section{Requirements Traceability}
 
-
 	\subsection{Functional requirements}
+	The following table (Table 5.1) is aimed to map the functional requirements described in the RASD document [1] to the components in the Design Document (only application logical components).
+
+	\begin{center}
+		\bigskip
+		\begin{tabular}{|p{0.1\textwidth}|p{0.3\textwidth}|p{0.4\textwidth}|}
+			\hline
+			\textbf{Goal} & \textbf{DD Components} & \textbf{RASD Requirements} \\
+			\hline
+			1 \newline 2 \newline 3 & UserManager & 3.2.1 Register \newline 3.2.2 Login \newline 3.2.6 Manage profile information \newline 3.2.7 Delete profile \\
+			\hline
+			4 \newline 5 \newline 6 \newline 10 \newline 11 \newline 12 & EventManager & 3.2.3 Create Meeting \newline 3.2.4 Modify Meeting \newline 3.2.5 Delete Meeting \newline 3.2.10 Provide constraints \newline 3.2.11 Minimize Carbon Footprint \newline 3.2.12 Specify Break Timing \\
+			\hline
+			4 \newline 5 \newline 6 & Map Manager & 3.2.3 Create Meeting \newline 3.2.4 Modify Meeting \newline 3.2.5 Delete Meeting \\
+			\hline
+			4 \newline 5 \newline 6 \newline 8 \newline 9 \newline 10 \newline 11 & TravelInformationProvider & 
+			3.2.3 Create Meeting \newline 3.2.4 Modify Meeting \newline 3.2.5 Delete Meeting \newline 3.2.8 Activate Travel Mean(s) \newline 3.2.9 Deactivate Travel Mean(s) \newline 3.2.10 Provide constraints \newline 3.2.11 Minimize Carbon Footprint \\
+			\hline
+			1 \newline 1 \newline 4 \newline 5 \newline 10 \newline 12 & NotificationManager & 3.2.1 Register \newline 3.2.2 Login \newline 3.2.3 Create Meeting (overlap) \newline 3.2.4 Modify Meeting (overlap) \newline 3.2.10 Provide constraints \newline 3.2.12 Specify Break Timing \\ 
+			\hline
+		\end{tabular}
+	\end{center}
 
 
 	\subsection{Non-functional requirements}
+	The following table (Table 5.2) illustrates the sections of the Design Document that highlight the subjects related to the satisfaction of the non-functional requirements in the RASD document [1].
+
+	\begin{center}
+
+		\bigskip
+		\begin{tabular}{|p{0.4\textwidth}|p{0.4\textwidth}|}
+			\hline
+			\textbf{DD Section} & \textbf{RASD Requirements} \\
+			\hline
+			4 User Interface Design & 3.1.1 User Interfaces \\
+			\hline
+			2.6.2 Web Servers - Web Browsers & 3.1.4 Communications Interfaces \\
+			\hline
+			2.4 Deployment View & 3.4.1 Reliability \\
+			\hline
+			2.2 High level componets & 3.4.2 Availability \\
+			\hline
+			2.8 Other Decisions \newline 2.6.2 Web Servers - Web Browsers & 3.4.3 Security \\
+			\hline
+			 & 3.4.4 Maintainability \\
+			\hline
+			2.3.6 Implementation Choices & 3.4.5 Portability \\
+			\hline
+		\end{tabular}
+	\end{center}
 
 
 	\section{Implementation, Integration and Test Plan}
