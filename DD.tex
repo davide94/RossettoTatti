@@ -44,7 +44,7 @@
 
 \date{
 	Delivery date: 2017 Nov 26\\
-	\bigskip v0.7
+	\bigskip v0.8
 }
 
 \begin{document}
@@ -120,6 +120,7 @@
 		\item [v0.5] Add \textit{Deployment view}, \textit{Runtime view}, \textit{Component interfaces}, \textit{Architectural styles and patterns} and \textit{Other design decisions}.
 		\item [v0.6] Add \textit{Requirements Traceability} and \textit{UX diagrams}.
 		\item [v0.7] Add \textit{Algorithm Design}.
+		\item [v0.8] Add \textit{Implementation, Integration and Test Plan}.
 	\end{description}
 	
 	
@@ -358,25 +359,23 @@
 	\bigskip
 	\begin{figure}[!ht]
 	\centering
-	\includegraphics[width=0.75\textwidth]{img/diagrams/sd_registration.png}
+	\includegraphics[width=0.8\textwidth]{img/diagrams/sd_registration.png}
 	\caption{Registration \textit{sequence diagram}.}
 	\end{figure}
+	\clearpage
 
-	\newpage
 	\begin{figure}[!ht]
 	\centering
-	\includegraphics[width=0.75\textwidth]{img/diagrams/sd_login.png}
+	\includegraphics[width=0.8\textwidth]{img/diagrams/sd_login.png}
 	\caption{Login/Credentials recovery \textit{sequence diagram}.}
 	\end{figure}
 
-	\newpage
 	\begin{figure}[!ht]
 	\centering
-	\includegraphics[width=0.75\textwidth]{img/diagrams/sd_meeting.png}
+	\includegraphics[width=0.8\textwidth]{img/diagrams/sd_meeting.png}
 	\caption{Meeting creation, modification and deletion \textit{sequence diagram}.}
 	\end{figure}
 
-	\newpage
 	\begin{figure}[!ht]
 	\centering
 	\includegraphics[width=0.75\textwidth]{img/diagrams/sd_break.png}
@@ -417,19 +416,19 @@
 	\noindent
 	The \textit{UserManager} interacts with the following entities:
 	\begin{itemize}
-	\item \textit{user} entity.
-	\item \textit{location} entity.
+	\item \textit{user} entity, in order to create, update, and delete user information during the registration process and check credentials during login to the application.
+	\item \textit{location} entity, in order to always update user's position during any procedure.
 	\end{itemize}
 
 	\bigskip
 	The procedures implemented by the \textit{UserManager} are:
 	\begin{description}
-	\item [submitLoginCredentials]
-	\item [forgotPassword]
-	\item [registerUser]
-	\item [deleteUser]
-	\item [editProfile]
-	\item [updateCurrentPosition]
+	\item [submitLoginCredentials] -- This procedure is used to submit login credentials in order to access the application. The procedure takes the parameters as the email address and the password; if corrected, this function will have such a value for the user to perform other functions; if the credentials do not exist or are wrong, the return value is an error.
+	\item [forgotPassword] -- This procedure is used when the user has forgotten the login credentials for the application. It returns the correct email address and password.
+	\item [registerUser] -- This procedure is used to request the creation of a new Travelendar + account; this takes as parameters all your personal information required for registration, in particular: first name, last name, sex, date of birth, address, email, password and driver's license number (optional); the return value for the procedure is an error when sending invalid data or a confirmation message in case of success.
+	\item [deleteUser] -- This procedure is used to permanently delete a user account from the system; this does not require any parameter other than user authentication; the return value for this procedure is a confirmation message.
+	\item [editProfile] -- This procedure is used whenever a user wishes to modify any information about his/her personal profile; this takes as a parameter a set of modified elements; the return value for this procedure is an error when entering invalid data, otherwise a confirmation message.
+	\item [updateCurrentPosition] -- This procedure has the task of keeping the user's position updated. It takes the coordinates of the user’s place as parameters and sends it to the Map Manager to calculate the position; in case of failed sending returns an error message.
 	\end{description}
 
 	\bigskip
@@ -440,23 +439,26 @@
 	\noindent
 	The \textit{EventManager} interacts with the following entities:
 	\begin{itemize}
-	\item \textit{meeting} entity.
-	\item \textit{location} entity.
-	\item \textit{brake} entity.
-	\item \textit{transport\_mean} entity.
+	\item \textit{meeting} entity, in order to create, edit and delete meetings in the calendar.
+	\item \textit{location} entity, in order to set the location of a meeting.
+	\item \textit{brake} entity, in order to create, edit and delete brakes in the calendar.
+	\item \textit{transport\_mean} entity, in order to calculate how to reach a meeting.
 	\end{itemize}
 
 	\bigskip
 	The procedures implemented by the \textit{EventManager} are:
 	\begin{description}
-	\item [createMeeting]
-	\item [editMeeting]
-	\item [deleteMeeting]
-	\item [getMeetings]
-	\item [createBreak]
-	\item [editBreak]
-	\item [deleteBreak]
-	\item [getBreak]
+	\item [createMeeting] -- This procedure is used to submit meeting information on meeting creation. The procedure takes as parameters \textit{name}, \textit{startTime}, \textit{endTime}, \textit{location}, \textit{peopleNumber}. On success the procedure returns the \textit{id} of the meeting.
+	\item [editMeeting] -- This procedure is used to submit meeting information while editing a meeting. The procedure takes as parameters \textit{name}, \textit{startTime}, \textit{endTime}, \textit{location}, \textit{peopleNumber}. All the parameters are optionals and the procedure modifies only the ones that are not null.
+	\item [deleteMeeting] -- This procedure is used to delete a meeting. The procedure take as parameter the meeting's \textit{id}.
+	\item [getMeeting] -- This procedure is used to retrieve detailed information of a meeting. The procedure takes as parameter the \textit{id} of the meeting.
+	\item [getMeetings] -- This procedure is used to retrieve a list of meetings according to the filtering fields. The procedure takes as parameters \textit{after} (default = now), \textit{before} (default = now + 7 days), \textit{near}, \textit{radius}, \textit{limit} (default = 15). All the parameters are optionals.
+	\item [createBreak] -- This procedure is used to submit break information on break creation. The procedure takes as parameters \textit{name}, \textit{minStartTime}, \textit{maxEndTime}, \textit{duration}. On success the procedure returns the \textit{id} of the break
+	\item [editBreak] -- This procedure is used to submit break information while editing a break. The procedure takes as parameters \textit{name}, \textit{minStartTime}, \textit{maxEndTime}, \textit{duration}. All of the parameters are optionals and the procedure modifies only the ones that are not null.
+	\item [deleteBreak] -- This procedure is used to delete a break. The procedure take as parameter the \textit{id} of the break.
+	\item [getBreak] -- This procedure is used to retrieve detailed information of a break. The procedure takes as parameter the \textit{id} of the break.
+	\item [getBreaks] -- This procedure is used to retrieve a list of breaks according to the filtering fields. The procedure takes as parameters \textit{after} (default = now), \textit{before} (default = now + 7 days) and \textit{limit} (default = 15). All the parameters are optionals.
+	
 	\end{description}
 
 	\bigskip
@@ -467,13 +469,13 @@
 	\noindent
 	The \textit{MapManager} interacts with the following entities:
 	\begin{itemize}
-	\item \textit{location} entity.
+	\item \textit{location} entity, in order to keep user’s position updated and calculate the location of the meeting. It also calculates the path to reach the event.
 	\end{itemize}
 
 	\bigskip
 	The procedures implemented by the \textit{MapManager} are:
 	\begin{description}
-	\item [computeLocation]
+	\item [computeLocation] -- This procedure is used to keep the user's position updated and the location of the meeting; it takes coordinates as parameters and sends it to the external system that will calculate the position.
 	\end{description}
 
 	\bigskip
@@ -484,13 +486,15 @@
 	\noindent
 	The \textit{TravelInformationProvider} interacts with the following entities:
 	\begin{itemize}
+	\item \textit{user} entity.
+	\item \textit{location} entity.
 	\item \textit{travel\_mean} entity.
 	\end{itemize}
 
 	\bigskip
 	The procedures implemented by the \textit{TravelInformationProvider} are:
 	\begin{description}
-	\item [computeTravel]
+	\item [computeTravel] -- This procedure computes which are the most suitable travel means to reach a certain location. The procedure takes as parameters \textit{fromLocation}, \textit{toLocation}, \textit{userPreferencies}. returns a list of suitable travel means according to user's preferences.
 	\end{description}
 
 	\bigskip
@@ -504,7 +508,7 @@
 	\bigskip
 	The procedures implemented by the \textit{NotificationManager} are:
 	\begin{description}
-	\item [sendEmail]
+	\item [sendEmail] -- The procedure is used during the application processes to generate an e-mail message; this takes as a parameter the information entered by the user and those processed by external systems; the returned value is not defined because the e-mail (confirmation or error) is immediately sent.
 	\end{description}
 
 
@@ -557,9 +561,10 @@
 	\begin{figure}[!ht]
 	\centering
 	\includegraphics[width=0.15\textwidth]{img/diagrams/rp.png}
-	\caption{Deployment View Diagram.}
+	\caption{The remote presentation architectural style that inspired the design of web/mobile application.}
 	\end{figure}
 
+	\newpage
 	\subsection{Other design decisions}
 	\subsubsection{User's passwords storage}
 	Is good practice not to store user's passwords in plain text to prevent various kinds of cyberattacks. For this reason, this kind of sensible data must be ashed and salted before storing it in the database, preventing an attacker to know its actual value. 
@@ -597,7 +602,6 @@
 
 
 	\subsection{UX diagrams}
-
 	The purpose of the UX diagram is to show the different screens provided by the user interface of an application and their dynamic content. It highlights the interactions between the different screens and the presence of input forms and data required on each screen.
  	
  	\bigskip
@@ -609,9 +613,18 @@
  	\bigskip
 	It is emphasized that possible user choices are represented as input modules because they are data to be sent to the system and involve updating the screen.
 
-
+	\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=\textwidth]{img/diagrams/ux.png}
+	\caption{UX diagram of both Web and Mobile Application.}
+	\end{figure}
 
 	\subsection{User interface}
+	\subsubsection{Web interface}
+	The following mock-ups show how the interface of the Web Application should look like on the user’s browser.
+
+	\subsubsection{Mobile interface}
+	The following mock-ups show how the interface of the Mobile Application should look like on the user’s mobile devices.
 
 
 	\subsubsection{Web interface}
@@ -677,22 +690,29 @@
 	\section{Implementation, Integration and Test Plan}
 
 
-	\subsection{Entry criteria}
-
-
 	\subsection{Elements to be integrated}
+	The integration test phase for the Travlendar + system will be structured according to the architectural division in the levels described in the first part of this document.
+	
+	The subsystems to integrate are as follows:
+	\begin{description}
+	\item [Database Tier] -- This includes all commercial database structures that will be used to store and manage system data, like the DBMS and the Database Engine; the component to be integrated is the DBMS.
+	\item [Application Logic Tier] -- This includes all business logic for the application, data access components, and interface components to external systems and clients. All interactions must be tested and all subsystems that interact with this layer must be integrated individually.
+	\item [Web Tier] -- This includes all components of the Web interface and communication with the application logic level and the browser client. Integration tests must be performed in both ways for this level.
+	\item [Client Tier] -- Includes the Mobile application client, the Web browser client, and its internal components. Individual clients must behave correctly with respect to their internal structure and must be individually integrated with the level they interface with.
+	\end{description}
 
-
-	\subsection{Integration testing strategy}
-
-
-	\subsection{Sequence of components/Function integration}
-
-
-	\subsubsection{Software integration sequence}
-
-
-	\subsubsection{Subsystem integration sequence}
+	\subsection{Integration Testing Strategy}
+	For the integration testing process, we decide to follow a bottom-up approach.
+	
+	This choice is natural since the integration testing can start from the smaller and the lowest level components, which have already been tested at the drive level, and do not depend on other components or not – already – developed components.
+	
+	The bottom - up strategy will be mixed with a critical-module-first approach to avoid major component failures and threats to the correct implementation of the entire Travlendar + system.
+	
+	The higher-level subsystems described in the previous paragraph are loosely coupled and sufficiently independent of each other because they correspond to different levels.
+	
+	To this purpose, the second cited approach is used to establish the correct integration order and to obtain the complete system.
+	
+	At this level of integration testing should also cover the communication functionalities with external systems.
 
 
 	\newpage
@@ -729,7 +749,6 @@
 	\item [[1{]}] AA 2017/2018 Software Engineering 2 - Requirements Analysis and Specification Document - Davide Rossetto, Alessandro Tatti
 	\item [[2{]}] AA 2017/2018 Software Engineering 2 - Project goal, schedule and rules
 	\item [[3{]}] IEEE Standard 1016:2009 System design - Software design descriptions
-	\item [[4{]}]
 	\end{description}
 
 \end{document}
