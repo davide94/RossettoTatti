@@ -70,7 +70,7 @@
 
 \date{
 	Delivery date: 2017 Oct 29\\
-	\bigskip v1.0
+	\bigskip v1.1
 }
 
 \begin{document}
@@ -197,6 +197,7 @@
 		\item[v0.10] Add mockups.
 		\item[v0.11] Add \textit{Formal Analysis Using Alloy}.
 		\item[v1.0] First delivery.
+		\item[v1.1] Add assumption on \textit{Travel information provider}, other minor fixes.
 	\end{description}
 	
 	
@@ -282,11 +283,11 @@
 	\subsection{Assumptions and Dependences}
 	The following assumptions are given for granted:
 	\begin{itemize}
-		\item  Means of transport comply with user’s reques.
+		\item  Transport means comply with user’s requests.
 		\item  The device is always connected to the server.
 		\item  All users provide correct and valid data at time of registration.
 		\item  GPS shows the actual position of the owner.
-		\item  Provider Information shows correct and updated data.
+		\item  The system can rely on a \textit{Travel information provider} that gives correct and updated information about travel means paths and timetables.
 		\item  The event, when inserted, modified or deleted, must not be in the past.
 	\end{itemize}
 	
@@ -468,8 +469,8 @@
 		\item The system must not accept an email address already used during the registration procedure.
 		\item The system requires the following mandatory personal information:
 			\begin{itemize}
-				\item First Name
-				\item Last Name
+				\item First name
+				\item Last name
 				\item Sex
 				\item Date of birth
 				\item Address
@@ -549,8 +550,8 @@
 		\item The user must have correct email and password available to successfully login.
 		\item The user must use a password connected to a specific email address.
 		\item Bad credentials must not allow the user authentication.
-		\item If the user clicks on "Forgot password?" the system must send a new password to the email address recorded (if valid).
-		\item When a new password has been requested, the system must allow the user to authenticate only with new credentials.
+		\item If the user clicks on "Forgot password?" the system must send a link where the user can reset his/her password.
+		\item When a new password has been set, the system must allow the user to authenticate only with new credentials.
 	\end{itemize}
 	
 	\newpage
@@ -637,11 +638,10 @@
 		\item The user must insert the following information in the form:
 			\begin{itemize}
 				\item Name
-				\item Start
-				\item End
-				\item Place
-				\item People
-				\item Transport modes
+				\item Start time
+				\item End time
+				\item Meeting location
+				\item People number
 			\end{itemize}
 		\item The system must verify that the meeting's date is later than the creation date;
 		\item The system must check that the way to reach is compatible with the path;
@@ -715,12 +715,11 @@
 		\item The user must have already created an event;
 		\item The user must change one or more of the following information in the form:
 			\begin{itemize}
-				\item Event name
-				\item Event date
-				\item Event Time
-				\item Place
-				\item People
-				\item Transport modes
+				\item Name
+				\item Start time
+				\item End time
+				\item Meeting location
+				\item People number
 			\end{itemize}
 		\item The system must verify that the date of the event is after the creation date;
 		\item The system must check that the way to reach is compatible with the path;
@@ -1235,8 +1234,8 @@
 		\item The user must log in successfully.
 		\item The user must enter information in the form:
 			\begin{itemize}
-				\item Start time
-				\item End time
+				\item Start at least
+				\item End at most
 				\item Duration
 			\end{itemize}
 		\item The system must verify that the date is behind the insertion date.
