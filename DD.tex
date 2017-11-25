@@ -44,7 +44,7 @@
 
 \date{
 	Delivery date: 2017 Nov 26\\
-	\bigskip v0.8
+	\bigskip v0.9
 }
 
 \begin{document}
@@ -80,7 +80,7 @@
 	
 	
 	\subsection{Scope}
-	The system aims to support a personal event management service, providing features for choosing the best path, means of transport, and insertion of the break. The system must also make sure there are no overlap among events and among events and pauses.
+	The system aims to support a personal event management service, providing features for choosing the best path, means of transport, and insertion of the break. The system must also make sure there are no overlap among meetings and among meetings and breaks.
 
 	The system is structured with a four-layer architecture. The purpose of the document is to describe this architecture in detail.
 
@@ -99,15 +99,28 @@
 	\subsection{Definitions, Acronyms, Abbreviations}
 	\begin{description}
 	\item [ACID:] Atomicity, Consistency, Isolation and Durability. This is the set of properties of database transactions.
+	\item [API:] Application Programming Interface.
 	\item [DD:] Design Document.
 	\item [DBMS:] DataBase Management System.
-	\item [E-R diagram:] entity – relationship diagram
+	\item [E-R diagram:] entity – relationship diagram.
+	\item [EJB:] Enterprise JavaBean.
+	\item [HTTPS:] HyperText Transfer Protocol over Secure Socket Layer.
+	\item [IE:] Internet Explorer. 
 	\item [ITPD:] Integration Test Plan Document.
+	\item [JAX - RS:] Java API that provides support in creating web services according to the REST pattern.
+	\item [JEE:] Java Enterprise Edition.
 	\item [JPA:] Java Persistence API.
+	\item [JSON:] JavaScript Object Notation
 	\item [MVC:] Model-View-Controller.
+	\item [NGINX:] Web Server used in the Web Server Implementation.
 	\item [RASD:] Requirements Analysis and Specification Document.
-	\item [UML:] Unified Modeling Language
+	\item [REST:] REpresentational State Transfer. It is a way of providing interoperability between computer systems on the Internet.
+	\item [RESTful:] a REST compliant system.
+	\item [Swift:] language used for developing iOS apps.
+	\item [UIKit:] the framework provides the required infrastructure for your iOS.
+	\item [UML:] Unified Modeling Language.
 	\item [UX:] User Experience.
+	\item [XML:] eXtensible Markup Language
 	\end{description}
 	
 	
@@ -120,7 +133,9 @@
 		\item [v0.5] Add \textit{Deployment view}, \textit{Runtime view}, \textit{Component interfaces}, \textit{Architectural styles and patterns} and \textit{Other design decisions}.
 		\item [v0.6] Add \textit{Requirements Traceability} and \textit{UX diagrams}.
 		\item [v0.7] Add \textit{Algorithm Design}.
-		\item [v0.8] Add \textit{Implementation, Integration and Test Plan}.
+		\item [v0.8] Add \textit{Implementation, Integration and Test Plan}.
+		\item [v0.9] Syntactical review.
+		\item [v1.0] First delivery.
 	\end{description}
 	
 	
@@ -131,7 +146,7 @@
 	The indications given in this document are based on those given in the previous delivery for the project, the RASD document [1].
 	
 	\bigskip
-	This document is strictly based on the RASD assignment [2] and the test plan example [4] presented during the lessons for the project of Software Engineering II, course held by Elisabetta Di Nitto and Matteo Giovanni Rossi at the Politecnico di Milano, A.Y. 2017/2018.
+	This document is strictly based on the RASD assignment [2] and the test plan example presented during the lessons for the project of Software Engineering II, course held by Elisabetta Di Nitto and Matteo Giovanni Rossi at the Politecnico di Milano, A.Y. 2017/2018.
 	
 	
 	\subsection{Document structure}
@@ -151,8 +166,7 @@
 	At the end of the document are an Appendix and a Bibliography, providing additional information about the sections listed above.
 
 	\section{Architectural Design}
-
-
+	
 	\subsection{Overview}
 
 	This section gives a detailed overview of physical and logical infrastructures of the system-to-be and describes the main components and their interactions.
@@ -161,13 +175,13 @@
 
 	\bigskip
 	\begin{description}
-	\item [High level components:] A description of the high-level components and their interactions.
-	\item [Component view:] A detailed vision of the components described in the previous section.
-	\item [Deployment view:] A set of indications on how to deploy the components on physical tiers.
-	\item [Runtime view:] A detailed vision of the dynamic behavior of the software.
-	\item [Component interfaces:] A description of the different interfaces.
-	\item [Architectural styles and patterns:] A set of Architectural styles, design patterns and paradigms used in the design phase.
-	\item [Other design decisions:] A list of all relevant decisions taken during the design process and not mentioned before.
+	\item [High level components:] a description of the high-level components and their interactions.
+	\item [Component view:] a detailed vision of the components described in the previous section.
+	\item [Deployment view:] a set of guidelines on how to deploy the components on physical tiers.
+	\item [Runtime view:] a detailed vision of the dynamic behavior of the software.
+	\item [Component interfaces:] a description of the different interfaces.
+	\item [Architectural styles and patterns:] a set of Architectural styles, design patterns and paradigms used in the design phase.
+	\item [Other design decisions:] a list of all relevant decisions taken during the design process and not mentioned before.
 	\end{description}
 
 
@@ -176,11 +190,11 @@
 	The high-level components of the system are the following:
 
 	\begin{description}
-	\item [Database:] The \textit{Data Layer} of the system; All the data structures and entities concerning data storage. This level does not contain any application logic.
-	\item [Application Server:] The layer that contains all the \textit{application logic} and \textit{key algorithms} of the system.
-	\item [Web Server:] The Layer that provides all the \textit{web pages} to the \textit{web-based application}. This level does not contain any application logic.
-	\item [Mobile Application:] The \textit{Presentation Layer} of the \textit{mobile application}; This level does not contain any application logic.
-	\item [Web Browser:] The \textit{Presentation Layer} of the \textit{web-based application}; It just renders the pages obtained from the \textit{Web server} and executes its scripts.
+	\item [Database:] the \textit{Data Layer} of the system; all the data structures and entities concerning data storage. This level does not contain any application logic.
+	\item [Application Server:] the layer that contains all the \textit{application logic} and \textit{key algorithms} of the system.
+	\item [Web Server:] the Layer that provides all the \textit{web pages} to the \textit{web-based application}. This level does not contain any application logic.
+	\item [Mobile Application:] the \textit{Presentation Layer} of the \textit{mobile application}; This level does not contain any application logic.
+	\item [Web Browser:] the \textit{Presentation Layer} of the \textit{web-based application}; It just renders the pages obtained from the \textit{Web server} and executes its scripts.
 	\end{description}
 
 	\begin{figure}[!ht]
@@ -226,25 +240,25 @@
 	The interface with the data layer must be managed by a dedicated persistence unit to ensure that only the Application Server can access the database.
 	
 	\bigskip
-	Application Server must provide a means of interfacing with the Web server and mobile clients through specific APIs in order to separate the different levels from their individual implementation. It must provide a way to communicate with external systems by adapting the application to existing external infrastructures.
+	Application Server must provide a means of interfacing with the Web Server and mobile clients through specific APIs in order to separate the different levels from their individual implementation. It must provide a way to communicate with external systems by adapting the application to existing external infrastructures.
 	
 	\bigskip
 	The main business logic modules must include:
 
 	\begin{description}
-	\item [UserManager:] This module must manage all the logics concerning to user account creation, login and management.
-	\item [EventManager:] This module must contain all the logic needed to create and modify meetings and breaks. It must guarantee the consistency of the model preventing from overlapping among events. 
-	\item [MapManager:] This module must contain all the logic used to locate users and meetings. 
-	\item [TravelInformationProvider:] This module must be able to interface with external agents such as \textit{Travel information providers} (i.e., ATM, Trenord, Alitalia, etc.).
-	\item [NotificationManager:] This module must be able to notify the user when it is necessary to do so (e.g. an user tries to insert a meeting that overlaps with a previous one).
+	\item [UserManager:] this module must manage all the logics concerning to user account creation, login and management.
+	\item [EventManager:] this module must contain all the logic needed to create and modify meetings and breaks. It must guarantee the consistency of the model preventing from overlapping among events. 
+	\item [MapManager:] this module must contain all the logic used to locate users and meetings. 
+	\item [TravelInformationProvider:] this module must be able to interface with external agents such as \textit{Travel Information Providers} (i.e., ATM, Trenord, Alitalia, etc.).
+	\item [NotificationManager:] this module must be able to notify the user when it is necessary to do so (e.g. an user tries to insert a meeting that overlaps with a previous one).
 	\end{description}
 
 
 	\subsubsection{Web Server}
-	The Web Server Layer is responsible to provide the web pages to the users that intends to access the application's services via web.
+	The Web Server Layer is responsible to provide the web pages to the users that intend to access the application's services via web.
 	
 	\bigskip
-	This layer does not contain any application logic; it only provides static web pages that, through propers Javascript scripts, are able to access the REST APIs of the Application Server and make it accessible to end users.
+	This layer does not contain any application logic; it only provides static web pages that, through propers scripts (Javascript), are able to access the REST APIs of the Application Server and make it accessible to end users.
 
 	\bigskip
 	The scripts must be able to consume all the API's endpoints for the functionalities intended to be accessible via web.
@@ -271,7 +285,7 @@
 	\begin{itemize}
 	\item Relational DBMS;
 	\item MySQL 5.7 as DBMS implementation;
-	\item JPA (Java Persistence API) as database interface in the \textit{Application Server}.
+	\item JPA as database interface in the \textit{Application Server}.
 	\end{itemize}
 
 	\bigskip
@@ -280,8 +294,8 @@
 
 	\medskip
 	\noindent
-	In this layer the central character is JEE7 (Java Enterprise Edition).
-	This choice grant us several benefits such as security, reliability and availability.
+	In this layer the central character is JEE7.
+	This choice grants us several benefits such as security, reliability and availability.
 
 
 	More specifically:
@@ -289,7 +303,7 @@
 	\begin{itemize}
 	\item GlassFish Server as \textit{Application Server} implementation;
 	\item Enterprise JavaBeans (EJB)
-	\item JavaPersistenceAPI(JPA)
+	\item JavaPersistenceAPI (JPA)
 	\item JAX-RS to implement proper RESTful APIs
 	\end{itemize}
 
@@ -312,7 +326,7 @@
 	NGINX is the most widely used web server implementations, is event-driven and will grant us reliability and efficiency handling HTTP(S) requests.
 
 	\bigskip
-	The \textit{web server} will serve static files i.e. html, css, javascript files, that will be interpreted client-side.
+	The \textit{web server} will serve static files, i.e. html, css, javascript files, that will be interpreted client-side.
 
 	Web pages must be able to connect to the \textit{application server}'s REST APIs and allow the user to access all the functionalities of the system through a web interface.
 
@@ -424,7 +438,7 @@
 	The procedures implemented by the \textit{UserManager} are:
 	\begin{description}
 	\item [submitLoginCredentials] -- This procedure is used to submit login credentials in order to access the application. The procedure takes the parameters as the email address and the password; if corrected, this function will have such a value for the user to perform other functions; if the credentials do not exist or are wrong, the return value is an error.
-	\item [forgotPassword] -- This procedure is used when the user has forgotten the login credentials for the application. It returns the correct email address and password.
+	\item [forgotPassword] -- this procedure is used when the user has forgotten the login credentials for the application. It returns a link to reset password.
 	\item [registerUser] -- This procedure is used to request the creation of a new Travelendar + account; this takes as parameters all your personal information required for registration, in particular: first name, last name, sex, date of birth, address, email, password and driver's license number (optional); the return value for the procedure is an error when sending invalid data or a confirmation message in case of success.
 	\item [deleteUser] -- This procedure is used to permanently delete a user account from the system; this does not require any parameter other than user authentication; the return value for this procedure is a confirmation message.
 	\item [editProfile] -- This procedure is used whenever a user wishes to modify any information about his/her personal profile; this takes as a parameter a set of modified elements; the return value for this procedure is an error when entering invalid data, otherwise a confirmation message.
@@ -469,11 +483,11 @@
 	\noindent
 	The \textit{MapManager} interacts with the following entities:
 	\begin{itemize}
-	\item \textit{location} entity, in order to keep user’s position updated and calculate the location of the meeting. It also calculates the path to reach the event.
+	\item \textit{location} entity, in order to keep user’s position updated and calculate the location of the meeting. It also calculates the path to reach the meeting.
 	\end{itemize}
 
 	\bigskip
-	The procedures implemented by the \textit{MapManager} are:
+	The procedures implemented by the \textit{MapManager} is:
 	\begin{description}
 	\item [computeLocation] -- This procedure is used to keep the user's position updated and the location of the meeting; it takes coordinates as parameters and sends it to the external system that will calculate the position.
 	\end{description}
@@ -492,7 +506,7 @@
 	\end{itemize}
 
 	\bigskip
-	The procedures implemented by the \textit{TravelInformationProvider} are:
+	The procedures implemented by the \textit{TravelInformationProvider} is:
 	\begin{description}
 	\item [computeTravel] -- This procedure computes which are the most suitable travel means to reach a certain location. The procedure takes as parameters \textit{fromLocation}, \textit{toLocation}, \textit{userPreferencies}. returns a list of suitable travel means according to user's preferences.
 	\end{description}
@@ -571,13 +585,13 @@
 
 
 	\subsubsection{Maps}
-	As Previously said, the application make use of maps to graphically show to the user the location of the events. For obvious reasons the system will make use of an external map service.
+	As previously said, the application make use of maps to graphically show to the user the location of the events. For obvious reasons the system will make use of an external map service.
 
 	The appointed service provider will be \textit{Google Maps}.
 
 
 	\subsubsection{Travel Information Provider}
-	To get informations about travel means schedules and routes we rely on an external services such as ATM APIs for the metropolitan area of Milan and Trenitalia for national travels.
+	To get informations about travel means schedules and routes we rely on an external services such as ATM APIs for the metropolitan area of Milan and Trenitalia for national travels, and so on and so forth.
 
 
 	\section{Algorithm Design}
@@ -648,7 +662,7 @@
 			\hline
 			4 \newline 5 \newline 6 \newline 10 \newline 11 \newline 12 & EventManager & 3.2.3 Create Meeting \newline 3.2.4 Modify Meeting \newline 3.2.5 Delete Meeting \newline 3.2.10 Provide constraints \newline 3.2.11 Minimize Carbon Footprint \newline 3.2.12 Specify Break Timing \\
 			\hline
-			4 \newline 5 \newline 6 & Map Manager & 3.2.3 Create Meeting \newline 3.2.4 Modify Meeting \newline 3.2.5 Delete Meeting \\
+			4 \newline 5 & Map Manager & 3.2.3 Create Meeting \newline 3.2.4 Modify Meeting \\
 			\hline
 			4 \newline 5 \newline 6 \newline 8 \newline 9 \newline 10 \newline 11 & TravelInformationProvider & 
 			3.2.3 Create Meeting \newline 3.2.4 Modify Meeting \newline 3.2.5 Delete Meeting \newline 3.2.8 Activate Travel Mean(s) \newline 3.2.9 Deactivate Travel Mean(s) \newline 3.2.10 Provide constraints \newline 3.2.11 Minimize Carbon Footprint \\
@@ -678,8 +692,6 @@
 			2.2 High level componets & 3.4.2 Availability \\
 			\hline
 			2.8 Other Decisions \newline 2.6.2 Web Servers - Web Browsers & 3.4.3 Security \\
-			\hline
-			 & 3.4.4 Maintainability \\
 			\hline
 			2.3.6 Implementation Choices & 3.4.5 Portability \\
 			\hline
@@ -738,9 +750,9 @@
 	Most of the work on this document was made in the presence of both members of the group. The approximate number of hours worked by each member of the group is as follow (including hours spent in group work):
 	
 	\bigskip
-	Davide Rossetto: about ... hours
+	Davide Rossetto: about 23 hours
 	
-	Alessandro Tatti: about ... hours
+	Alessandro Tatti: about 25 hours
 
 	
 	\section{Bibliography}
