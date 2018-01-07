@@ -70,7 +70,7 @@
 
 \date{
 	Delivery date: 2017 Oct 29\\
-	\bigskip v1.1
+	\bigskip v1.1.1
 }
 
 \begin{document}
@@ -89,7 +89,6 @@
 	\begin{itemize}
 		\item to describe the system itself, 
 		\item its functional and non-functional requirements, 
-		\item its functional and non-functional requirements, 
 		\item the components, 
 		\item its constraints,
 		\item the relationship with real world and users,  providing several use cases and scenarios.
@@ -106,9 +105,6 @@
 		\item project managers, who control the development process,
 		\item and users who validate the goals of the system.
 	\end{itemize}
-	
-	\bigskip
-	This document is predisposed primarily to developers and programmers who must meet the requirements, testers who need to determine if the requirements are met, project managers, who control the development process, and users who validate the goals of the system.
 	
 	
 	\subsection{Scope}
@@ -148,7 +144,7 @@
 		\item Let the user modify his/her meetings in the schedule application;
 		\item Let the user delete his/her meetings in the schedule application;
 		\item Let the system work efficiently by generating an alarm when a meeting is not possible within the specified time range;
-		\item Let the system indicate which best travel means is to be used for a given meeting;
+		\item Let the system indicate which is the best travel means to be used for a given meeting;
 		\item Let the user indicate his/her preferences on the travel means;
 		\item Automatically the system searches for the shortest path to reach the meeting site;
 		\item Automatically the system searches the cheapest means of transport to reach the meeting site;
@@ -198,6 +194,7 @@
 		\item[v0.11] Add \textit{Formal Analysis Using Alloy}.
 		\item[v1.0] First delivery.
 		\item[v1.1] Add assumption on \textit{Travel information provider}, other minor fixes.
+		\item[v1.1.1] Syntactic revision.
 	\end{description}
 	
 	
@@ -233,17 +230,17 @@
 
 
 	\subsubsection{Hardware interfaces}
-	The web application can be executed on any modern computer that meets the minimum system requirements (link al paragrafo).
+	The web application can be executed on any modern computer that meets the minimum hardware requirements (\underline{\ref{ref1}}).
 	
 	\bigskip
-	The mobile application can run on any modern mobile device (i.e. smartphone, tablet) with mobile data connectivity,  GPS and meets the minimum system requirements (link al paragrafo).
+	The mobile application can run on any modern mobile device (i.e. smartphone, tablet) with mobile data connectivity,  GPS and meets the minimum hardware requirements (\underline{\ref{ref1}}).
 
 
 	\subsubsection{Software interfaces}
 	The web application must support most of the modern browsers e.g., IE, Firefox, Chrome, Safari.
 	
 	\bigskip
-	The mobile application must be supported by the most widespread mobile OSs such as iOS and Android that meets the minimum system requirements (link al paragrafo).
+	The mobile application must be supported by the most widespread mobile OSs such as iOS and Android that meets the minimum hardware requirements (\underline{\ref{ref1}}).
 
 	\bigskip
 	The backend application must rely on a commercial DBMS to store data and must be implemented in Java.
@@ -299,7 +296,7 @@
 	The application must be allowed by the user to collect his/her position, through GPS.
 	
 	
-	\subsubsection{Hardware limitations}
+	\subsubsection{Hardware limitations}\label{ref1}
 	\begin{itemize}
 		\item Web application:
 			\begin{itemize}
