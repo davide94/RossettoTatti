@@ -44,7 +44,7 @@
 
 \date{
 	Delivery date: 2017 Nov 26\\
-	\bigskip v1.0
+	\bigskip v1.1
 }
 
 \begin{document}
@@ -136,6 +136,7 @@
 		\item [v0.8] Add \textit{Implementation, Integration and Test Plan}.
 		\item [v0.9] Syntactical review.
 		\item [v1.0] First delivery.
+		\item [v1.1] Syntactic revision.
 	\end{description}
 	
 	
@@ -193,8 +194,8 @@
 	\item [Database:] the \textit{Data Layer} of the system; all the data structures and entities concerning data storage. This level does not contain any application logic.
 	\item [Application Server:] the layer that contains all the \textit{application logic} and \textit{key algorithms} of the system.
 	\item [Web Server:] the Layer that provides all the \textit{web pages} to the \textit{web-based application}. This level does not contain any application logic.
-	\item [Mobile Application:] the \textit{Presentation Layer} of the \textit{mobile application}; This level does not contain any application logic.
-	\item [Web Browser:] the \textit{Presentation Layer} of the \textit{web-based application}; It just renders the pages obtained from the \textit{Web server} and executes its scripts.
+	\item [Mobile Application:] the \textit{Presentation Layer} of the \textit{mobile application}. This level does not contain any application logic.
+	\item [Web Browser:] the \textit{Presentation Layer} of the \textit{web-based application}. It just renders the pages obtained from the \textit{Web server} and executes its scripts.
 	\end{description}
 
 	\begin{figure}[!ht]
@@ -455,7 +456,7 @@
 	\begin{itemize}
 	\item \textit{meeting} entity, in order to create, edit and delete meetings in the calendar.
 	\item \textit{location} entity, in order to set the location of a meeting.
-	\item \textit{brake} entity, in order to create, edit and delete brakes in the calendar.
+	\item \textit{break} entity, in order to create, edit and delete breaks in the calendar.
 	\item \textit{transport\_mean} entity, in order to calculate how to reach a meeting.
 	\end{itemize}
 
@@ -508,7 +509,7 @@
 	\bigskip
 	The procedures implemented by the \textit{TravelInformationProvider} is:
 	\begin{description}
-	\item [computeTravel] -- This procedure computes which are the most suitable travel means to reach a certain location. The procedure takes as parameters \textit{fromLocation}, \textit{toLocation}, \textit{userPreferencies}. returns a list of suitable travel means according to user's preferences.
+	\item [computeTravel] -- This procedure computes which are the most suitable travel means to reach a certain location. The procedure takes as parameters \textit{fromLocation}, \textit{toLocation}, \textit{userPreferencies}. Returns a list of suitable travel means according to user's preferences.
 	\end{description}
 
 	\bigskip
@@ -517,7 +518,7 @@
 
 	\bigskip
 	\noindent
-	The \textit{NotificationManager} doesn't interact with any entity
+	The \textit{NotificationManager} doesn't interact with any entity.
 
 	\bigskip
 	The procedures implemented by the \textit{NotificationManager} are:
